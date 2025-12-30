@@ -1,0 +1,39 @@
+.ar-man {
+    background: #f3f3f3;
+    padding: 60px 0px 0px 0px;
+}
+
+.arc-man-footer h5{
+    color: #000;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 1em;
+}
+
+.arc-man-footer p{
+    color: #000;
+    font-weight: 400;
+    font-size: 17px;
+    text-align: left;
+}
+
+.arc-man-footer strong{
+    font-weight: 700;
+}
+
+.arc-man-footer img{
+    width: 30px;
+    height: 30px;
+}
+
+.footer-copy{
+    background: #131d3b;
+    color: #FFF;
+}
+
+@media screen and (max-width: 768px) {
+    .ar-man {
+        background: #f3f3f3;
+        padding: 30px 0px 0px 0px;
+    }
+}

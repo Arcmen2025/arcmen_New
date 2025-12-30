@@ -1,0 +1,616 @@
+/* 
+.gallary-image-fixed {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: auto;
+  margin-bottom: 60px;
+}
+
+.gallary-image-fixed .slider-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.gallary-image-fixed .slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.gallary-image-fixed .slider-slide {
+  flex: 0 0 25%; 
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.gallary-image-fixed img {
+  width: 100%;
+  height: auto;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #4dbc15;
+  color: #fff;
+  padding: 10px;
+  border-radius: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+.prev {
+  left: 10px;
+}
+.next {
+  right: 10px;
+}*/
+
+/* ============================================================================================================================================ */
+/* ============================================================================================================================================ */
+/* ============================================================================================================================================ */
+/* ============================================================================================================================================ */
+/* ============================================================================================================================================ */
+/* ============================================================================================================================================ */
+/* ============================================================================================================================================ */
+
+/* .gallary-image-fixed {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: auto;
+  margin-bottom: 60px;
+}
+
+.gallary-image-fixed .slider-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.gallary-image-fixed .slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.gallary-image-fixed .slider-slide {
+  flex: 0 0 25%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.gallary-image-fixed img {
+  width: 100%;
+  height: auto;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #4dbc15;
+  color: #fff;
+  padding: 10px;
+  border-radius: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+.prev {
+  left: 10px;
+}
+.next {
+  right: 10px;
+} */
+
+/* .gallary-image-fixed {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: auto;
+  margin-bottom: 60px;
+}
+
+.gallary-image-fixed .slider-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.gallary-image-fixed .slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.gallary-image-fixed .slider-slide {
+  flex: 0 0 25%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.gallary-image-fixed img {
+  width: 100%;
+  height: auto;
+  max-height: 300px; 
+  object-fit: contain; 
+}
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #4dbc15;
+  color: #fff;
+  padding: 10px;
+  border-radius: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+.prev {
+  left: 10px;
+}
+.next {
+  right: 10px;
+} */
+
+.gallary-image-fixed {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 60px;
+}
+
+.gallary-image-fixed .slider-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+.gallary-image-fixed .slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.gallary-image-fixed .slider-slide {
+    flex: 0 0 25%;
+    box-sizing: border-box;
+    padding: 10px;
+    position: relative; /* Ensure the slide container is positioned relative */
+}
+
+.gallary-image-fixed img {
+    width: 100%;
+    height: 200px !important; /* Set a fixed height for the images */
+    object-fit: contain; /* Ensure the image covers the container */
+}
+
+.gallary-image-fixed .image-title {
+    /* width: 100%; */
+    text-align: center; /* Center the text */
+    position: relative; /* Position the title absolutely within the slide container */
+    bottom: 10px; /* Adjust the bottom position as needed */
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: Add a semi-transparent background */
+    color: rgb(185, 154, 154); /* Optional: Set text color */
+    padding: 5px; /* Optional: Add padding */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+.gallary-image-fixed .image-titless {
+    /* width: 100%; */
+    text-align: center; /* Center the text */
+    position: relative; /* Position the title absolutely within the slide container */
+    bottom: 10px; /* Adjust the bottom position as needed */
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: Add a semi-transparent background */
+    color: rgb(185, 154, 154); /* Optional: Set text color */
+    padding: 5px; /* Optional: Add padding */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+/* Control Arrows */
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #4dbc15;
+    color: #fff;
+    padding: 10px;
+    border-radius: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+.prev {
+    left: 10px;
+}
+.next {
+    right: 10px;
+}
+
+/* 
+.gallary-image-fixed {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: auto;
+  margin-bottom: 60px;
+}
+
+.gallary-image-fixed .slider-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.gallary-image-fixed .slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.gallary-image-fixed .slider-slide {
+  flex: 0 0 25%; 
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.gallary-image-fixed img {
+  width: 100%;
+  height: auto;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #4dbc15;
+  color: #fff;
+  padding: 10px;
+  border-radius: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+.prev {
+  left: 10px;
+}
+.next {
+  right: 10px;
+}*/
+
+/* ============================================================================================================================================ */
+/* ============================================================================================================================================ */
+/* ============================================================================================================================================ */
+/* ============================================================================================================================================ */
+/* ============================================================================================================================================ */
+/* ============================================================================================================================================ */
+/* ============================================================================================================================================ */
+
+/* .gallary-image-fixed {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: auto;
+  margin-bottom: 60px;
+}
+
+.gallary-image-fixed .slider-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.gallary-image-fixed .slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.gallary-image-fixed .slider-slide {
+  flex: 0 0 25%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.gallary-image-fixed img {
+  width: 100%;
+  height: auto;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #4dbc15;
+  color: #fff;
+  padding: 10px;
+  border-radius: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+.prev {
+  left: 10px;
+}
+.next {
+  right: 10px;
+} */
+
+/* .gallary-image-fixed {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: auto;
+  margin-bottom: 60px;
+}
+
+.gallary-image-fixed .slider-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.gallary-image-fixed .slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.gallary-image-fixed .slider-slide {
+  flex: 0 0 25%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.gallary-image-fixed img {
+  width: 100%;
+  height: auto;
+  max-height: 300px; 
+  object-fit: contain; 
+}
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #4dbc15;
+  color: #fff;
+  padding: 10px;
+  border-radius: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+.prev {
+  left: 10px;
+}
+.next {
+  right: 10px;
+} */
+
+.gallary-image-fixed {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 60px;
+}
+
+.gallary-image-fixed .slider-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+.gallary-image-fixed .slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.gallary-image-fixed .slider-slide {
+    flex: 0 0 25%;
+    box-sizing: border-box;
+    padding: 10px;
+    position: relative;
+    /* Ensure the slide container is positioned relative */
+}
+
+.gallary-image-fixed img {
+    /* width: 100%; */
+    /* height: 200px !important; Set a fixed height for the images */
+    /* object-fit: contain; */
+    object-fit: fill;
+    /* Ensure the image covers the container */
+}
+
+.gallary-image-fixed .image-title {
+    /* width: 100%; */
+    text-align: center;
+    /* Center the text */
+    position: relative;
+    /* Position the title absolutely within the slide container */
+    bottom: 10px;
+    /* Adjust the bottom position as needed */
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Optional: Add a semi-transparent background */
+    color: rgb(185, 154, 154);
+    /* Optional: Set text color */
+    padding: 5px;
+    /* Optional: Add padding */
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
+}
+
+.gallary-image-fixed .image-titless {
+    /* width: 100%; */
+    text-align: center;
+    /* Center the text */
+    position: relative;
+    /* Position the title absolutely within the slide container */
+    bottom: 10px;
+    /* Adjust the bottom position as needed */
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Optional: Add a semi-transparent background */
+    color: rgb(185, 154, 154);
+    /* Optional: Set text color */
+    padding: 5px;
+    /* Optional: Add padding */
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
+}
+
+.image-titless-title {
+    position: absolute !important;
+    text-align: center;
+    z-index: 999;
+    display: flex;
+    bottom: 2px;
+    /* width: 50px; */
+    margin: 5px 5px;
+    right: 0px;
+    background-color: rgba(238, 6, 6, 0.5);
+    /* Optional: Add a semi-transparent background */
+    color: rgb(255, 255, 255);
+    left: 0;
+    font-size: 21px;
+    font-weight: 500;
+    height: 100px;
+
+    justify-content: center;
+    padding: 13px;
+}
+
+.image-titless-title {
+    padding: 20px;
+    color: #ffff;
+    font-size: 16px;
+}
+
+#slide-1 {
+    .image-titless-title {
+        background: #6c5ce7;
+        padding: 20px;
+        color: #ffff;
+        font-size: 16px;
+    }
+}
+
+#slide-2 {
+    .image-title {
+        background: #d83298;
+        padding: 20px;
+        color: #ffff;
+        font-size: 16px;
+    }
+}
+
+#slide-3 {
+    .image-title {
+        background: #06936d;
+        padding: 20px;
+        color: #ffff;
+        font-size: 16px;
+    }
+}
+
+#slide-4 {
+    .image-title {
+        background: #345288;
+        padding: 20px;
+        color: #ffff;
+        font-size: 16px;
+    }
+}
+
+#slide-5 {
+    .image-title {
+        background: #663333;
+        padding: 20px;
+        color: #ffff;
+        font-size: 16px;
+    }
+}
+
+#slide-6 {
+    .image-title {
+        background: #009ce9;
+        padding: 20px;
+        color: #ffff;
+        font-size: 16px;
+    }
+}
+
+#slide-7 {
+    .image-title {
+        background: #78e08f;
+        padding: 20px;
+        color: #ffff;
+        font-size: 16px;
+    }
+}
+
+#slide-8 {
+    .image-title {
+        background: #ffbb00;
+        padding: 20px;
+        color: #ffff;
+        font-size: 16px;
+    }
+}
+
+/* Control Arrows */
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #4dbc15;
+    color: #fff;
+    padding: 0px !important;
+    border-radius: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    width: 30px;
+    height: 30px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}

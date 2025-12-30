@@ -1,0 +1,190 @@
+.architect-interior-banner {
+    background-image: url(https://res.cloudinary.com/dpflidsbg/image/upload/v1735204334/arcmen/Architectural/architectural-banner.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+}
+
+.architect-interior-banner h1 {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.architect-interior-banner p {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+    .architect-interior-banner {
+        height: 100vh;
+    }
+
+    .architect-interior-banner h1 {
+        font-size: 30px;
+    }
+
+    .architect-interior-banner p {
+        font-size: 20px;
+    }
+
+}
+
+/* Architecturalservices */
+.Architecturalservices h2 {
+    color: #131d3b;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.a-services .card {
+    padding: 20px;
+    border-style: solid;
+    border: 1px solid #D3CDCD;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px 4px #E4E4E4;
+    width: 100%;
+    /* height: 100%; */
+    margin-bottom: 25px;
+}
+
+
+.a-services .card {
+    --e-transform-scale: 1;
+    transition: transform 0.3s ease;
+}
+
+.a-services .card:hover {
+    --e-transform-scale: 0.97;
+    transform: scale(var(--e-transform-scale));
+}
+
+
+.a-services .card img {
+    width: 90px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.a-services .card h3 {
+    color: #4DBC15;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.a-services .card p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.project-card {
+    position: relative;
+    margin-bottom: 20px;
+    .overlay {
+       position: absolute;
+       bottom: 0;
+       color: #f1f1f1;
+       width: 100%;
+       transition: .5s ease;
+       opacity: 1;
+       color: white;
+       font-size: 14px;
+       font-weight: 500;
+       padding: 20px;
+       /* text-align: center; */
+ }
+ img{
+    width: 100%;
+ }
+ }
+ .project-card:hover .overlay {
+    margin: 20px 0;
+    background: rgba(0, 0, 0, 0.5);
+ }
+
+.work-iamge h4{
+    color: #131d3b;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.work-iamge p{
+    color: #131d3b;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* button */
+.color-overlay-button{
+    margin-top: 50px !important;
+    margin-bottom: 50px;
+    text-align: center; 
+  
+    a{
+      color: #000;
+      background-color: #fff;
+      padding: 20px 40px 20px 40px;
+      border: 3px solid #fff;
+      border-color: #4DBC15;
+      position: relative;
+    }
+  
+    .ue-color-overlay{
+      border: 3px solid #fff;
+    }
+    a:hover .ue-color-overlay{
+      width: 100%;
+      height: 100%;
+      border: 3px solid #fff;
+    }
+    .ue-btn-txt{
+      color:#000;
+    }
+    a:hover .ue-btn-txt{
+      color: #fff;
+      z-index: 999;
+      position: relative;
+    }
+    .ue-color-overlay{
+      display: block;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      transition: 0.5s;
+      background-color: #4DBC15;
+      width: 10px;
+      height: 10px;
+  }
+  
+  }
+
+
+  .fee-structure {
+    background: #f1f5f8;
+    padding: 25px 0px;
+  }
+
+  .fee-structure h6 {
+    font-size: 30px;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 25px;
+  }
+
+  .fee-structure p {
+    font-size: 17px;
+    font-weight: 400;
+    color: #000000;
+  }
+
+  .project-card>.overlay>a{
+    color: white;
+  }
+  .project-card>.overlay>a:hover{
+color: #4DBC15; 
+}

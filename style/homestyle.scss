@@ -1,0 +1,509 @@
+.header-nav .nav-item {
+    a {
+        font-size: 16px;
+        font-weight: 600;
+        color: #000;
+        padding: 10px;
+    }
+}
+h2 {
+    font-size: 35px !important;
+    color: #131d3b !important;
+    font-weight: 700 !important;
+}
+.header-nav {
+    .row {
+        align-items: center;
+    }
+}
+.hero-banner {
+    .carousel-caption {
+        top: 25%;
+        h3 {
+            font-size: 40px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 18px;
+        }
+    }
+}
+
+// Flip box styles
+
+.flip-box {
+    background-color: transparent;
+    width: 100%;
+    height: 400px;
+    border: 1px solid #f1f1f1;
+    overflow: hidden; /* Hide overflow content during animation */
+}
+
+.flip-box-inner {
+    position: relative;
+    width: 200%; /* Double the width to allow the "slide" effect */
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s ease; /* Slide animation speed */
+    display: flex;
+}
+
+.flip-box:hover .flip-box-inner {
+    transform: translateX(-50%); /* Move the box to the left */
+}
+
+.flip-box-front,
+.flip-box-back {
+    position: absolute;
+    width: 100% !important; /* Each side takes up half the space */
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Hide the back when flipped */
+    backface-visibility: hidden;
+}
+
+.flip-box-front {
+    background-color: #4dbc15;
+    color: #fff;
+    padding: 50px 20px;
+}
+.homeflip .flip-box-front,
+.flip-box-back {
+    width: 50% !important;
+}
+.flip-box-back {
+    background-color: #4dbc15;
+    color: white;
+    border: 1px solid #fff;
+    left: 50%;
+    padding: 50px 20px; /* Position the back side to the right half of the box */
+}
+.flip-box-front,
+.flip-box-back {
+    h2 {
+        font-size: 28px;
+        color: #fff !important;
+        font-weight: 600;
+    }
+    p {
+        font-size: 16px;
+        color: #fff;
+        line-height: 26px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    a {
+        border: 2px solid #fff;
+        padding: 10px 25px;
+        border-radius: 30px;
+        color: #fff;
+        text-decoration: none;
+    }
+}
+.quick {
+    h3 {
+        font-size: 18px;
+        color: #cb4154;
+        font-weight: 600;
+    }
+    h2 {
+        font-size: 25px !important;
+    }
+}
+.quickser-form {
+    form {
+        display: flex;
+        column-gap: 10px;
+
+        input,
+        select {
+            width: 100%;
+            height: 40px;
+        }
+        button {
+            width: 20%;
+            height: 40px;
+            background: #4dbc15;
+            border: none;
+        }
+    }
+}
+.quickser-sec {
+    background: #f5f5f5;
+    .row {
+        align-items: center;
+        padding: 30px;
+        background: #fff;
+        border-radius: 10px;
+        margin-top: -61px;
+        position: relative;
+        z-index: 9;
+    }
+}
+
+.flipbox-sec {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background: #f5f5f5;
+}
+
+// $animationSpeed: 40s;
+
+// @keyframes scroll {
+// 0% { transform: translateX(0); }
+// 100% { transform: translateX(calc(-250px * 7))}
+// }
+
+// .slider {
+// height: 100px;
+// margin: auto;
+// overflow:hidden;
+// position: relative;
+// width: auto;
+
+// .slide-track {
+//   animation: scroll $animationSpeed linear infinite;
+//   display: flex;
+//   width: calc(250px * 14);
+// }
+// .slide {
+//   height: 100px;
+//   width: 250px;
+// }
+// }
+// //   End
+
+$animationSpeed: 20s; // Adjust the speed as needed
+$slideWidth: 250px; // Width of each slide
+$totalSlides: 6; // Total number of slides
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-#{$slideWidth} * #{$totalSlides}));
+    }
+}
+
+.slider {
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    .slide-track {
+        animation: scroll $animationSpeed linear infinite;
+        display: flex;
+        width: calc(#{$slideWidth} * #{$totalSlides} * 2); // Double the total width to allow seamless looping
+    }
+
+    .slide {
+        height: 100px;
+        width: $slideWidth;
+    }
+}
+
+.w-20 {
+    width: 20% !important;
+}
+.proces-box {
+    text-align: center;
+    h3 {
+        font-size: 14px;
+        font-weight: 700;
+        text-align: center;
+        color: #131d3b;
+        line-height: 22px;
+    }
+}
+.whychoose {
+    text-align: center;
+    .proces-box {
+        text-align: center;
+        h3 {
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+            color: #131d3b;
+            line-height: 22px;
+        }
+        img {
+            width: 90%;
+        }
+    }
+    .w-12 {
+        width: 12.5% !important;
+        max-width: 12.5% !important;
+    }
+}
+.color-overlay-buttons {
+    margin-top: 50px !important;
+    margin-bottom: 50px;
+    text-align: center;
+
+    a {
+        background-color: #4dbc15;
+        padding: 20px 40px 20px 40px;
+        border-style: solid;
+        border-width: 3px 3px 3px 3px;
+        border-color: #4dbc15;
+        position: relative;
+    }
+    a:hover .ue-color-overlays {
+        width: 100%;
+        height: 100%;
+    }
+    .ue-btn-txts {
+        color: #fff;
+    }
+    a:hover .ue-btn-txts {
+        color: #000;
+        z-index: 999;
+        position: relative;
+    }
+    .ue-color-overlays {
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        transition: 0.5s;
+        background-color: #ffffff;
+        width: 10px;
+        height: 10px;
+    }
+}
+.advance-box {
+    text-align: center;
+    height: 290px;
+    h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #131d3b;
+    }
+}
+.other-service {
+    text-align: center;
+    h3 {
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        color: #131d3b;
+    }
+}
+.vedio-sec {
+    h2 {
+        font-size: 30px !important;
+        padding-bottom: 20px;
+    }
+}
+
+// Project card
+
+.project-card {
+    .image-title {
+        padding: 20px;
+        color: #ffff;
+        font-size: 16px;
+    }
+    #slide-1 {
+        .image-title {
+            background: #6c5ce7;
+            padding: 20px;
+            color: #ffff;
+            font-size: 16px;
+        }
+    }
+    #slide-2 {
+        .image-title {
+            background: #d83298;
+            padding: 20px;
+            color: #ffff;
+            font-size: 16px;
+        }
+    }
+    #slide-3 {
+        .image-title {
+            background: #06936d;
+            padding: 20px;
+            color: #ffff;
+            font-size: 16px;
+        }
+    }
+    #slide-4 {
+        .image-title {
+            background: #345288;
+            padding: 20px;
+            color: #ffff;
+            font-size: 16px;
+        }
+    }
+    #slide-5 {
+        .image-title {
+            background: #663333;
+            padding: 20px;
+            color: #ffff;
+            font-size: 16px;
+        }
+    }
+    #slide-6 {
+        .image-title {
+            background: #009ce9;
+            padding: 20px;
+            color: #ffff;
+            font-size: 16px;
+        }
+    }
+    #slide-7 {
+        .image-title {
+            background: #78e08f;
+            padding: 20px;
+            color: #ffff;
+            font-size: 16px;
+        }
+    }
+    #slide-8 {
+        .image-title {
+            background: #ffbb00;
+            padding: 20px;
+            color: #ffff;
+            font-size: 16px;
+        }
+    }
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.fs_12 {
+    font-size: 14px !important;
+}
+@media screen and (max-width: 767px) {
+    .advantage-get .w-20 {
+        width: 50% !important;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .whychoose .w-12 {
+        width: 24% !important;
+        max-width: 24% !important;
+    }
+    .advantage-get .w-20 {
+        width: 50% !important;
+    }
+    .process-work .w-20 {
+        width: 33% !important;
+    }
+    .flip-box {
+        height: 350px;
+        margin-bottom: 20px;
+    }
+}
+// @media screen and (min-width:768px) and (max-width:768px){
+@media screen and (max-width: 768px) {
+    .quickser-form {
+        form {
+            display: flex;
+            flex-direction: column;
+            column-gap: 10px;
+        }
+    }
+}
+
+// Popup form
+.popup-fminter {
+    img {
+        width: 400px;
+    }
+}
+.modal-dialog {
+    width: 800px;
+    max-width: 800px;
+}
+.popup-fminter {
+    display: flex;
+    column-gap: 13px;
+}
+.form-inter {
+    p {
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .con-form-page {
+        input {
+            height: 35px;
+        }
+        select {
+            height: 35px !important;
+        }
+    }
+    .sumbit-btn {
+        border-color: #4dbc15;
+        background-color: #4dbc15;
+        padding-top: 10px;
+        padding-right: 30px;
+        padding-bottom: 10px;
+        padding-left: 30px;
+        border: none;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 5px;
+    }
+}
+.btn-close {
+    border: 2px solid #000;
+    font-size: 10px;
+    font-weight: 600;
+    border-radius: 30px;
+    z-index: 99;
+}
+.modal-body {
+    margin-top: -50px;
+}
+
+.burget-check {
+    color: #000;
+    input {
+        height: 14px !important;
+    }
+    label {
+        padding-left: 5px;
+        padding-right: 10px;
+        font-size: 15px;
+        font-weight: 600;
+    }
+}
+
+.modal {
+    --bs-modal-margin: 1.75rem;
+    --bs-modal-box-shadow: var(--bs-box-shadow);
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+.popup-shw{
+    .burget-check {
+        label {
+            font-size: 12px;
+        }
+    }
+    .form-check-inline {
+        margin-right: 5px;
+    }
+}
+
+// .carousel-inner img {
+//   margin: auto;
+//     background-color: #000000;
+// }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    background-color: #000000;
+    padding: 10px;
+}
+

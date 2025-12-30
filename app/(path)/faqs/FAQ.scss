@@ -1,0 +1,37 @@
+.faq-accodion-header{
+    margin-bottom: 10px;
+}
+
+.faq-accodion-header {
+    box-shadow: 0px 9px 20px rgb(148 137 122 / 30%);
+}
+.faq-accodion-header > .accordion-button {
+    // color: #4dbc15;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 25px;
+}
+
+.faq-accodion-header > .accordion-button:not(.collapsed) {
+    color: #4dbc15;
+    background-color: #fff;
+    border: 0px;
+    outline: 0px;
+}
+.accordion {
+    --bs-accordion-btn-focus-box-shadow: none;
+}
+.faq-accodion-body>p{
+    font-size: 17px;
+}
+
+.faqs-second-section-div{
+    width: 80%; max-width: 80% 
+}
+.faqs-second-section-p{
+font-size: 1.1rem; line-height: 2rem; text-align: center; 
+}
+
+.faq-accodion-body>ul>li::marker{
+    font-size: 23px;
+}

@@ -1,0 +1,116 @@
+.inter-banner {
+    background-image: url('https://res.cloudinary.com/dpflidsbg/image/upload/v1735036308/arcmen/Interior%20designing/interior-designing.jpg');
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.inter-banner {
+    h1 {
+        color: #fff;
+        font-size: 30px;
+        font-weight: 600;
+    }
+    p {
+        color: #fff;
+        font-size: 16px;
+    }
+}
+.our-role {
+    h2 {
+        font-size: 30px !important;
+        color: #7c3717 !important;
+    }
+    img {
+        width: 100%;
+    }
+    h3 {
+        color: #7c3717;
+        font-family: 'Poppins', Sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        padding-top: 15px;
+    }
+    p {
+        font-size: 16px;
+        text-align: center;
+        line-height: 30px;
+        padding: 5px 10px;
+    }
+    .modular-box {
+        border-style: solid;
+        border-width: 1px 1px 1px 1px;
+        border-color: #d3cdcd;
+        box-shadow: 0px 0px 6px 4px #e4e4e4;
+        height: 340px;
+    }
+}
+.modular-box img {
+    width: 100%;
+}
+.interior-design {
+    h2 {
+        font-size: 30px !important;
+        color: #7c3717 !important;
+        text-align: center;
+    }
+}
+.interior-list {
+    p {
+        font-size: 16px;
+        color: #fff;
+        padding-bottom: 0px;
+    }
+    svg {
+        font-size: 25px;
+    }
+}
+.list-of {
+    background-image: url('https://res.cloudinary.com/dpflidsbg/image/upload/v1735194832/arcmen/Interior%20designing/interior-design-consultancy-provider.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    h3 {
+        color: #fff;
+        font-size: 25px;
+        text-align: center;
+        padding: 230px 50px;
+        font-weight: 600;
+    }
+}
+.project-card {
+    position: relative;
+    margin-bottom: 20px;
+    .overlay {
+        position: absolute;
+        bottom: 0;
+        color: #f1f1f1;
+        width: 100%;
+        transition: 0.5s ease;
+        opacity: 1;
+        color: white;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 20px;
+        /* text-align: center; */
+    }
+    img {
+        width: 100%;
+    }
+}
+.project-card:hover .overlay {
+    margin: 20px 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.project-card > .overlay > a {
+    color: white;
+}
+.project-card > .overlay > a:hover {
+    color: #4dbc15;
+}
+
+.color-overlay-button > .color-overlay-link {
+    border-color: #fff;
+}

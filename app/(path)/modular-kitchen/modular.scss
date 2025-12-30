@@ -1,0 +1,124 @@
+.inter-banner {
+    background-image: url('https://res.cloudinary.com/dpflidsbg/image/upload/v1735206956/arcmen/modular-kitchen/modular-kitchen-banner.jpg');
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.inter-banner {
+    h1 {
+        color: #fff;
+        font-size: 30px;
+        font-weight: 600;
+    }
+    p {
+        color: #fff;
+        font-size: 16px;
+    }
+}
+.our-role {
+    h2 {
+        font-size: 30px !important;
+        color: #7c3717 !important;
+    }
+
+    h3 {
+        color: #4dbc15;
+        font-family: 'Poppins', Sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        padding-top: 15px;
+    }
+    p {
+        font-size: 16px;
+        text-align: center;
+        line-height: 30px;
+        padding: 5px 10px;
+    }
+    .modular-box,
+    .modular-box1 {
+        border-style: solid;
+        border-width: 1px 1px 1px 1px;
+        border-color: #d3cdcd;
+        box-shadow: 0px 0px 6px 4px #e4e4e4;
+
+        text-align: center;
+        padding-top: 20px;
+        --e-transform-scale: 1;
+        transition: transform .3s ease;
+    }
+    .modular-boxhover, .modular-box1:hover{
+        transform: scale(0.97);
+    }
+    .modular-box1 {
+        height: 300px;
+    }
+    .modular-box1:hover, .modular-box:hover {
+        transform: scale(0.97);
+    }
+}
+.interior-design {
+    h2 {
+        font-size: 30px !important;
+        color: #7c3717 !important;
+        text-align: center;
+    }
+}
+.interior-list {
+    p {
+        font-size: 16px;
+        color: #fff;
+        padding-bottom: 20px;
+    }
+    svg {
+        font-size: 25px;
+    }
+}
+.list-of {
+    background-image: url('https://res.cloudinary.com/dpflidsbg/image/upload/v1735194832/arcmen/Interior%20designing/interior-design-consultancy-provider.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    h3 {
+        color: #fff;
+        font-size: 25px;
+        text-align: center;
+        padding: 230px 50px;
+        font-weight: 600;
+    }
+}
+.project-card {
+    position: relative;
+    margin-bottom: 20px;
+    .overlay {
+        position: absolute;
+        bottom: 0;
+        color: #f1f1f1;
+        width: 100%;
+        transition: 0.5s ease;
+        opacity: 1;
+        color: white;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 20px;
+        /* text-align: center; */
+
+        a {
+            color: #fff;
+            transition: color 0.3s ease-in-out; 
+            font-weight: bold;
+            font-size: 14px;
+        }
+         a:hover{
+            color: #4dbc15 !important;
+        }
+    }
+    img {
+        width: 100%;
+    }
+}
+.project-card:hover .overlay {
+    margin: 20px 0;
+    background: rgba(0, 0, 0, 0.5);
+}

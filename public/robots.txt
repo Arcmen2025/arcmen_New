@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://webdads2u-website.vercel.app/
+
+# Sitemaps
+Sitemap: https://webdads2u-website.vercel.app/sitemap.xml

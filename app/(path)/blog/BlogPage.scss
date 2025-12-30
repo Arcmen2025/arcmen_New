@@ -1,0 +1,84 @@
+.blog-banner {
+    background-image: url(https://res.cloudinary.com/dpflidsbg/image/upload/v1735277668/arcmen/blog/living-room-sofa-couch.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 150px 0px;
+}
+
+.blog-banner h1 {
+    color: #fff;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.blog-banner p {
+    color: #fff;
+    font-size: 17px;
+    font-weight: 400;
+    /* margin-top: 20px; */
+}
+
+@media screen and (max-width: 768px) {
+    .blog-banner h1 {
+        font-size: 30px;
+    }
+}
+
+.blog-h2-content {
+    margin-bottom: 0px;
+    font-weight: normal;
+    line-height: 44px;
+    font-size: 32px;
+    font-style: normal;
+    font-family: Taviraj, serif !important;
+    color: #131d3b;
+}
+
+.blog_box-card {
+    background-color: #ffffff;
+    text-align: left;
+    border-radius: 0px;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #dfdfdf;
+    overflow: hidden; /* Ensure overflow is hidden */
+}
+
+.blog_content {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    margin-top: 10px;
+
+    .blog_title_content {
+        padding: 10px 10px 10px 10px;
+        background-color: #77a312;
+        transition: all 200ms ease-in-out;
+        div {
+            a {
+                color: #fff;
+                font-size: 16px;
+                font-weight: 400;
+                text-decoration: none;
+                text-align: left;
+                display: flex;
+            }
+        }
+    }
+}
+
+.blog-title_image {
+    position: relative;
+    overflow: hidden; /* Ensure overflow is hidden */
+    div {
+        img {
+            width: 100%;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        &:hover img {
+            transform: scale(1.05); /* Scale the image slightly on hover */
+        }
+    }
+}

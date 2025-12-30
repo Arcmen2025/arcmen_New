@@ -1,0 +1,96 @@
+.heroSlider-fixed {
+    position: relative;
+    width: 90%;
+    overflow: hidden;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+  }
+  
+  .slider {
+    display: flex;
+    width: 100%;
+    height: 80%;
+    position: relative;
+  }
+  
+  .slide {
+    min-width: 100%;
+    transition: transform 0.5s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .slide.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+  }
+  
+
+  .controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+  
+  .controls button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #000000;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .controls button:hover {
+    color: black;
+  }
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%; 
+  transform: translateY(-50%); 
+  background-color: #4DBC15; 
+  color: #fff; 
+  padding: 10px; 
+  border-radius: 0%; 
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  cursor: pointer;
+  z-index: 10; 
+}
+.prev {
+  left: 10px; 
+}
+.next {
+  right: 10px; 
+}
+
+
+@media screen and (max-width:769px) {
+  .heroSlider-fixed {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width:500px){
+  .heroSlider-fixed svg{
+    width: 15px !important;
+    padding: 0;
+  }
+  .heroSlider-fixed .prev, .next{
+  padding: 0;
+}
+}
+

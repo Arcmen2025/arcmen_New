@@ -1,0 +1,91 @@
+.career-banner {
+    background-image: url(https://res.cloudinary.com/dpflidsbg/image/upload/v1735286584/arcmen/career/breadcrumb.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 85px 0px;
+}
+
+.career-banner h1 {
+    color: #4DBC15;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.career-banner p {
+    color: #4DBC15;
+    font-size: 17px;
+    font-weight: 400;
+    /* margin-top: 20px; */
+}
+
+@media screen and (max-width: 768px) {
+    .career-banner h1 {
+        font-size: 30px;
+    }
+}
+
+.career-forms {
+    width: 65%;
+    margin: auto;
+}
+
+.career-form-section{
+    // padding: 50px 0px;
+    width: 65%;
+    margin: auto;
+    font-size: 17px;
+}
+
+
+.career-form-heading{
+    font-family: "Poppins", Sans-serif;
+    color: #4DBC15;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+
+.career-form-heading2{
+    font-size: 25px !important;
+    color: #4DBC15 !important;
+}
+
+.career-form-section-inner{
+
+    padding: 100px 0px 100px 0px;
+}
+
+@media screen and (max-width: 768px) {
+    .career-form-section {
+        width: 90% !important;
+    }
+    
+}
+
+button[type="submit"] {
+    border-style: solid;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-bottom-width: 0;
+    color: #fff;
+    border-color: #4dbc15;
+    background-color: #4dbc15;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    font-size: 0.88235294117647rem;
+    line-height: 1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}

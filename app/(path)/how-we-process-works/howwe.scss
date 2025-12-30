@@ -1,0 +1,326 @@
+//===========================================================================================================
+//===========================================================================================================
+//===========================================================================================================
+//===========================================================================================================
+
+// .how-we-process {
+//     background-image: url('https://res.cloudinary.com/dpflidsbg/image/upload/v1737370714/arcmen/how-we-process-banner.jpg');
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     padding-top: 100px;
+//     padding-bottom: 100px;
+// }
+// .how-we-process {
+//     h1 {
+//         color: #fff;
+//         font-size: 30px;
+//     }
+//     p {
+//         color: #fff;
+//         font-size: 18px;
+//     }
+//     a {
+//         color: #ffff;
+//     }
+// }
+// .looking-best {
+//     text-align: center;
+// }
+// .looking-best h2 {
+//     font-size: 30px !important;
+// }
+// .looking-sec {
+//     padding-top: 70px;
+//     padding-bottom: 0px;
+// }
+// .looking-sec img {
+//     width: 10%;
+// }
+// .line-sec img {
+//     width: 60% !important;
+// }
+// .process-box {
+//     h2 {
+//         font-size: 40px;
+//         text-align: left;
+//         color: #02010140 !important;
+//     }
+//     span {
+//         // font-size: 40px;
+//         font-size: 15px;
+//         text-align: left;
+//         color: #02010140 !important;
+//         margin-right: 0px;
+//     }
+//     p {
+//         font-size: 14px;
+//         font-weight: 600;
+//         line-height: 20px;
+//     }
+// }
+// .line-sec {
+//     justify-content: center;
+// }
+// .process-box {
+//     text-align: center;
+// }
+// .talk-our {
+//     padding-top: 50px;
+
+//     img {
+//         width: 100%;
+//     }
+//     h4 {
+//         font-size: 20px;
+//         font-weight: 600;
+//         color: #131d3b;
+//     }
+//     .time-look {
+//         padding-top: 30px;
+//         padding-bottom: 30px;
+//         padding-left: 30px;
+//         position: relative;
+
+//         h3 {
+//             position: relative;
+//         }
+
+//         h3:before {
+//             // content: "";
+//             content: url('https://res.cloudinary.com/dpflidsbg/image/upload/v1741094918/icons8-arrow-60_sy6prn.png');
+//             position: absolute;
+//             width: 30px;
+//             height: 30px;
+//             background: #706e6e;
+//             border-radius: 50%;
+//             left: -38px;
+//             // top: 5px;
+//             padding: 6px;
+//         }
+//         .last-h3:before {
+//             content: '' !important; // Set content to an empty string
+//         }
+//         h3:hover:before {
+//             background: red;
+//         }
+//     }
+// }
+// .time-line-look:before{
+//     position: absolute;
+//     content: '';
+//     width: 2px;
+//     background: #6b6969;
+//     height: 56% !important;
+//     left: 7px;
+//     top: 40px;
+// }
+// .time-look:before {
+//     position: absolute;
+//     content: '';
+//     width: 2px;
+//     background: #6b6969;
+//     height: 78%;
+//     left: 7px;
+//     top: 40px;
+// }
+// .time-look h3 {
+//     color: #000000;
+//     font-size: 20px;
+//     font-weight: 600;
+//     margin-top: 0px;
+
+//     p {
+//         color: #777777d9;
+//     }
+// }
+// .talk-our img {
+//     border-radius: 70px 5px 70px 05px;
+// }
+
+.how-we-process {
+    background-image: url('https://res.cloudinary.com/dpflidsbg/image/upload/v1737370714/arcmen/how-we-process-banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.how-we-process {
+    h1 {
+        color: #fff;
+        font-size: 30px;
+    }
+    p {
+        color: #fff;
+        font-size: 18px;
+    }
+    a {
+        color: #ffff;
+    }
+}
+.looking-best {
+    text-align: center;
+}
+.looking-best h2 {
+    font-size: 30px !important;
+}
+.looking-sec {
+    padding-top: 70px;
+    padding-bottom: 0px;
+}
+.looking-sec img {
+    width: 10%;
+}
+.line-sec img {
+    width: 60% !important;
+}
+.process-box {
+    h2 {
+        font-size: 40px;
+        text-align: left;
+        color: #02010140 !important;
+    }
+    span {
+        // font-size: 40px;
+        font-size: 15px;
+        text-align: left;
+        color: #7c3717 !important;
+        margin-right: 0px;
+    }
+    p {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+    }
+}
+.line-sec {
+    justify-content: center;
+}
+.process-box {
+    text-align: center;
+}
+.talk-our {
+    padding-top: 50px;
+
+    img {
+        width: 100%;
+    }
+    h4 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #131d3b;
+    }
+    .time-look {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 30px;
+        position: relative;
+
+        h3 {
+            position: relative;
+        }
+
+        h3:before {
+            // content: "";
+            content: url('https://res.cloudinary.com/dpflidsbg/image/upload/v1741094918/icons8-arrow-60_sy6prn.png');
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #74a340;
+            border-radius: 50%;
+            left: -38px;
+            // top: 5px;
+            padding: 6px;
+        }
+        .last-h3:before {
+            content: '' !important; // Set content to an empty string
+        }
+        h3:hover:before {
+            background: #7c381a;
+        }
+    }
+}
+.time-line-look:before {
+    position: absolute;
+    content: '';
+    width: 2px;
+    background: #6b6969;
+    height: 54% !important;
+    left: 7px;
+    top: 40px;
+}
+
+.time-line-look-2:before {
+    height: 53% !important;
+}
+
+.time-line-look4:before {
+    height: 41% !important;
+}
+
+.time-line-look5:before {
+    height: 65% !important;
+}
+
+.time-look:before {
+    position: absolute;
+    content: '';
+    width: 2px;
+    background: #74a340;
+    height: 78%;
+    left: 7px;
+    top: 40px;
+}
+.time-look h3 {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 0px;
+
+    p {
+        color: #777777d9;
+    }
+}
+.talk-our img {
+    border-radius: 70px 5px 70px 05px;
+}
+
+@media screen and (max-width: 768px) {
+    .time-line-look-2:before {
+        height: 57% !important;
+    }
+    .time-line-look5:before {
+        height: 74% !important;
+    }
+    .time-line-look5:before {
+        height: 67% !important;
+    }
+}
+
+// @media screen and (min-width: 330px) {
+//     .time-line-look:before{
+//         height: 54% !important;
+//     }
+// }
+
+@media screen and (max-width: 450px) {
+    .time-line-look5:before {
+        height:65% !important;
+    }
+    .time-line-look:before {
+        height: 51% !important;
+    }
+    .time-line-look-2:before {
+        height: 58% !important;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .looking-sec img {
+        width: 25%;
+    }
+}
+@media screen and (max-width: 768) {
+    .looking-sec img {
+        width: 25%;
+    }
+}

@@ -1,0 +1,139 @@
+/* Header-moble.css */
+.offcanvas.offcanvas-end {
+    left: 0 !important;
+}
+
+.navbar-toggler {
+    background: #4caf50;
+}
+
+/* Header-moble.css */
+
+.navbar {
+    color: transparent;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-mb {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-mb li {
+    width: 100%;
+}
+
+.menu-mb a {
+    color: #000;
+    text-decoration: none;
+    padding: 20px 0px;
+    display: block;
+    border-bottom: 2px solid #eaeaea;
+}
+
+.menu-mb a:hover {
+    color: #4caf50;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 200px;
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 0.5rem 1rem;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    color: #4caf50;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.navbar .menu li .dropdown-content a:hover {
+    color: #4caf50;
+}
+.menu-mb button {
+    color: #fff;
+    background: #4caf50;
+    border: 1px solid #fff;
+    border-radius: 7px;
+    padding: 8px 16px;
+    margin: 10px 0px;
+    font-size: 17px;
+    font-weight: 400px;
+}
+
+.menu-mb .dropdown-menu.show {
+    display: block;
+    width: 100%;
+    padding: 10px;
+}
+
+.menu-mb .dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown span {
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+.sidebar-content-div {
+    position: fixed;
+    top: 60%;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    z-index: 99;
+    padding: 10px 0px;
+}
+
+.icon-sty {
+    /* background: #75a313; */
+    background: #52ca15a3;
+    width: 50%;
+    margin-left: auto;
+    margin-right: 0;
+    border-radius: 10px 0px 0px 10px;
+    margin-bottom: 20px;
+}
+.hd-btn button {
+    font-size: 15px;
+    padding: 8px 10px;
+    /* background: #75a313; */
+    background: #52ca15a3;
+    border: 0px;
+    border-radius: 5px;
+}
+.emil-bx {
+    background: #fff;
+    border-radius: 35px;
+    width: 40px;
+    height: 40px;
+}
+.mail-icon-div {
+    display: inline-block;
+    background: #fdfdfd;
+    width: 40px;
+    margin-left: 5px;
+    margin-top: 20px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    padding: 4px;
+}

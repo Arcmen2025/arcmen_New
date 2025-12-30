@@ -1,0 +1,55 @@
+@media screen and (max-width:767px){
+    .hero-banner {
+        .carousel-item{
+           img{
+            height: 330px;
+            width: 100%;
+           }
+        }
+        .carousel-caption{
+            h3{
+                font-size: 23px !important;
+            }
+            p{
+                font-size: 14px !important;
+            }
+        }
+
+    }
+    .flipbox-sec{
+        .flip-box{
+            margin-bottom: 20px;
+        }
+    }
+    h2{
+        font-size: 25px!important;
+    }
+    .process-work{
+        .w-20{
+            width:50% !important;
+        }
+    }
+    .whychoose {
+        .w-12.col-6{
+            width: 50% !important;
+            max-width: 50% !important;
+        }
+        
+    }
+    .w-20 {
+        width:50% !important;
+    }
+    .inter-banner h1 {
+  font-size: 25px !important;
+}
+.our-role .modular-box{
+    height: 400px !important;
+    margin-bottom: 10px;
+}
+.interior-design h2 {
+font-size: 25px;
+}
+.list-of h3 {
+padding: 100px 20px !important;
+}
+}

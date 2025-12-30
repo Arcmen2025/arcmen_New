@@ -1,0 +1,391 @@
+// .dynamic-blog-title-content{
+//     margin-top: 175px;
+
+//     h1{
+//         font-size: 30px;
+//         font-weight: 700;   
+//     }
+// }
+
+// .dynamic-blog-subtitle-content{
+//     p{
+//         font-size: 17px;
+//         margin-bottom: 1.75rem;
+//         vertical-align: baseline;
+//     }
+// }
+
+// .dynamic-blog-paragrah{
+//     text-align: left;
+//     font-size: 17px;
+//     margin-bottom: 1.75rem;
+//     vertical-align: baseline;
+// }
+
+
+// // ==========
+// .blog-section {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: flex-start;
+//     margin-bottom: 2rem;
+
+//     &.image-right {
+//         flex-direction: row-reverse;
+
+//         .blog-content {
+//             margin-left: 20px;
+//         }
+//     }
+
+//     &.image-left {
+//         flex-direction: row;
+
+//         .blog-content {
+//             margin-right: 20px;
+//         }
+//     }
+// }
+
+// .blog-image-container {
+//     flex: 1;
+//     max-width: 50%;
+
+//     img {
+//         width: 100%;
+//         height: auto;
+//         object-fit: cover;
+//     }
+// }
+
+// .blog-content {
+//     flex: 1;
+//     max-width: 50%;
+// }
+
+// .dynamic-blog-paragraph {
+//     text-align: left;
+// }
+
+// .blog-section {
+//     margin-bottom: 2rem;
+
+//     .blog-image-container {
+//         width: 100%;
+//         max-width: 100%;
+//         img {
+//             width: 100%;
+//             height: auto;
+//             object-fit: cover;
+//         }
+//     }
+
+//     .blog-content {
+//         padding: 1rem;
+//         max-width: 100%;
+//     }
+
+//     .dynamic-blog-paragraph {
+//         text-align: left;
+//     }
+// }
+
+// @media (min-width: 768px) {
+//     .blog-section {
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+
+//         &:nth-child(even) {
+//             flex-direction: column-reverse;
+//         }
+
+//         .blog-image-container,
+//         .blog-content {
+//             width: 100% !important;
+//             max-width: 100% !important;
+//         }
+//     }
+// }
+
+// @media (min-width: 1024px) {
+//     .blog-section {
+//         flex-direction: row;
+//         align-items: flex-start;
+
+//         &:nth-child(even) {
+//             flex-direction: row-reverse;
+//         }
+
+//         .blog-image-container,
+//         .blog-content {
+//             max-width: 100%;
+            
+
+//         }
+
+//         .blog-content {
+//             padding: 2rem;
+//             max-width: 100%;
+//         }
+//     }
+// }
+
+
+// =====================================================================
+// =====================================================================
+// =====================================================================
+// =====================================================================
+// =====================================================================
+// =====================================================================
+
+// .dynamic-blog-title-content {
+//     margin-top: 175px;
+
+//     h1 {
+//         font-size: 30px;
+//         font-weight: 700;
+//     }
+// }
+
+// .dynamic-blog-subtitle-content {
+//     p {
+//         font-size: 17px;
+//         margin-bottom: 1.75rem;
+//         vertical-align: baseline;
+//     }
+// }
+
+// .dynamic-blog-paragraph {
+//     text-align: left;
+//     font-size: 17px;
+//     margin-bottom: 1.75rem;
+//     vertical-align: baseline;
+// }
+
+// .blog-section {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: flex-start;
+//     margin-bottom: 2rem;
+
+//     &.image-right {
+//         flex-direction: row-reverse;
+//     }
+
+//     &.image-left {
+//         flex-direction: row;
+//     }
+// }
+
+// .blog-image-container {
+//     flex: 1;
+//     max-width: 50%;
+
+//     img {
+//         width: 100%;
+//         height: auto;
+//         object-fit: cover;
+//     }
+// }
+
+// .blog-content {
+//     flex: 2; // Allow this to take more space
+//     padding: 1rem;
+// }
+
+// @media (min-width: 768px) {
+//     .blog-section {
+//         flex-direction: row;
+//         align-items: flex-start;
+
+//         &:nth-child(even) {
+//             flex-direction: row-reverse;
+//         }
+
+//         .blog-image-container,
+//         .blog-content {
+//             width: auto; // Allow dynamic width
+//             max-width: none; // Remove max-width constraint
+//         }
+//     }
+// }
+
+// @media (min-width: 1024px) {
+//     .blog-section {
+//         flex-direction: row;
+//         align-items: flex-start;
+
+//         &:nth-child(even) {
+//             flex-direction: row-reverse;
+//         }
+
+//         .blog-image-container,
+//         .blog-content {
+//             max-width: none; // Remove max-width constraint
+//         }
+
+//         .blog-content {
+//             padding: 2rem;
+//         }
+//     }
+// }
+
+
+// ================================
+// ================================
+// ================================
+// ================================
+
+// .dynamic-blog-title-content {
+//     margin-top: 175px;
+
+//     h1 {
+//         font-size: 30px;
+//         font-weight: 700;
+//     }
+// }
+
+// .dynamic-blog-subtitle-content {
+//     p {
+//         font-size: 17px;
+//         margin-bottom: 1.75rem;
+//         vertical-align: baseline;
+//     }
+// }
+
+// .dynamic-blog-paragraph {
+//     text-align: left;
+//     font-size: 17px;
+//     margin-bottom: 1.75rem;
+//     vertical-align: baseline;
+//     position: relative; // Ensure positioning context for floating images
+// }
+
+// .blog-image {
+//     max-width: 45%; // Adjust the width as needed
+//     height: auto;
+//     margin: 0 1rem 1rem 0; // Add margin to separate image from text
+// }
+
+// .image-left {
+//     .blog-image {
+//         float: left;
+//     }
+// }
+
+// .image-right {
+//     .blog-image {
+//         float: right;
+//     }
+// }
+
+// // Clear floats to maintain layout integrity
+// .dynamic-blog-paragraph::after {
+//     content: "";
+//     display: table;
+//     clear: both;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.dynamic-blog-title-content {
+    margin-top: 175px;
+
+    h1 {
+        font-size: 30px;
+        font-weight: 700;
+    }
+}
+
+.dynamic-blog-subtitle-content {
+    p {
+        font-size: 17px;
+        margin-bottom: 1.75rem;
+        vertical-align: baseline;
+        line-height: 2;
+    }
+}
+
+.dynamic-blog-paragraph {
+    text-align: left;
+    font-size: 17px;
+    margin-bottom: 1.75rem;
+    vertical-align: baseline;
+    position: relative;
+    line-height: 2;
+
+}
+
+.blog-image {
+    max-width: 45%; // Adjust the width as needed for larger screens
+    height: auto;
+    margin: 1rem 1rem 1rem 1rem; // Adjust margin for full-width images
+}
+
+.image-left {
+    .blog-image {
+        float: left;
+    }
+}
+
+.image-right {
+    .blog-image {
+        float: right;
+    }
+}
+
+// Clear floats to maintain layout integrity
+.dynamic-blog-paragraph::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+// Media query for tablet and mobile views
+@media (max-width: 768px) {
+    .blog-image {
+        max-width: 100%; // Make images full width on smaller screens
+        float: none; // Remove floating
+        margin: 1rem 1rem 1rem 1rem; // Adjust margin for full-width images
+    }
+
+    .image-left, .image-right {
+        .blog-image {
+            float: none; // Ensure no floating on smaller screens
+        }
+    }
+}

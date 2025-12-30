@@ -1,0 +1,60 @@
+.interior-banner {
+    padding-top: 70px;
+    padding-bottom: 80px;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    background-image: url('https://res.cloudinary.com/dpflidsbg/image/upload/v1735216062/arcmen/Gallery/interior-design-projects/interior-design-banner.jpg');
+
+    h1 {
+        font-size: 35px;
+        font-weight: 700;
+        color: #131d3b;
+        line-height: 45px;
+    }
+}
+.project-card {
+    position: relative;
+    margin-bottom: 20px;
+    .overlay {
+        position: absolute;
+        bottom: 0;
+        color: #f1f1f1;
+        width: 100%;
+        transition: 0.5s ease;
+        opacity: 1;
+        color: white;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 20px;
+        /* text-align: center; */
+
+        a {
+            color: #fff;
+            transition: color 0.3s ease-in-out; 
+            font-weight: bold;
+            font-size: 14px;
+        }
+         a:hover{
+            color: #4dbc15 !important;
+        }
+    }
+    img {
+        width: 100%;
+    }
+}
+.project-card:hover .overlay {
+    margin: 20px 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 768px) {
+    .interior-banner h1 {
+        font-size: 22px;
+        line-height: 30px;
+    }
+    .interior-banner {
+        background-position: bottom;
+    }
+}
+
