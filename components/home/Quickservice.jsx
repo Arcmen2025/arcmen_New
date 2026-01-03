@@ -79,7 +79,7 @@ const Quickservice = () => {
 
     return (
         <>
-            <section className='quickser-sec'>
+            <section className='quickser-sec mt-5'>
                 <Container>
                     <Row>
                         <Col lg={3}>

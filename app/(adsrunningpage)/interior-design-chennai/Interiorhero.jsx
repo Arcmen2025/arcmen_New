@@ -473,7 +473,8 @@ const Interiorhero = () => {
                                             </form>
                                         </div>
                                         <div className="popup-img" style={{ borderRadius: '0px 10px 10px 0px' }}>
-                                            <img src={posterImage} alt="Offer" style={{ borderRadius: '0px 10px 10px 0px' }}></img>
+                                            {/* <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1739421470/Interior_Architecture_Studio_nq3oib.png" alt="Offer"></img> */}
+                                            <img src={"https://res.cloudinary.com/da9s9vymf/image/upload/v1767155204/homepage-desktop-popup.jpg"} style={{ borderRadius: '0px 10px 10px 0px' }} alt="Offer"></img>
                                         </div>
                                     </div>
                                 </Modal.Body>

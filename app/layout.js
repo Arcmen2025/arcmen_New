@@ -4,7 +4,10 @@ import './globals.css';
 import Script from 'next/script';
 
 export const metadata = {
-     metadataBase: new URL('https://www.arcmeninterior.com'),
+    alternates: {
+        canonical: ` https://arcmen-new.vercel.app`
+    },
+    metadataBase: new URL('https://arcmeninterior.com'),
     title: 'Best Interior designers & decorators in chennai | Arcmen',
     description: ['With 25 years of experience and 2000 + happy clients, Arcmen Interiors is one of the Top interior designers & decorators company in chennai. Lets build dreams'],
     keywords: [
@@ -85,7 +88,7 @@ fbq('track', 'PageView');
                     }}
                 />
                 <noscript>
-                    <img height="1" width="1" style={{ display: "none" }} src="https://www.facebook.com/tr?id=1002700818509764&ev=PageView&noscript=1" />
+                    <img height="1" width="1" style={{ display: 'none' }} src="https://www.facebook.com/tr?id=1002700818509764&ev=PageView&noscript=1" />
                 </noscript>
             </head>
             <body>

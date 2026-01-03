@@ -221,31 +221,31 @@ const Header = () => {
                         assa
                     <IoCall />
                     </span> */}
-                     <span className="mail-icon-div d-none d-lg-block">
-                                            <a href="mailto:contact@arcmeninterior.com" className="sidebar-icon emil-bx">
-                                                <svg width="19.882" height="14.891" viewBox="0 0 19.882 14.891" style={{ marginTop: '0px', marginLeft: '6px' }}>
-                                                    <path
-                                                        id="Path_24"
-                                                        data-name="Path 24"
-                                                        d="M11.6,176.927a2.99,2.99,0,0,1-3.323,0L.132,171.5Q.065,171.451,0,171.4v8.9a1.83,1.83,0,0,0,1.83,1.83H18.052a1.83,1.83,0,0,0,1.83-1.83v-8.9c-.043.032-.087.064-.133.094Z"
-                                                        transform="translate(0 -167.242)"
-                                                        fill="#75a313"
-                                                    ></path>
-                                                    <path
-                                                        id="Path_25"
-                                                        data-name="Path 25"
-                                                        d="M.779,67.551l8.147,5.432a1.826,1.826,0,0,0,2.031,0L19.1,67.551a1.744,1.744,0,0,0,.779-1.455,1.832,1.832,0,0,0-1.83-1.83H1.83A1.832,1.832,0,0,0,0,66.1a1.744,1.744,0,0,0,.779,1.454Z"
-                                                        transform="translate(0 -64.266)"
-                                                        fill="#75a313"
-                                                    ></path>
-                                                </svg>
-                                            </a>
-                                        </span>
-                                        <span className="mail-icon-div d-block d-lg-none">
-                                            <a href="tel:+919962998008" className="sidebar-icon emil-bx">
-                                                <IoCall style={{ marginLeft: '5px', fill: '#75a313', fontSize: '20px' }} />
-                                            </a>
-                                        </span>
+                    <span className="mail-icon-div d-none d-lg-block">
+                        <a href="mailto:contact@arcmeninterior.com" className="sidebar-icon emil-bx">
+                            <svg width="19.882" height="14.891" viewBox="0 0 19.882 14.891" style={{ marginTop: '0px', marginLeft: '6px' }}>
+                                <path
+                                    id="Path_24"
+                                    data-name="Path 24"
+                                    d="M11.6,176.927a2.99,2.99,0,0,1-3.323,0L.132,171.5Q.065,171.451,0,171.4v8.9a1.83,1.83,0,0,0,1.83,1.83H18.052a1.83,1.83,0,0,0,1.83-1.83v-8.9c-.043.032-.087.064-.133.094Z"
+                                    transform="translate(0 -167.242)"
+                                    fill="#75a313"
+                                ></path>
+                                <path
+                                    id="Path_25"
+                                    data-name="Path 25"
+                                    d="M.779,67.551l8.147,5.432a1.826,1.826,0,0,0,2.031,0L19.1,67.551a1.744,1.744,0,0,0,.779-1.455,1.832,1.832,0,0,0-1.83-1.83H1.83A1.832,1.832,0,0,0,0,66.1a1.744,1.744,0,0,0,.779,1.454Z"
+                                    transform="translate(0 -64.266)"
+                                    fill="#75a313"
+                                ></path>
+                            </svg>
+                        </a>
+                    </span>
+                    <span className="mail-icon-div d-block d-lg-none">
+                        <a href="tel:+919962998008" className="sidebar-icon emil-bx">
+                            <IoCall style={{ marginLeft: '5px', fill: '#75a313', fontSize: '20px' }} />
+                        </a>
+                    </span>
                 </div>
 
                 <button type="button" className="btn btn-primary" onClick={handleShow}>
@@ -316,7 +316,8 @@ const Header = () => {
                                                 </form>
                                             </div>
                                             <div className="popup-img" style={{ borderRadius: '0px 10px 10px 0px' }}>
-                                                <img src={posterImage} alt="Offer" style={{ borderRadius: '0px 10px 10px 0px' }}></img>
+                                                {/* <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1739421470/Interior_Architecture_Studio_nq3oib.png" alt="Offer"></img> */}
+                                                <img src={"https://res.cloudinary.com/da9s9vymf/image/upload/v1767155204/homepage-desktop-popup.jpg"} style={{ borderRadius: '0px 10px 10px 0px' }} alt="Offer"></img>
                                             </div>
                                         </div>
                                     </Modal.Body>

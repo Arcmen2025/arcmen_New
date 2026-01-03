@@ -143,16 +143,37 @@ const Herosection = () => {
                             <Carousel fade>
                                 <Carousel.Item>
                                     <img
+                                        
+                                        className="d-md-block w-100 object-cover banner1 d-hidden"
+                                        src="https://res.cloudinary.com/da9s9vymf/image/upload/v1767155535/homepagebanner.jpg"
+                                    />
+                                    <img   
+                                        className="d-md-none w-100 h-[500px] object-cover banner2 d-block"
+                                        src="https://res.cloudinary.com/da9s9vymf/image/upload/v1767181525/mobilebanner.jpg"
+                                    />
+                                    
+                                    <Carousel.Caption>
+                                        {/* <h3> HOME INTERIOR DESIGNER IN CHENNAI</h3> */}
+                                        <h3> </h3>
+                                        <h3></h3>
+                                        {/* <p>We are Professional Residential Turnkey Interior Designer & Decorator in Chennai</p> */}
+                                        <p>
+                                        </p>
+                                    </Carousel.Caption>
+                                </Carousel.Item>
+                                <Carousel.Item>
+                                    <img
                                         className="d-block w-100"
                                         src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734327549/arcmen/qmzzdyddtrshcqtlostn.webp" // Replace with your image URL
                                         alt="First slide"
                                     />
                                     <Carousel.Caption>
                                         {/* <h3> HOME INTERIOR DESIGNER IN CHENNAI</h3> */}
-                                        <h3> COMPLETE HOME INTERIOR DÉCOR AND FURNISHING</h3>
+                                        <h3>CHENNAI'S BEST LUXURY HOME INTERIOR DESIGNER </h3>
                                         <h3></h3>
                                         {/* <p>We are Professional Residential Turnkey Interior Designer & Decorator in Chennai</p> */}
-                                        <p> Home interior designer in chennai</p>
+                                        <p>Our designs meet perfect execution with high quality standards
+                                        </p>
                                     </Carousel.Caption>
                                 </Carousel.Item>
 
@@ -163,9 +184,9 @@ const Herosection = () => {
                                         alt="Second slide"
                                     />
                                     <Carousel.Caption>
-                                        <h3>MEET OUR KITCHEN</h3>
-                                        <h3>DESIGNER THEY WILL INSPIRE YOU</h3>
-                                        <p>Manufacture of Indian & International Stylish Modular Kitchen Designs</p>
+                                        <h3>MODULAR KITCHEN MAESTRO OF </h3>
+                                        <h3>CHENNAI,TAMIL NADU</h3>
+                                        <p>Manufactures of Indian & International Style Modular Kitchen Designs</p>
                                     </Carousel.Caption>
                                 </Carousel.Item>
 
@@ -195,9 +216,9 @@ const Herosection = () => {
                                 <Modal.Header closeButton style={{ borderBottom: '0px' }}>
                                     <Modal.Title></Modal.Title>
                                 </Modal.Header>
-                                <Modal.Body className="pe-0 pb-0 pl-1">
+                                <Modal.Body className="pe-0 pb-0 pl-md-1 bannerspace">
                                     <div className="popup-fminter">
-                                        <div className="form-inter">
+                                        <div className="form-inter newpopup">
                                             <p>Fill out all required fields below and we will get back to you as soon as possible.</p>
                                             <form onSubmit={handleSubmit} className="con-form-page ">
                                                 <Row>
@@ -239,7 +260,6 @@ const Herosection = () => {
                                                             )}
                                                         </div>
                                                     </Col>
-
                                                     <Col lg={12}>
                                                         <div className="mb-2 ">
                                                             <div className="mb-4">
@@ -254,9 +274,15 @@ const Herosection = () => {
                                                 </Row>
                                             </form>
                                         </div>
-                                        <div className="popup-img" style={{ borderRadius: '0px 10px 10px 0px' }}>
-                                            {/* <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1739421470/Interior_Architecture_Studio_nq3oib.png" alt="Offer"></img> */}
-                                            <img src={posterImage} style={{ borderRadius: '0px 10px 10px 0px' }} alt="Offer"></img>
+                                        <div className="popup-img1 d-none d-md-block" style={{ borderRadius: '0px 10px 10px 0px' }}>
+                                            <img src={"https://res.cloudinary.com/da9s9vymf/image/upload/v1767155204/homepage-desktop-popup.jpg"} alt="Offer"></img>
+                                        </div>
+                                        <div className="popup-img2  d-md-none">
+                                            <img
+                                                src="https://res.cloudinary.com/da9s9vymf/image/upload/v1767420129/arcmenpopup.jpg"
+                                                alt="Offer"
+                                                className=" popup-image"
+                                            />
                                         </div>
                                     </div>
                                 </Modal.Body>
