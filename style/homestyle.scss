@@ -494,6 +494,8 @@ a {
 .popup-image {
     border-radius: 0px 10px 10px 0px;
     object-fit: contain;
+    padding: 0%;
+    margin-top: -80 !important; //now..................................................
 }
 
 .carousel-control-prev-icon,
@@ -535,11 +537,4 @@ a {
     }
 }
 
-@media screen and (max-width: 576px) {
-    .popup-img2{
-        margin: 0% !important;
-    }
-    .form-inter {
-        margin-top: -165px;
-    }
-}
+
