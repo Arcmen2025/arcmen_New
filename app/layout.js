@@ -5,7 +5,7 @@ import Script from 'next/script';
 
 export const metadata = {
     alternates: {
-        canonical: ` https://arcmen-new.vercel.app`
+        canonical: `https://www.arcmeninterior.com`
     },
     metadataBase: new URL('https://arcmeninterior.com'),
     title: 'Best Interior designers & decorators in chennai | Arcmen',

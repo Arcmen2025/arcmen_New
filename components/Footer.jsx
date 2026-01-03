@@ -67,7 +67,7 @@ const Footer = () => {
                 <Container fluid className="footer-copy mt-5">
                     <Row className="">
                         <Col className="text-center pb-3 pt-3">
-                            <p className="mb-1">Copyright © 2024 Arcmen kitchens and interiors. All Rights Reserved.</p>
+                            <p className="mb-1">Copyright © {new Date().getFullYear()} Arcmen kitchens and interiors. All Rights Reserved.</p>
                         </Col>
                     </Row>
                 </Container>
