@@ -1,10 +1,19 @@
+"use client";
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import '../style/footer.css';
 import Link from 'next/link';
 import { FaLocationDot } from 'react-icons/fa6';
+import { usePathname } from 'next/navigation';
+
 
 const Footer = () => {
+    const path = usePathname();
+
+      if (path === "/interior-designers-chennai") {
+    return null;
+  }
+
     return (
         <div>
             <section className="ar-man">

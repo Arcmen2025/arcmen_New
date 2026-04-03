@@ -157,6 +157,9 @@ const Header = () => {
         };
         fetchData();
     }, []);
+ if (path === "/interior-designers-chennai") {
+  return null;
+}
 
     return (
         <>
