@@ -126,10 +126,10 @@ export default function WhyChooseUs() {
         {/* Button */}
         <motion.div
           className="text-center mt-4"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: false }}
+          // initial={{ opacity: 0, y: 40 }}
+          // whileInView={{ opacity: 1, y: 0 }}
+          // transition={{ duration: 0.6 }}
+          // viewport={{ once: false }}
         >
           <a
             href="#contact"

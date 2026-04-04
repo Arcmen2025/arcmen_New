@@ -23,7 +23,7 @@ const CursorTrail = () => {
   }, [cursorX, cursorY]);
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-[9999]">
+    <div className="pointer-events-none fixed inset-0 z-[9999] hidden md:block">
 
       {/* Dot */}
       <motion.div
