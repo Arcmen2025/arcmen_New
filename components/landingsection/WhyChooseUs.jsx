@@ -125,7 +125,7 @@ export default function WhyChooseUs() {
 
         {/* Button */}
         <motion.div
-          className="text-center mt-12"
+          className="text-center mt-4"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -133,9 +133,9 @@ export default function WhyChooseUs() {
         >
           <a
             href="#contact"
-            className="border border-black py-3 px-8 rounded-[8px] text-black hover:bg-[#4dbc15] hover:text-[#ffffff] transition"
+            className="border border-black py-3 md:px-8 px-[10px] rounded-[8px] text-black hover:bg-[#4dbc15] hover:text-[#ffffff] transition"
           >
-            Book a Free Consultation
+           Start Your Dream Home Interior
           </a>
         </motion.div>
 

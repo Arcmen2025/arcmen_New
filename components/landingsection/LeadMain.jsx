@@ -7,6 +7,7 @@
 // import ProcessSection from "./ProcessSection";
 // import ChennaiProjects from "./ChennaiProjects";
 import ChennaiProjects from "./ChennaiProjects";
+import CursorTrail from "./CursorTrail";
 import FAQAccordion from "./FAQAccordion";
 import FloatingActions from "./FloatingActions";
 import FooterCTA from "./FooterCTA";
@@ -26,7 +27,7 @@ export default function LeadMain() {
   return (
     
     <main>
-       {/* <CursorTrail/> */}
+       <CursorTrail/>
        <FloatingActions />
       <Hero />
        <WhyChooseUs />

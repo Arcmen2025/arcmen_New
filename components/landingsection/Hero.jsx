@@ -41,7 +41,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 flex-1 flex items-start">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 w-full pt-16 md:pt-20 pb-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 w-full pt-16 pb-8">
 
           <div className="grid md:grid-cols-2 gap-12 items-start">
 
@@ -90,7 +90,7 @@ export default function Hero() {
 
               <motion.a
                 href="#contact"
-                className="bg-white px-6 py-3 rounded-[8px] inline-flex items-center gap-2 text-sm md:text-[20px] font-semibold text-black hover:bg-[#e0e0e0] transition-colors"
+                className="bg-white px-6 py-[12px] rounded-[8px] inline-flex items-center gap-2 text-sm md:text-[20px] font-semibold text-black hover:bg-[#e0e0e0] transition-colors"
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.4 }}

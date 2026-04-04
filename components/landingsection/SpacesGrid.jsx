@@ -121,7 +121,7 @@ export default function SpacesGrid() {
 
 
         {/* Heading */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-15">
           <h2 className="sec-head text-black font-extrabold !text-[28px] md:text-[34px]">
             Explore Arcmen's <span className="md:block">Signature Spaces</span>
           </h2>
@@ -190,7 +190,7 @@ export default function SpacesGrid() {
             <div className="flex justify-center gap-4 mt-6">
               <button
                 onClick={handlePrev}
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-[#F2F2F2] hover:bg-black hover:text-white transition"
+                className="w-10 h-10 border-0 flex items-center justify-center rounded-full bg-[#F2F2F2] hover:bg-black hover:text-white transition"
               >
                 <FaArrowLeftLong />
               </button>
@@ -198,7 +198,7 @@ export default function SpacesGrid() {
 
               <button
                 onClick={handleNext}
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-[#F2F2F2] hover:bg-black hover:text-white transition"
+                className="w-10 h-10 flex border-0 items-center justify-center rounded-full bg-[#F2F2F2] hover:bg-black hover:text-white transition"
               >
                 <FaArrowRightLong />
               </button>

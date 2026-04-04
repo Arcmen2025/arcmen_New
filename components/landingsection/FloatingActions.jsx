@@ -18,7 +18,7 @@ const FloatingActions = () => {
 
       
       <a
-  href="tel:+919876543210" 
+  href="tel:+919962998008" 
   className="w-12 h-12 bg-green-500 md:hidden rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition"
 >
   {/* <FaPhone size={18} /> */}

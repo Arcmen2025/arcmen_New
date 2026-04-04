@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaCheckCircle } from "react-icons/fa";
+import { createPortal } from "react-dom";
 
 const FIELDS = [
   { name: "name", placeholder: "Full Name", type: "text" },
@@ -27,11 +28,26 @@ export default function LeadForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  // 🔒 prevent background scroll
+  useEffect(() => {
+    if (loading || success) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [loading, success]);
+
   const onChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    // ✅ Phone validation (Indian format)
+    if (!/^[6-9]\d{9}$/.test(form.phone)) {
+      alert("Please enter a valid 10-digit mobile number");
+      return;
+    }
 
     try {
       setLoading(true);
@@ -82,28 +98,42 @@ export default function LeadForm() {
 
   return (
     <>
-      {/* 🔄 LOADING */}
-      {loading && (
-        <div className="fixed inset-0 z-[999999] flex items-center justify-center bg-black/70">
-          <div className="flex flex-col items-center gap-4 bg-white text-black rounded-2xl px-8 py-6 shadow-xl">
-            <div className="w-10 h-10 border-4 border-black border-t-transparent rounded-full animate-spin"></div>
-            <p className="text-sm font-medium">Submitting your request...</p>
-          </div>
-        </div>
-      )}
+      {/* 🔄 LOADING POPUP */}
+      {typeof window !== "undefined" &&
+        loading &&
+        createPortal(
+          <div className="fixed inset-0 z-[2147483647] flex items-center justify-center bg-black/70 backdrop-blur-sm">
+            
+            <div className="flex items-center gap-2 bg-white text-black rounded-lg px-4 py-3 shadow-xl">
+              
+              {/* small spinner */}
+              <div className="w-4 h-4 border-2 border-[#7aa33a] border-t-transparent rounded-full animate-spin"></div>
 
-      {/* ✅ SUCCESS */}
-      {success && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70">
-          <div className="flex flex-col items-center text-center gap-3 bg-white text-black px-10 py-8 rounded-2xl shadow-2xl">
-            <FaCheckCircle className="text-green-500 text-5xl" />
-            <h3 className="text-lg font-semibold">Thank You!</h3>
-            <p className="text-sm text-gray-600">
-              We will contact you shortly.
-            </p>
-          </div>
-        </div>
-      )}
+              <p className="text-sm font-medium text-[#7aa33a]">
+                Submitting your request...
+              </p>
+
+            </div>
+
+          </div>,
+          document.body
+        )}
+
+      {/* ✅ SUCCESS POPUP */}
+      {typeof window !== "undefined" &&
+        success &&
+        createPortal(
+          <div className="fixed inset-0 z-[2147483647] flex items-center justify-center bg-black/70 backdrop-blur-sm">
+            <div className="flex flex-col items-center text-center gap-3 bg-white text-black px-8 py-6 rounded-2xl shadow-2xl">
+              <FaCheckCircle className="text-green-500 text-5xl" />
+              <h3 className="text-lg font-semibold">Thank You!</h3>
+              <p className="text-sm text-gray-600">
+                We will contact you shortly.
+              </p>
+            </div>
+          </div>,
+          document.body
+        )}
 
       {/* FORM */}
       <div
@@ -128,8 +158,24 @@ export default function LeadForm() {
               type={field.type}
               placeholder={field.placeholder}
               value={form[field.name]}
-              onChange={onChange}
+              onChange={(e) => {
+                if (field.name === "phone") {
+                  const value = e.target.value.replace(/\D/g, "");
+                  if (value.length <= 10) {
+                    setForm((prev) => ({ ...prev, phone: value }));
+                  }
+                } else {
+                  onChange(e);
+                }
+              }}
               required
+              maxLength={field.name === "phone" ? 10 : undefined}
+              pattern={field.name === "phone" ? "[0-9]{10}" : undefined}
+              title={
+                field.name === "phone"
+                  ? "Enter 10-digit mobile number"
+                  : undefined
+              }
               className={inputClass}
             />
           ))}
@@ -151,14 +197,14 @@ export default function LeadForm() {
 
           <textarea
             name="message"
-            placeholder="Message"
+            placeholder="Tell Your Requirement"
             rows={3}
             value={form.message}
             onChange={onChange}
             className={inputClass}
           />
 
-          <div className="text-center mt-12 md:mb-14">
+          <div className="text-center mt-2 md:mb-2">
             <button
               type="submit"
               disabled={loading}
@@ -166,8 +212,9 @@ export default function LeadForm() {
                 inline-block
                 w-full sm:w-auto
                 px-6 sm:px-10
+                border-0
                 bg-white text-black font-semibold
-                py-3 rounded-lg
+                py-[12px] rounded-lg
                 hover:bg-white/90 transition duration-300 text-sm
                 disabled:opacity-50
               "

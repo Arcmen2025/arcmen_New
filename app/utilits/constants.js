@@ -161,11 +161,11 @@ export const SOLUTIONS = [
 ];
 
 export const PROCESS_STEPS = [
-  { step:"Step-01", title:"Free Consultation",           desc:"Connect with our design expert for a detailed discussion and receive a complimentary consultation and project quote tailored to your requirements." },
-  { step:"Step-02", title:"Booking & Concept Development (10%)", desc:"Confirm your project by paying 10% as booking advance. Our team will begin brainstorming, space planning, and developing initial design concepts aligned with your vision." },
-  { step:"Step-03", title:"Design Finalization (15%)",         desc:"Upon approval, pay 15% to freeze the design. We will proceed with detailed production drawings and technical documentation for execution." },
-  { step:"Step-04", title:"Production & Execution (45%)",   desc:"Pay 45% to initiate the production process. Our factory and on-site team will execute the project and complete up to 70% of the work as per the approved design." },
-  { step:"Step-05", title:"Completion & Handover (30%)",       desc:"The final 30% is payable upon project completion. After quality checks, we will proceed with the final handover of your beautifully finished space." },
+  { step:"Step-01", title:"Free Consultation",           desc:" Get free consultation, site visit & quote." },
+  { step:"Step-02", title:"Booking & Concept Development (10%)", desc:"Pay 10% to brainstorm and develop the design concepts & Space planning." },
+  { step:"Step-03", title:"Design Finalization (15%)",         desc:"Pay 15% Finalize the design stage progress, technical documentation & agreement for work execution." },
+  { step:"Step-04", title:"Production & Execution (45%)",   desc:"Pay 45% to Start Production and complete 70% of the work on site." },
+  { step:"Step-05", title:"Completion & Handover (30%)",       desc:"Pay 30% to complete the project's remaining all work & Handover. And provide a warranty." },
 ];
 
 
@@ -180,18 +180,19 @@ export const PROJECTS = [
 
 export const TESTIMONIALS = [
   {
-    img:"https://res.cloudinary.com/da9s9vymf/image/upload/v1775207585/client1_heo2zl.svg", location:"Chennai", rating:5,
-    text:"We had a good experience with Arcmen Interior Designer in Chennai. We moved into our new house a few months ago. We stepped into their showroom without any idea about interiors."  ,
+    img:"https://res.cloudinary.com/da9s9vymf/image/upload/v1775291650/priya_znpa6c.jpg", location:"Chennai", rating:5,
+    text:"We had a good experience with Arcmen Interior Designer in Chennai. We moved into our new house a few months ago. We stepped into their showroom without any idea about interiors. We came to know a lot of new designs and ideas in the market for home interiors through them. Even though our construction got a bit delayed in between, they were very involved and supportive throughout the project until completion and after too. We loved the way our home turned out to be as we had hoped. Only one suggestion is to reach out to interiors before you start your construction to bring out the best possible ideas and outcomes.We worked with our own electricians and the interior site engineer coordinated well with the electrician and plumbers to bring the expected outcome. Thanks to Arcmen."  ,
     name:"Priya Dharshini",
   },
   {
     img:"https://res.cloudinary.com/da9s9vymf/image/upload/v1775207584/client2_bis6wo.svg", location:"Chennai", rating:5,
-    text:"Arcmen interiors were the right find in terms of budget, communication, design, flexibility, site visits along with their expert suggestions.",
+    text:"Arcmen interiors were the right find in terms of budget, communication, design, flexibility, site visits along with their expert suggestions and prompt execution. Our separator design and Pooja were executed perfect and is the highlight of our house. Would totally recommend Mr. Balaraman sir and their team to do up interiors.",
     name:"krithika sukumar",
   },
   {
     img:"https://res.cloudinary.com/da9s9vymf/image/upload/v1775207585/client3_m1318z.svg", location:"Chennai", rating:5,
-    text:"Our house is located in Ambur, 200 kms away from Chennai. We came to know about Arcmen via google. We contacted Mr. Balaraman. ",
+    text:"Our house is located in Ambur, 200 kms away from Chennai. We came to know about Arcmen via google. We contacted Mr. Balaraman. He responded very quickly. He asked us about the details of the house and our expected requirement. Balaraman sir and his team worked very hard to meet our needs and provided their suggestions. Highly knowledgeable right from start to end. After finalizing the 3D design and confirming the drawing details, they executed as same in the design. Arcmen team done a wonderful job to make our new home look perfect with their interior works. They used the same material which was quoted in the agreement. Budget including materials and labour cost didn't exceed the agreement. They completed the work within the given time without any delay using professional carpenters who worked day and night. We really appreciate the Arcmen interior design team for their sincere and perfection in work. Thank you. ",
+
     name:"Ramesh M",
 
   },

@@ -81,7 +81,6 @@ export default function SolutionsSlider() {
             style={{ pointerEvents: "auto" }}
             className={`flex ${isMobile ? "gap-0" : "gap-4"}`}
             animate={{
-              // 280px card + 16px (gap-4) = 296px shift per slide on desktop
               x: isMobile ? `-${index * 100}%` : -index * 296,
             }}
             transition={
@@ -99,34 +98,35 @@ export default function SolutionsSlider() {
                   key={i}
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
-                  onTouchStart={() => setIsHovered(true)} // Better mobile support
-                  onTouchEnd={() => setIsHovered(false)}  // Better mobile support
+                  onTouchStart={() => setIsHovered(true)}
+                  onTouchEnd={() => setIsHovered(false)}
                   className={`
                     ${isMobile ? "min-w-full px-2" : "min-w-[280px]"}
                     h-80 md:h-96 relative group rounded-2xl overflow-hidden
                     pointer-events-auto cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-300
                   `}
                 >
-                  {/* Image with Zoom Effect */}
+                  {/* Image */}
                   <img
                     src={img}
                     alt={s.title}
                     className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
                   />
 
-                  {/* Gradient Overlay (Always slightly visible at bottom, darker on hover) */}
-                  <div className="absolute  inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-[5]" />
+                  {/* ✅ NEW: Base Overlay */}
+                  <div className="absolute inset-0 bg-black/40 z-[4]" />
 
-                  {/* Content Container */}
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-[5]" />
+
+                  {/* Content */}
                   <div className="absolute inset-0 flex flex-col justify-end p-5 z-[10] pointer-events-auto">
                     
-                    {/* Title (Always visible, slides up slightly on hover) */}
                     <h3 className="text-white md:text-[26px] text-xl font-bold mb-1 transform transition-transform duration-500 ease-in-out group-hover:-translate-y-2">
                       {s.title}
                     </h3>
 
-                    {/* Hidden Content (Reveals smoothly on hover using Grid trick) */}
-                    <div className="grid grid-rows-[0fr]  group-hover:grid-rows-[1fr] group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                    <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-hover:opacity-100 transition-all duration-500 ease-in-out">
                       <div className="overflow-hidden">
                         <div className="pb-2">
                           <p className="text-gray-200 text-sm mb-1">{s.desc}</p>

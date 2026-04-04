@@ -53,7 +53,7 @@ export default function StatsBar() {
               "
             >
               {/* Value */}
-              <div className="text-white font-semibold text-lg md:text-[26px] 2xl:text-[36px] leading-tight">
+              <div className="text-white font-semibold text-lg md:text-[26px] 2xl:text-[26px] leading-tight">
                 {s.value !== null ? (
                   <>
                     {s.prefix && s.prefix}
