@@ -43,9 +43,8 @@ export default function GallerySection() {
           viewport={{ once: false }}
       >
         <h2 className="!text-2xl md:text-4xl font-bold">
-          How We Build Your Home
-        </h2>
-      </motion.div>
+          How We Build Your Home 
+        </h2></motion.div>
 
       <div className="overflow-hidden">
         <div className="marquee flex gap-10">

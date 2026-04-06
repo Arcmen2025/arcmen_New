@@ -134,8 +134,14 @@ export default function Hero() {
               </motion.a> */}
               <div className="flex  md:mb-10">
   <div className="relative inline-block">
-
+  <motion.div
+  initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+                viewport={{ once: true }}
+  >         
     <motion.a
+    
   href="#contact"
   initial={{ scale: 1 }}
   animate={{ scale: [1, 1.06, 1] }}
@@ -177,7 +183,7 @@ export default function Hero() {
         }}
       />
     ))}
-
+  </motion.div>
   </div>
 </div>
 

@@ -10,7 +10,7 @@ const FIELDS = [
   { name: "name", placeholder: "Full Name", type: "text" },
   { name: "phone", placeholder: "Mobile Number", type: "tel" },
   { name: "email", placeholder: "Email Id", type: "email" },
-  { name: "city", placeholder: "City", type: "text" },
+  { name: "city", placeholder: "Location", type: "text" },
 ];
 
 const API_URL =
@@ -22,6 +22,7 @@ export default function LeadForm() {
     phone: "",
     email: "",
     city: "",
+    services:"",
     project: "",
     message: "",
   });
@@ -80,6 +81,7 @@ export default function LeadForm() {
         mobileNumber: form.phone,
         email: form.email,
         city: form.city,
+        services: form.services, 
         projectType: form.project || "Residential Interior",
         message: form.message,
       };
@@ -94,6 +96,7 @@ export default function LeadForm() {
           phone: "",
           email: "",
           city: "",
+          services:"",
           project: "",
           message: "",
         });
@@ -102,7 +105,6 @@ export default function LeadForm() {
       }
     } catch (error) {
       console.error("API Error:", error);
-      alert("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -111,7 +113,7 @@ export default function LeadForm() {
   const inputClass = `
     w-full bg-transparent 
     border border-white/30 
-    rounded-lg px-4 py-3 md:py-1 text-sm 
+    rounded-lg px-4 py-3 md:py-0 text-sm 
     text-white placeholder-white
     transition-all duration-300
     hover:bg-white hover:text-black hover:placeholder-gray-400
@@ -164,19 +166,21 @@ export default function LeadForm() {
         initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+    
         className="
-          w-full md:w-[70%] p-6 md:p-6 rounded-3xl
+          w-full md:w-[70%] p-6 md:px-6 md:py-2 rounded-3xl
           bg-white/6
           border border-white/20
           shadow-[0_20px_60px_rgba(0,0,0,0.5)]
           text-white
         "
       >
-        <h3 className="text-xl md:text-2xl font-semibold mb-6">
+        <h3 className="text-xl md:text-2xl font-semibold mb-6 md:mb-2">
           Get Your Interior Quote
         </h3>
 
-        <form onSubmit={onSubmit} className="flex flex-col gap-4 md:gap-1">
+        <form onSubmit={onSubmit} className="flex flex-col gap-4 md:gap-0">
           {FIELDS.map((field) => (
             <input
               key={field.name}
@@ -205,6 +209,22 @@ export default function LeadForm() {
               className={inputClass}
             />
           ))}
+
+         <select
+  name="services"
+  value={form.services}
+  onChange={onChange}
+  className={inputClass}
+   
+>
+  <option value="" className="text-black">
+    Select Service
+  </option>
+  <option className="text-black">Full Home Interior Decor</option>
+  <option className="text-black">Modular Kitchen</option>
+  <option className="text-black">Renovation</option>
+  <option className="text-black">Interior Design Service</option>
+</select>
 
           <select
             name="project"
@@ -259,7 +279,6 @@ export default function LeadForm() {
       animate={{ scale: [1, 1.05, 1] }}
       transition={{
         duration: 2,
-        repeat: Infinity,
         ease: "easeInOut",
       }}
       whileTap={{ scale: 0.95 }}
