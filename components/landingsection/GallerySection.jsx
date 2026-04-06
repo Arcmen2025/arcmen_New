@@ -1,22 +1,21 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 
 export default function GallerySection() {
-  const scrollRef = useRef(null);
-
   const galleryItems = [
     { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307984/Factory_1_1_cuhzxv.jpg", label: "Factory" },
-    { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307976/Experience_Center1_yca70b.jpg", label: "Experience center" },
+    { img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775458569/arcmenec1_sx8rsq.jpg", label: "Experience center" },
     { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307980/Factory_1_2_ofxco6.jpg", label: "Factory" },
-    { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307974/Experience_Center_4_ftx7gh.jpg", label: "Experience center" },
+    { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307976/Experience_Center1_yca70b.jpg", label: "Experience center" },
+    // { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307974/Experience_Center_4_ftx7gh.jpg", label: "Experience center" },
     { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307975/Factory_1_3_crdad7.jpg", label: "Factory" },
-    { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307973/Experience_Center_5_us9fv2.jpg", label: "Experience center" },
+    { img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775458569/arcmenec2_k2shxn.jpg", label: "Experience center" },
     { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307971/Factory_1_4_molox8.jpg", label: "Factory" },
     { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307972/Experience_Center_2_xcx101.jpg", label: "Experience center" },
   ];
 
-  // ✅ preload
+  // preload
   useEffect(() => {
     galleryItems.forEach((item) => {
       const img = new Image();
@@ -24,7 +23,7 @@ export default function GallerySection() {
     });
   }, []);
 
-  // ✅ ensure full groups (no gaps)
+  // group logic (same as yours)
   const filledItems = [...galleryItems];
   while (filledItems.length % 6 !== 0) {
     filledItems.push(galleryItems[filledItems.length % galleryItems.length]);
@@ -35,46 +34,24 @@ export default function GallerySection() {
     groupedItems.push(filledItems.slice(i, i + 6));
   }
 
-  // 🔥 PERFECT LOOP ENGINE
-  useEffect(() => {
-    const el = scrollRef.current;
-    let frame;
-
-    let speed = window.innerWidth < 768 ? 0.6 : 0.35; // 🔥 mobile faster
-
-    const autoScroll = () => {
-      if (!el) return;
-
-      el.scrollLeft += speed;
-
-      // seamless loop
-      if (el.scrollLeft >= el.scrollWidth / 2) {
-        el.scrollLeft = 0;
-      }
-
-      frame = requestAnimationFrame(autoScroll);
-    };
-
-    frame = requestAnimationFrame(autoScroll);
-
-    return () => cancelAnimationFrame(frame);
-  }, []);
-
   return (
     <section className="md:py-12 overflow-hidden">
-      <motion.div className="text-center mb-10">
+      <motion.div className="text-center mb-10"
+      initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: false }}
+      >
         <h2 className="!text-2xl md:text-4xl font-bold">
           How We Build Your Home
         </h2>
       </motion.div>
 
-      <motion.div className="overflow-hidden">
-        <div
-          ref={scrollRef}
-          className="flex gap-10 pr-[10%] overflow-x-auto will-change-transform [&::-webkit-scrollbar]:hidden"
-        >
+      <div className="overflow-hidden">
+        <div className="marquee flex gap-10">
+
           {[...groupedItems, ...groupedItems].map((group, loop) => (
-            <React.Fragment key={loop}>
+            <div key={loop} className="flex gap-10 min-w-max">
 
               <div className="flex flex-col md:justify-end">
                 <Card {...group[0]} h="h-[260px] md:h-[280px]" w="w-[300px] md:w-[460px]" />
@@ -94,10 +71,37 @@ export default function GallerySection() {
                 <Card {...group[5]} h="h-[260px] md:h-[320px]" w="w-[300px] md:w-[400px]" />
               </div>
 
-            </React.Fragment>
+            </div>
           ))}
+
         </div>
-      </motion.div>
+      </div>
+
+      <style jsx>{`
+        .marquee {
+          animation: scroll 10s linear infinite;
+          will-change: transform;
+        }
+
+        .marquee:hover {
+          animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .marquee {
+            animation-duration: 10s;
+          }
+        }
+      `}</style>
     </section>
   );
 }

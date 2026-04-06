@@ -1,16 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { FEATURES } from "@/app/utilits/Constant";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+
 
 export default function WhyChooseUs() {
   const [index, setIndex] = useState(0);
   const [isResetting, setIsResetting] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  // 👇 detect screen size (ONLY for mobile behavior)
+  const [bubbles, setBubbles] = useState([]);
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -21,7 +23,27 @@ export default function WhyChooseUs() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // 👇 change items per slide based on screen
+  
+   useEffect(() => {
+    const interval = setInterval(() => {
+      const id = Date.now();
+
+      const newBubble = {
+        id,
+        left: Math.random() * 100,
+        size: 6 + Math.random() * 8,
+      };
+
+      setBubbles((prev) => [...prev, newBubble]);
+
+      setTimeout(() => {
+        setBubbles((prev) => prev.filter((b) => b.id !== id));
+      }, 2000);
+    }, 300);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const itemsPerSlide = isMobile ? 1 : 4;
 
   const slides = [];
@@ -124,12 +146,8 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Button */}
-        <motion.div
+        {/* <motion.div
           className="text-center mt-4"
-          // initial={{ opacity: 0, y: 40 }}
-          // whileInView={{ opacity: 1, y: 0 }}
-          // transition={{ duration: 0.6 }}
-          // viewport={{ once: false }}
         >
           <a
             href="#contact"
@@ -137,7 +155,56 @@ export default function WhyChooseUs() {
           >
            Start Your Dream Home Interior
           </a>
-        </motion.div>
+        </motion.div> */}
+        <div className="flex justify-center mt-4 md:mb-10">
+  <div className="relative inline-block">
+
+    <motion.a
+  href="#contact"
+  initial={{ scale: 1 }}
+  animate={{ scale: [1, 1.06, 1] }}
+  transition={{
+    duration: 2,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  whileTap={{ scale: 0.95 }}
+  className="
+    inline-block  
+    transform-gpu 
+    relative z-10 
+    border border-black 
+    bg-[#7c381a] text-white 
+    md:px-10 py-2 rounded-[8px] 
+    px-4
+    font-medium text-sm md:text-base 
+     hover:text-white transition
+  "
+>
+ Start Your Dream Home Interior
+</motion.a>
+
+    {bubbles.map((b) => (
+      <motion.span
+        key={b.id}
+        initial={{ y: 0, opacity: 0.4 }}
+        animate={{ y: -60, opacity: 0.4 }}
+        transition={{ duration: 2, ease: "easeOut" }}
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: `${b.left}%`,
+          width: b.size,
+          height: b.size,
+          borderRadius: "50%",
+          background: "#7c381a",
+          pointerEvents: "none",
+        }}
+      />
+    ))}
+
+  </div>
+</div>
 
         {/* Arrows */}
         <div className="flex justify-center gap-4 mt-6">

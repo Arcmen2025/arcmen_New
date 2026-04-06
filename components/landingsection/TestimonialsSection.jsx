@@ -12,10 +12,12 @@ export default function TestimonialsSection() {
 
   const videoRef = useRef(null);
   const videos = [
-    "https://res.cloudinary.com/da9s9vymf/video/upload/v1775207665/video1_kli1vl.mp4",
-    "https://res.cloudinary.com/da9s9vymf/video/upload/v1775207636/video2_pziow2.mp4",
+    "https://res.cloudinary.com/da9s9vymf/video/upload/v1775475206/2_Testimonial_Ranjith_uc1lqa.mp4",
+    // "https://res.cloudinary.com/da9s9vymf/video/upload/v1775207665/video1_kli1vl.mp4",
+    "https://res.cloudinary.com/da9s9vymf/video/upload/v1775474995/3_Testimonial_Domnic_t4xw0t.mp4",
+    "https://res.cloudinary.com/da9s9vymf/video/upload/v1775475245/1_Testimonial_Kiran_Kumar_hyclmd.mp4",
     // "https://res.cloudinary.com/da9s9vymf/video/upload/v1775207608/video3_b4iuqz.mp4",
-    "https://res.cloudinary.com/da9s9vymf/video/upload/v1775207627/video4_wqlh0k.mp4"
+    
   ];
 
   const toggleReadMore = (index) => {
@@ -173,7 +175,7 @@ export default function TestimonialsSection() {
                       )}
                     </p>
 
-                    <p className="text-xs text-gray-500 mt-2 font-medium">
+                    <p className="text-xs text-gray-500 mt-2 md:mt-0 md:mb-0 font-medium">
                       {t.name}
                     </p>
                   </div>

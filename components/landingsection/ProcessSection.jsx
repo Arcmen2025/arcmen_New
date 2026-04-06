@@ -19,20 +19,29 @@ export default function ProcessSection() {
               transition={{ duration: 0.6 }}
               viewport={{ once: false }}
             >
-              <h2 className="text-white !text-[20px] md:text-[40px] 2xl:md:[40px] font-extrabold leading-tight mb-6">
-                Our Step-by-Step<span className="md:block">{" "}Payment and Work</span>
-                <span className="md:block">{" "}Process</span>
-              </h2>
+              <h2 className="text-white hidden md:block text-xl md:text-3xl lg:text-4xl 2xl:text-[40px] font-extrabold leading-tight mb-6">
+  Our Step-by-Step Payment
+  <span className="md:block"> and Work Process</span>
+</h2>
+ <h2 className="text-white !text-[24px] md:hidden font-extrabold leading-tight mb-6">
+  Our Step-by-Step Payment
+  <span className="md:block"> and Work Process</span>
+</h2>
 
-              <p className="text-[#ffffff] font-normal md:text-[14px] text-sm leading-relaxed max-w-md">
-                Many interior companies collect around 70–80% of the total cost even before placing a single brick.
-                We take a different route. Our payments are tied to actual work progress, so you pay as your project
-                moves forward, with clear stages and complete transparency.
+              <p className="text-[#ffffff] font-normal md:text-[20px] text-sm leading-relaxed max-w-md">
+                Many interior companies collect around 100% of the total cost even before delivering material. but 
+                We take a different route. Our payments are tied to actual work progress, so you pay as your project 
+                moves forward, with clear stages and complete transparency. 
               </p>
             </motion.div>
 
             {/* RIGHT */}
-            <div className="flex mt-10 md:mt-0 flex-col gap-3">
+            <motion.div className="flex mt-10 md:mt-0 flex-col gap-3"
+            initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: false }}
+            >
 
               {PROCESS_STEPS.map((s, i) => (
                 <div key={i} className="md:flex gap-6 items-start">
@@ -56,7 +65,7 @@ export default function ProcessSection() {
                 </div>
               ))}
 
-            </div>
+            </motion.div>
 
           </div>
         </div>

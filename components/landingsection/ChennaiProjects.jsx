@@ -1,15 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 
 import { PROJECTS } from "@/app/utilits/constants";
 
-
 const LOGO =
   "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto/v1775207563/whitelogo_ogcb0n.svg";
-
 
 const IMAGES = [
   "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775207587/arun_ryvtg2.jpg",
@@ -23,9 +21,12 @@ export default function ChennaiProjects() {
   const controls = useAnimation();
   const xRef = useRef(0);
 
+  const [bubbles, setBubbles] = useState([]);
+
   const itemWidth = 300;
   const data = [...PROJECTS, ...PROJECTS];
 
+  // carousel animation (UNCHANGED)
   useEffect(() => {
     let frame;
 
@@ -44,6 +45,27 @@ export default function ChennaiProjects() {
     animate();
     return () => cancelAnimationFrame(frame);
   }, [controls]);
+
+  //bubble generator
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const id = Date.now();
+
+      const newBubble = {
+        id,
+        left: Math.random() * 100,
+        size: 6 + Math.random() * 8,
+      };
+
+      setBubbles((prev) => [...prev, newBubble]);
+
+      setTimeout(() => {
+        setBubbles((prev) => prev.filter((b) => b.id !== id));
+      }, 2000);
+    }, 300);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const nextSlide = () => {
     xRef.current += itemWidth;
@@ -77,7 +99,7 @@ export default function ChennaiProjects() {
           </h2>
         </motion.div>
 
-    
+        {/* Carousel */}
         <div className="overflow-hidden">
           <motion.div className="flex gap-4" animate={controls}>
             {data.map((p, i) => {
@@ -106,7 +128,6 @@ export default function ChennaiProjects() {
                     </p>
                   </div>
 
-                 
                   <div className="absolute bottom-3 right-3">
                     <img
                       src={LOGO}
@@ -120,15 +141,55 @@ export default function ChennaiProjects() {
           </motion.div>
         </div>
 
-        {/* Button */}
-        <div className="text-center mt-10 md:mb-10">
-          <a
-            href="#contact"
-            className="border border-black text-[#000000] px-10 py-2 rounded-[8px] font-medium text-sm md:text-base hover:bg-[#4dbc15] hover:text-white transition"
-          >
-            Get My Project Estimate
-          </a>
-        </div>
+        {/* Button with bubbles */}
+        <div className="flex justify-center mt-10 md:mb-10">
+  <div className="relative inline-block">
+
+    <motion.a
+  href="#contact"
+  initial={{ scale: 1 }}
+  animate={{ scale: [1, 1.06, 1] }}
+  transition={{
+    duration: 2,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  whileTap={{ scale: 0.95 }}
+  className="
+    inline-block  
+    transform-gpu 
+    relative z-10 
+    border border-black 
+    bg-[#7c381a] text-white 
+    px-10 py-2 rounded-[8px] 
+    font-medium text-sm md:text-base 
+     hover:text-white transition
+  "
+>
+  Get My Project Estimate
+</motion.a>
+
+    {bubbles.map((b) => (
+      <motion.span
+        key={b.id}
+        initial={{ y: 0, opacity: 0.4 }}
+        animate={{ y: -60, opacity: 0.4 }}
+        transition={{ duration: 2, ease: "easeOut" }}
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: `${b.left}%`,
+          width: b.size,
+          height: b.size,
+          borderRadius: "50%",
+          background: "#7c381a",
+          pointerEvents: "none",
+        }}
+      />
+    ))}
+
+  </div>
+</div>
 
         {/* Arrows */}
         <div className="flex justify-center gap-4 mt-6">

@@ -3,11 +3,11 @@
 
 import { useState, useEffect } from "react";
 import { SPACE_TABS } from "@/app/utilits/constants";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 
 
-// 👉 all image imports (same as yours)
+
 // import image1 from "../../assets/cot head-1.jpg";
 // import image2 from "../../assets/cot head-2.jpg";
 // import image3 from "../../assets/cot head-3.jpg";
@@ -49,7 +49,7 @@ export default function SpacesGrid() {
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-
+  const [bubbles, setBubbles] = useState([]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -58,6 +58,26 @@ export default function SpacesGrid() {
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+   useEffect(() => {
+    const interval = setInterval(() => {
+      const id = Date.now();
+
+      const newBubble = {
+        id,
+        left: Math.random() * 100,
+        size: 6 + Math.random() * 8,
+      };
+
+      setBubbles((prev) => [...prev, newBubble]);
+
+      setTimeout(() => {
+        setBubbles((prev) => prev.filter((b) => b.id !== id));
+      }, 2000);
+    }, 300);
+
+    return () => clearInterval(interval);
   }, []);
 
 
@@ -80,9 +100,6 @@ export default function SpacesGrid() {
 
 
   const images = TAB_IMAGES[active] || [];
-
-
-  // ✅ auto carousel (mobile only)
   useEffect(() => {
     if (!isMobile || isPaused) return;
 
@@ -121,7 +138,7 @@ export default function SpacesGrid() {
 
 
         {/* Heading */}
-        <div className="text-center mb-10 md:mt-10">
+        <div className="text-center mb-10 mt-10 md:mt-10">
           <h2 className="sec-head text-black font-extrabold !text-[28px] md:text-[34px]">
             Explore Arcmen's <span className="md:block">Signature Spaces</span>
           </h2>
@@ -159,14 +176,23 @@ export default function SpacesGrid() {
             <motion.div
               className="flex"
               animate={{ x: `-${index * 100}%` }}
-              transition={{ duration: 0.5 }}
+              transition={{
+                duration: 0.7,
+                ease: "easeInOut",
+              }}
             >
               {images.map((item, i) => {
                 const isObject = typeof item === "object";
 
 
                 return (
-                  <div key={i} className="min-w-full px-2">
+                  <motion.div
+  key={i}
+  className="min-w-full px-2"
+  initial={{ opacity: 0, scale: 0.95 }}
+  animate={{ opacity: i === index ? 1 : 0.5, scale: i === index ? 1 : 0.95 }}
+  transition={{ duration: 0.5 }}
+>
                     <div className="relative">
                       <img
                         src={isObject ? item.img : item}
@@ -180,7 +206,7 @@ export default function SpacesGrid() {
                         </div>
                       )}
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
             </motion.div>
@@ -232,14 +258,62 @@ export default function SpacesGrid() {
 
 
         {/* Button */}
-        <div className="text-center mt-10 mb-10 md:mb-20">
+        {/* <div className="text-center mt-10 mb-10 md:mb-20">
           <a
             href="#contact"
             className="border border-black px-10 py-2 text-black rounded text-sm hover:bg-[#4dbc15] hover:text-white transition"
           >
             Let’s Build Yours
           </a>
-        </div>
+        </div> */}
+        <div className="flex justify-center mt-10 mb-10 md:mb-20">
+  <div className="relative inline-block">
+
+    <motion.a
+  href="#contact"
+  initial={{ scale: 1 }}
+  animate={{ scale: [1, 1.06, 1] }}
+  transition={{
+    duration: 2,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  whileTap={{ scale: 0.95 }}
+  className="
+    inline-block  
+    transform-gpu 
+    relative z-10 
+    border border-black 
+    bg-[#7c381a] text-white 
+    px-10 py-2 rounded-[8px] 
+    font-medium text-sm md:text-base 
+     hover:text-white transition
+  "
+>
+  Let’s Build Yours
+</motion.a>
+
+    {bubbles.map((b) => (
+      <motion.span
+        key={b.id}
+        initial={{ y: 0, opacity: 0.4 }}
+        animate={{ y: -60, opacity: 0.4 }}
+        transition={{ duration: 2, ease: "easeOut" }}
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: `${b.left}%`,
+          width: b.size,
+          height: b.size,
+          borderRadius: "50%",
+          background: "#7c381a",
+          pointerEvents: "none",
+        }}
+      />
+    ))}
+
+  </div>
+</div>
 
 
       </div>

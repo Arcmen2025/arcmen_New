@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaCheckCircle } from "react-icons/fa";
 import { createPortal } from "react-dom";
+import { motion, AnimatePresence,useAnimation } from "framer-motion";
 
 const FIELDS = [
   { name: "name", placeholder: "Full Name", type: "text" },
@@ -28,7 +29,9 @@ export default function LeadForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  // 🔒 prevent background scroll
+  const [bubbles, setBubbles] = useState([]);
+
+  
   useEffect(() => {
     if (loading || success) {
       document.body.style.overflow = "hidden";
@@ -37,13 +40,33 @@ export default function LeadForm() {
     }
   }, [loading, success]);
 
+   useEffect(() => {
+    const interval = setInterval(() => {
+      const id = Date.now();
+
+      const newBubble = {
+        id,
+        left: Math.random() * 100,
+        size: 6 + Math.random() * 8,
+      };
+
+      setBubbles((prev) => [...prev, newBubble]);
+
+      setTimeout(() => {
+        setBubbles((prev) => prev.filter((b) => b.id !== id));
+      }, 2000);
+    }, 300);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const onChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    // ✅ Phone validation (Indian format)
+  
     if (!/^[6-9]\d{9}$/.test(form.phone)) {
       alert("Please enter a valid 10-digit mobile number");
       return;
@@ -88,7 +111,7 @@ export default function LeadForm() {
   const inputClass = `
     w-full bg-transparent 
     border border-white/30 
-    rounded-lg px-4 py-3 text-sm 
+    rounded-lg px-4 py-3 md:py-1 text-sm 
     text-white placeholder-white
     transition-all duration-300
     hover:bg-white hover:text-black hover:placeholder-gray-400
@@ -98,7 +121,7 @@ export default function LeadForm() {
 
   return (
     <>
-      {/* 🔄 LOADING POPUP */}
+     
       {typeof window !== "undefined" &&
         loading &&
         createPortal(
@@ -119,7 +142,7 @@ export default function LeadForm() {
           document.body
         )}
 
-      {/* ✅ SUCCESS POPUP */}
+
       {typeof window !== "undefined" &&
         success &&
         createPortal(
@@ -136,10 +159,13 @@ export default function LeadForm() {
         )}
 
       {/* FORM */}
-      <div
+      <motion.div
         id="contact"
+        initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         className="
-          w-full md:w-[70%] p-6 md:p-8 rounded-3xl
+          w-full md:w-[70%] p-6 md:p-6 rounded-3xl
           bg-white/6
           border border-white/20
           shadow-[0_20px_60px_rgba(0,0,0,0.5)]
@@ -150,7 +176,7 @@ export default function LeadForm() {
           Get Your Interior Quote
         </h3>
 
-        <form onSubmit={onSubmit} className="flex flex-col gap-4">
+        <form onSubmit={onSubmit} className="flex flex-col gap-4 md:gap-1">
           {FIELDS.map((field) => (
             <input
               key={field.name}
@@ -198,13 +224,13 @@ export default function LeadForm() {
           <textarea
             name="message"
             placeholder="Tell Your Requirement"
-            rows={3}
+            rows={1}
             value={form.message}
             onChange={onChange}
             className={inputClass}
           />
 
-          <div className="text-center mt-2 md:mb-2">
+          {/* <div className="text-center mt-2 md:mb-2">
             <button
               type="submit"
               disabled={loading}
@@ -221,9 +247,60 @@ export default function LeadForm() {
             >
               Book a Free Consultation
             </button>
-          </div>
+            
+          </div> */}
+          <div className="flex justify-center mt-2 md:mb-2">
+  <div className="relative inline-block">
+
+    <motion.button
+      type="submit"
+      disabled={loading}
+      initial={{ scale: 1 }}
+      animate={{ scale: [1, 1.05, 1] }}
+      transition={{
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+      whileTap={{ scale: 0.95 }}
+      className="
+        relative z-10
+        inline-block
+        w-full sm:w-auto
+        px-6 sm:px-10
+        border-0
+        bg-[#7c381a] text-white font-semibold
+        py-[12px] rounded-lg
+         transition duration-300 text-sm
+        disabled:opacity-50
+      "
+    >
+      Book a Free Consultation
+    </motion.button>
+
+    {bubbles.map((b) => (
+      <motion.span
+        key={b.id}
+        initial={{ y: 0, opacity: 0.4, scale: 1 }}
+        animate={{ y: -60, opacity: 0.4, scale: 1.4 }}
+        transition={{ duration: 2, ease: "easeOut" }}
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: `${b.left}%`,
+          width: b.size,
+          height: b.size,
+          borderRadius: "50%",
+          background: "#7c381a", 
+          pointerEvents: "none",
+        }}
+      />
+    ))}
+
+  </div>
+</div>
         </form>
-      </div>
+      </motion.div>
     </>
   );
 }
