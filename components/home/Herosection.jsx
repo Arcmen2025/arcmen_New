@@ -145,11 +145,16 @@ const Herosection = () => {
                                     <img
                                         
                                         className="d-md-block w-100 object-cover banner1 d-hidden"
-                                        src="https://res.cloudinary.com/da9s9vymf/image/upload/v1767155535/homepagebanner.jpg"
+                                        src="https://res.cloudinary.com/da9s9vymf/image/upload/v1775734827/arcmendes_w1dcvj.png"
                                     />
-                                    <img   
+                                    {/* <img   
                                         className="d-md-none w-100 h-[500px] object-cover banner2 d-block"
-                                        src="https://res.cloudinary.com/da9s9vymf/image/upload/v1767181525/mobilebanner.jpg"
+                                        src="https://res.cloudinary.com/da9s9vymf/image/upload/v1775735796/mobilearcmen_oi4lrg.jpg"
+                                    />
+                                     */}
+                                      <img   
+                                        className="d-md-none w-100 h-[auto] object-cover banner2 d-block"
+                                        src="https://res.cloudinary.com/da9s9vymf/image/upload/v1775735796/mobilearcmen_oi4lrg.jpg"
                                     />
                                     
                                     <Carousel.Caption>
@@ -275,11 +280,11 @@ const Herosection = () => {
                                             </form>
                                         </div>
                                         <div className="popup-img1 d-none d-md-block" style={{ borderRadius: '0px 10px 10px 0px' }}>
-                                            <img src={"https://res.cloudinary.com/da9s9vymf/image/upload/v1767155204/homepage-desktop-popup.jpg"} alt="Offer"></img>
+                                            <img src={"https://res.cloudinary.com/da9s9vymf/image/upload/v1775735286/arcmenpopup_n1paxk.png"} alt="Offer"></img>
                                         </div>
                                         <div className="popup-img2  d-md-none">
                                             <img
-                                                src="https://res.cloudinary.com/da9s9vymf/image/upload/v1767420129/arcmenpopup.jpg"
+                                                src="https://res.cloudinary.com/da9s9vymf/image/upload/v1775739731/popuparcmen_kn3y5t.png"
                                                 alt="Offer"
                                                 className=" popup-image"
                                             />

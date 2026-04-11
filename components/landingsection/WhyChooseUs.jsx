@@ -23,8 +23,8 @@ export default function WhyChooseUs() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  
-   useEffect(() => {
+
+  useEffect(() => {
     const interval = setInterval(() => {
       const id = Date.now();
 
@@ -74,12 +74,10 @@ export default function WhyChooseUs() {
 
   return (
     <section className="py-10 bg-white overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 md:px-12">
-
-        {/* Heading */}
-        <div className="text-center mb-6 md:mb-14">
+      <div className="px-6 md:px-20">
+        <div className="text-center mb-20">
           <motion.h2
-            className="sec-head text-black font-extrabold !text-[20px] md:text-[34px] 2xl:text-[48px]"
+            className="sec-head text-black font-extrabold !text-[20px] md:text-[34px] 2xl:text-[60px]"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -88,8 +86,6 @@ export default function WhyChooseUs() {
             What Makes Arcmen <br />Interiors the Right Choice
           </motion.h2>
         </div>
-
-        {/* Carousel */}
         <div className="overflow-hidden">
           <motion.div
             className="flex"
@@ -114,9 +110,8 @@ export default function WhyChooseUs() {
             {extendedSlides.map((group, i) => (
               <div
                 key={i}
-                className={`min-w-full flex gap-6 ${
-                  isMobile ? "justify-center" : "justify-between"
-                }`}
+                className={`min-w-full flex gap-6 ${isMobile ? "justify-center" : "justify-between"
+                  }`}
               >
                 {group.map((f, j) => (
                   <div
@@ -144,69 +139,52 @@ export default function WhyChooseUs() {
             ))}
           </motion.div>
         </div>
-
-        {/* Button */}
-        {/* <motion.div
-          className="text-center mt-4"
-        >
-          <a
-            href="#contact"
-            className="border border-black py-3 md:px-8 px-[10px] rounded-[8px] text-black hover:bg-[#4dbc15] hover:text-[#ffffff] transition"
-          >
-           Start Your Dream Home Interior
-          </a>
-        </motion.div> */}
         <div className="flex justify-center mt-4 md:mb-10">
-  <div className="relative inline-block">
+          <div className="relative inline-block">
 
-    <motion.a
-  href="#contact"
-  initial={{ scale: 1 }}
-  animate={{ scale: [1, 1.06, 1] }}
-  transition={{
-    duration: 2,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
-  whileTap={{ scale: 0.95 }}
-  className="
+            <motion.a
+              href="#contact"
+              initial={{ scale: 1 }}
+              animate={{ scale: [1, 1.06, 1] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="
     inline-block  
     transform-gpu 
     relative z-10 
-    border border-black 
-    bg-[#7c381a] text-white 
+    bg-[#4dbc15] text-white 
     md:px-10 py-2 rounded-[8px] 
     px-4
     font-medium text-sm md:text-base 
      hover:text-white transition
   "
->
- Start Your Dream Home Interior
-</motion.a>
-
-    {bubbles.map((b) => (
-      <motion.span
-        key={b.id}
-        initial={{ y: 0, opacity: 0.4 }}
-        animate={{ y: -60, opacity: 0.4 }}
-        transition={{ duration: 2, ease: "easeOut" }}
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: `${b.left}%`,
-          width: b.size,
-          height: b.size,
-          borderRadius: "50%",
-          background: "#7c381a",
-          pointerEvents: "none",
-        }}
-      />
-    ))}
-
-  </div>
-</div>
-
-        {/* Arrows */}
+            >
+              Experience the Arcmen Difference Today
+            </motion.a>
+            {bubbles.map((b) => (
+              <motion.span
+                key={b.id}
+                initial={{ y: 0, opacity: 0.4 }}
+                animate={{ y: -60, opacity: 0.4 }}
+                transition={{ duration: 2, ease: "easeOut" }}
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: `${b.left}%`,
+                  width: b.size,
+                  height: b.size,
+                  borderRadius: "50%",
+                  background: "#4dbc15",
+                  pointerEvents: "none",
+                }}
+              />
+            ))}
+          </div>
+        </div>
         <div className="flex justify-center gap-4 mt-6">
           <button
             onClick={handlePrev}

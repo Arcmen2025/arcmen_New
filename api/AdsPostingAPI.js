@@ -1,7 +1,7 @@
 import fetchHandler, { fetchHandlerForm } from './Handler';
 
 export const createAds = async (body) => {
-    // console.log(body,"------------->")
+    console.log(body,"------------->")
     try {
         const response = await fetchHandlerForm({
             method: 'POST',

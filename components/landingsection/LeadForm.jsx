@@ -1,16 +1,15 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaCheckCircle } from "react-icons/fa";
 import { createPortal } from "react-dom";
-import { motion, AnimatePresence,useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 
 const FIELDS = [
   { name: "name", placeholder: "Full Name", type: "text" },
   { name: "phone", placeholder: "Mobile Number", type: "tel" },
   { name: "email", placeholder: "Email Id", type: "email" },
-  { name: "city", placeholder: "Location", type: "text" },
+  { name: "location", placeholder: "Location", type: "text" },
 ];
 
 const API_URL =
@@ -22,17 +21,15 @@ export default function LeadForm() {
     phone: "",
     email: "",
     city: "",
-    services:"",
     project: "",
     message: "",
   });
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-
   const [bubbles, setBubbles] = useState([]);
 
-  
+
   useEffect(() => {
     if (loading || success) {
       document.body.style.overflow = "hidden";
@@ -41,7 +38,7 @@ export default function LeadForm() {
     }
   }, [loading, success]);
 
-   useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       const id = Date.now();
 
@@ -67,7 +64,7 @@ export default function LeadForm() {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-  
+
     if (!/^[6-9]\d{9}$/.test(form.phone)) {
       alert("Please enter a valid 10-digit mobile number");
       return;
@@ -75,13 +72,12 @@ export default function LeadForm() {
 
     try {
       setLoading(true);
-
       const payload = {
         fullName: form.name,
         mobileNumber: form.phone,
         email: form.email,
         city: form.city,
-        services: form.services, 
+        services: form.services,
         projectType: form.project || "Residential Interior",
         message: form.message,
       };
@@ -96,7 +92,7 @@ export default function LeadForm() {
           phone: "",
           email: "",
           city: "",
-          services:"",
+          services: "",
           project: "",
           message: "",
         });
@@ -123,15 +119,12 @@ export default function LeadForm() {
 
   return (
     <>
-     
+
       {typeof window !== "undefined" &&
         loading &&
         createPortal(
           <div className="fixed inset-0 z-[2147483647] flex items-center justify-center bg-black/70 backdrop-blur-sm">
-            
             <div className="flex items-center gap-2 bg-white text-black rounded-lg px-4 py-3 shadow-xl">
-              
-              {/* small spinner */}
               <div className="w-4 h-4 border-2 border-[#7aa33a] border-t-transparent rounded-full animate-spin"></div>
 
               <p className="text-sm font-medium text-[#7aa33a]">
@@ -139,11 +132,9 @@ export default function LeadForm() {
               </p>
 
             </div>
-
           </div>,
           document.body
         )}
-
 
       {typeof window !== "undefined" &&
         success &&
@@ -159,27 +150,26 @@ export default function LeadForm() {
           </div>,
           document.body
         )}
-
-      {/* FORM */}
       <motion.div
         id="contact"
         initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-    
-        className="
-          w-full md:w-[70%] p-6 md:px-6 md:py-2 rounded-3xl
-          bg-white/6
-          border border-white/20
-          shadow-[0_20px_60px_rgba(0,0,0,0.5)]
-          text-white
-        "
-      >
-        <h3 className="text-xl md:text-2xl font-semibold mb-6 md:mb-2">
-          Get Your Interior Quote
-        </h3>
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
 
+        className="
+  w-full md:w-[70%]
+   p-6
+  rounded-3xl
+
+  bg-white/10
+  backdrop-blur-xl
+  border border-white/20
+
+  shadow-[0_8px_32px_rgba(255,255,255,0.15)]
+  text-white
+"
+      >
         <form onSubmit={onSubmit} className="flex flex-col gap-4 md:gap-0">
           {FIELDS.map((field) => (
             <input
@@ -209,23 +199,6 @@ export default function LeadForm() {
               className={inputClass}
             />
           ))}
-
-         <select
-  name="services"
-  value={form.services}
-  onChange={onChange}
-  className={inputClass}
-   
->
-  <option value="" className="text-black">
-    Select Service
-  </option>
-  <option className="text-black">Full Home Interior Decor</option>
-  <option className="text-black">Modular Kitchen</option>
-  <option className="text-black">Renovation</option>
-  <option className="text-black">Interior Design Service</option>
-</select>
-
           <select
             name="project"
             value={form.project}
@@ -240,84 +213,53 @@ export default function LeadForm() {
             <option className="text-black">4 BHK +</option>
             <option className="text-black">Villa</option>
           </select>
-
-          <textarea
-            name="message"
-            placeholder="Tell Your Requirement"
-            rows={1}
-            value={form.message}
-            onChange={onChange}
-            className={inputClass}
-          />
-
-          {/* <div className="text-center mt-2 md:mb-2">
-            <button
-              type="submit"
-              disabled={loading}
-              className="
-                inline-block
-                w-full sm:w-auto
-                px-6 sm:px-10
-                border-0
-                bg-white text-black font-semibold
-                py-[12px] rounded-lg
-                hover:bg-white/90 transition duration-300 text-sm
-                disabled:opacity-50
-              "
-            >
-              Book a Free Consultation
-            </button>
-            
-          </div> */}
           <div className="flex justify-center mt-2 md:mb-2">
-  <div className="relative inline-block">
+            <div className="relative inline-block">
 
-    <motion.button
-      type="submit"
-      disabled={loading}
-      initial={{ scale: 1 }}
-      animate={{ scale: [1, 1.05, 1] }}
-      transition={{
-        duration: 2,
-        ease: "easeInOut",
-      }}
-      whileTap={{ scale: 0.95 }}
-      className="
+              <motion.button
+                type="submit"
+                disabled={loading}
+                initial={{ scale: 1 }}
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{
+                  duration: 2,
+                  ease: "easeInOut",
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="
         relative z-10
         inline-block
         w-full sm:w-auto
         px-6 sm:px-10
         border-0
-        bg-[#7c381a] text-white font-semibold
+        bg-[#4dbc15] text-white font-semibold
         py-[12px] rounded-lg
          transition duration-300 text-sm
         disabled:opacity-50
       "
-    >
-      Book a Free Consultation
-    </motion.button>
-
-    {bubbles.map((b) => (
-      <motion.span
-        key={b.id}
-        initial={{ y: 0, opacity: 0.4, scale: 1 }}
-        animate={{ y: -60, opacity: 0.4, scale: 1.4 }}
-        transition={{ duration: 2, ease: "easeOut" }}
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: `${b.left}%`,
-          width: b.size,
-          height: b.size,
-          borderRadius: "50%",
-          background: "#7c381a", 
-          pointerEvents: "none",
-        }}
-      />
-    ))}
-
-  </div>
-</div>
+              >
+                Book a Free Consultation
+              </motion.button>
+              {bubbles?.map((b) => (
+                <motion.span
+                  key={b.id}
+                  initial={{ y: 0, opacity: 0.4, scale: 1 }}
+                  animate={{ y: -60, opacity: 0.4, scale: 1.4 }}
+                  transition={{ duration: 2, ease: "easeOut" }}
+                  style={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: `${b.left}%`,
+                    width: b.size,
+                    height: b.size,
+                    borderRadius: "50%",
+                    background: "#4dbc15",
+                    pointerEvents: "none",
+                  }}
+                />
+              ))}
+            </div>
+          </div>
         </form>
       </motion.div>
     </>

@@ -1,19 +1,49 @@
 "use client";
-
 import { useEffect, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
-import { SOLUTIONS } from "@/app/utilits/constants";
+import { motion } from "framer-motion";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-const IMAGES = [
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207595/modularkitchen_l4h8ah.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207579/Bedroomser_hf3gcu.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207595/livingser_pqap2k.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207603/poojaser_arg5cb.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207604/tabimg1_df8vzi.svg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207589/Dinning_d6dqvu.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207589/home6_o7s2tf.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207564/tabimg4_xsg3kw.svg"
+const SOLUTIONS = [
+  {
+    title: "Wardrobes",
+    desc: " Modular wardrobe, internal storage sliding/hinged doors, mirrors & accessories.",
+    img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207595/modularkitchen_l4h8ah.jpg",
+  },
+  {
+    title: "Bedrooms",
+    desc: "wardrobe, Dressing unit, cot & headboards",
+    img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207579/Bedroomser_hf3gcu.jpg",
+  },
+  {
+    title: "Living Rooms",
+    desc: "Tv unit, Designer partitions, Pooja unit",
+    img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207595/livingser_pqap2k.jpg",
+  },
+  {
+    title: "Pooja Rooms",
+    desc: "Mandir unit, wall panels, storage drawers, lighting, decorative elements, partitions & finishes",
+    img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207603/poojaser_arg5cb.jpg",
+  },
+  {
+    title: "Modular Kitchens",
+    desc: "Appliances, Accessories, counter tops  ",
+    img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775913286/ChatGPT_Image_Apr_11_2026_06_40_21_PM_eud13r.png",
+  },
+  {
+    title: "Dining Rooms",
+    desc: "Dining table & chairs, crockery unit, lighting, wall décor, partitions & storage solutions",
+    img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207589/Dinning_d6dqvu.jpg",
+  },
+  {
+    title: "Full Home Interiors",
+    desc: "Furniture, False ceiling, lightning, plumbing, sofa, Rug & curtains etc...",
+    img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207589/home6_o7s2tf.jpg",
+  },
+  {
+    title: "Bathrooms",
+    desc: "wardrobe Dressing Unit Cot & headboards.",
+    img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775913098/ChatGPT_Image_Apr_11_2026_06_40_03_PM_umwqdk.png",
+  },
 ];
 
 export default function SolutionsSlider() {
@@ -21,49 +51,35 @@ export default function SolutionsSlider() {
   const [isReset, setIsReset] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-
   const [bubbles, setBubbles] = useState([]);
 
-  const total = SOLUTIONS?.length || 0;
+  const total = SOLUTIONS.length;
+  const data = [...SOLUTIONS, ...SOLUTIONS];
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-   useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       const id = Date.now();
-
-      const newBubble = {
-        id,
-        left: Math.random() * 100,
-        size: 6 + Math.random() * 8,
-      };
-
-      setBubbles((prev) => [...prev, newBubble]);
-
+      setBubbles((prev) => [
+        ...prev,
+        { id, left: Math.random() * 100, size: 6 + Math.random() * 8 },
+      ]);
       setTimeout(() => {
         setBubbles((prev) => prev.filter((b) => b.id !== id));
       }, 2000);
     }, 300);
-
     return () => clearInterval(interval);
   }, []);
 
-  const data = [...SOLUTIONS, ...SOLUTIONS];
-
   useEffect(() => {
     if (isHovered) return;
-
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 3000);
-
+    const interval = setInterval(() => nextSlide(), 3000);
     return () => clearInterval(interval);
   }, [index, isMobile, isHovered]);
 
@@ -83,38 +99,39 @@ export default function SolutionsSlider() {
   };
 
   return (
-    <section className="md:py-16 py-10 bg-[#FBFBFB] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section className="md:py-16 py-10 overflow-hidden">
+      <div className="px-6 md:px-20">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-10"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: false }}
         >
-          <h2 className="sec-head text-black font-extrabold !text-[20px] md:text-[34px] 2xl:text-[48px] leading-tight">
-            Complete Interior Solutions <br />for Modern Homes
+          <h2 className="text-black font-extrabold text-[18px] md:text-[34px] 2xl:text-[48px] leading-tight">
+            Complete Interior Solutions <br /><span className="text-[#4dbc15]">
+              for Modern Homes
+            </span>
           </h2>
         </motion.div>
 
-        {/* Slider */}
         <div className="overflow-hidden">
           <motion.div
             style={{ pointerEvents: "auto" }}
-            className={`flex ${isMobile ? "gap-0" : "gap-4"}`}
+            className={`flex ${isMobile ? "gap-2" : "gap-3"}`}
             animate={{
-              x: isMobile ? `-${index * 100}%` : -index * 296,
+              x: isMobile ? `-${index * 100}%` : -index * 236,
             }}
             transition={
-              isReset ? { duration: 0 } : { duration: 0.6, ease: "easeInOut" }
+              isReset
+                ? { duration: 0 }
+                : { duration: 0.6, ease: "easeInOut" }
             }
             onAnimationComplete={() => {
               if (isReset) setIsReset(false);
             }}
           >
             {data.map((s, i) => {
-              const img = IMAGES[i % IMAGES.length];
-
               return (
                 <div
                   key={i}
@@ -122,49 +139,23 @@ export default function SolutionsSlider() {
                   onMouseLeave={() => setIsHovered(false)}
                   onTouchStart={() => setIsHovered(true)}
                   onTouchEnd={() => setIsHovered(false)}
-                  className={`
-                    ${isMobile ? "min-w-full px-2" : "min-w-[280px]"}
-                    h-80 md:h-96 relative group rounded-2xl overflow-hidden
-                    pointer-events-auto cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-300
-                  `}
+                  className={`${isMobile ? "min-w-full" : "w-[280px]"} flex-shrink-0 bg-white/20 backdrop-blur-lg border border-white/30 rounded overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer`}
                 >
-                  {/* Image */}
-                  <img
-                    src={img}
-                    alt={s.title}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
-                  />
+                  <div className="relative overflow-hidden h-[260px] group isolate">
+                    <img
+                      src={s.img}
+                      alt={s.title}
+                      className="w-full h-full object-cover transform-gpu will-change-transform transition-transform duration-700 ease-in-out hover:scale-110"
+                    />
+                  </div>
 
-                  {/* ✅ NEW: Base Overlay */}
-                  <div className="absolute inset-0 bg-black/40 z-[4]" />
-
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-[5]" />
-
-                  {/* Content */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-5 z-[10] pointer-events-auto">
-                    
-                    <h3 className="text-white md:text-[26px] text-xl font-bold mb-1 transform transition-transform duration-500 ease-in-out group-hover:-translate-y-2">
+                  <div className="px-4 pt-3 pb-2">
+                    <h3 className="text-[#111] text-[17px] font-bold mb-1">
                       {s.title}
                     </h3>
-
-                    <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                      <div className="overflow-hidden">
-                        <div className="pb-2">
-                          <p className="text-gray-200 text-sm mb-1">{s.desc}</p>
-                          <p className="text-gray-200 text-sm mb-1">{s.secdesc}</p>
-                          <p className="text-gray-200 text-sm mb-4">{s.thirddesc}</p>
-
-                          <a
-                            href="#contact"
-                            className="inline-block bg-[#4dbc15] hover:bg-[#4dbc15] hover:text-black text-white font-semibold text-xs px-5 py-2.5 rounded-full transition-colors duration-300"
-                          >
-                            Get a Quote
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
+                    <p className="text-[#666] text-[13px] leading-relaxed">
+                      {s.desc}
+                    </p>
                   </div>
                 </div>
               );
@@ -172,66 +163,41 @@ export default function SolutionsSlider() {
           </motion.div>
         </div>
 
-        {/* <div className="text-center mt-12">
-          <a
-            href="#contact"
-            className="inline-block border text-[#000000] font-semibold border-black px-6 py-3 rounded-md text-sm hover:bg-[#4dbc15] hover:border-[#4dbc15] hover:text-white transition-colors duration-300"
-          >
-            TO KNOW MORE KEEP IN TOUCH!
-          </a>
-        </div> */}
-
         <div className="flex justify-center mt-10 md:mb-10">
-  <div className="relative inline-block">
+          <div className="relative inline-block">
+            <motion.a
+              href="#contact"
+              initial={{ scale: 1 }}
+              animate={{ scale: [1, 1.06, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block relative z-10 bg-[#4dbc15] text-white px-4 md:px-6 py-2 rounded-[8px] font-medium text-sm md:text-base hover:text-white transition"
+            >
+              Get Free Interior Consultation
+            </motion.a>
 
-    <motion.a
-  href="#contact"
-  initial={{ scale: 1 }}
-  animate={{ scale: [1, 1.06, 1] }}
-  transition={{
-    duration: 2,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
-  whileTap={{ scale: 0.95 }}
-  className="
-    inline-block  
-    transform-gpu 
-    relative z-10 
-    border border-black 
-    bg-[#7c381a] text-white 
-    px-3
-    md:px-6 py-2 rounded-[8px] 
-    font-medium text-sm md:text-base 
-     hover:text-white transition
-  "
->
-  TO KNOW MORE KEEP IN TOUCH!
-</motion.a>
+            {bubbles.map((b) => (
+              <motion.span
+                key={b.id}
+                initial={{ y: 0, opacity: 0.4 }}
+                animate={{ y: -60, opacity: 0 }}
+                transition={{ duration: 2, ease: "easeOut" }}
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: `${b.left}%`,
+                  width: b.size,
+                  height: b.size,
+                  borderRadius: "50%",
+                  background: "#4dbc15",
+                  pointerEvents: "none",
+                  zIndex: 0,
+                }}
+              />
+            ))}
+          </div>
+        </div>
 
-    {bubbles.map((b) => (
-      <motion.span
-        key={b.id}
-        initial={{ y: 0, opacity: 0.4 }}
-        animate={{ y: -60, opacity: 0.4 }}
-        transition={{ duration: 2, ease: "easeOut" }}
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: `${b.left}%`,
-          width: b.size,
-          height: b.size,
-          borderRadius: "50%",
-          background: "#7c381a",
-          pointerEvents: "none",
-        }}
-      />
-    ))}
-
-  </div>
-</div>
-
-        {/* Arrows */}
         <div className="flex justify-center gap-4 mt-8">
           <button
             onClick={prevSlide}
@@ -239,7 +205,6 @@ export default function SolutionsSlider() {
           >
             <FaArrowLeft />
           </button>
-
           <button
             onClick={nextSlide}
             className="w-12 h-12 rounded-full border-0 bg-[#F2F2F2] flex items-center justify-center hover:bg-black hover:text-white transition-colors duration-300"

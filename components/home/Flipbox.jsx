@@ -290,73 +290,66 @@ const Flipbox = () => {
                     </Row>
                 </Container>
             </section>
-            {/* Testiominal */}
-
-<section className="pt-5 pb-5">
-  <Container>
-    <Row>
-      <Col>
-        <div className="text-center">
-          <h2>OUR BRAND</h2>
-        </div>
-        <div className="slider">
-          <div className="slide-track">
-            <div className="slide">
-              <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331379/arcmen/kindom.webp" height="100%" width="100%" alt="" />
-            </div>
-            <div className="slide">
-              <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331378/arcmen/kaff.webp" height="100%" width="100%" alt="" />
-            </div>
-            <div className="slide">
-              <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331378/arcmen/hindware.webp" height="100%" width="100%" alt="" />
-            </div>
-            <div className="slide">
-              <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331374/arcmen/century.webp" height="100%" width="100%" alt="" />
-            </div>
-            <div className="slide">
-              <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331373/arcmen/asianpaints.webp" height="100%" width="100%" alt="" />
-            </div>
-            <div className="slide">
-              <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331373/arcmen/aristo.webp" height="100%" width="100%" alt="" />
-            </div>
-            <div className="slide">
-              <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331379/arcmen/kindom.webp" height="100%" width="100%" alt="" />
-            </div>
-            <div className="slide">
-              <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331378/arcmen/kaff.webp" height="100%" width="100%" alt="" />
-            </div>
-            <div className="slide">
-              <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331378/arcmen/hindware.webp" height="100%" width="100%" alt="" />
-            </div>
-            <div className="slide">
-              <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331374/arcmen/century.webp" height="100%" width="100%" alt="" />
-            </div>
-            <div className="slide">
-              <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331373/arcmen/asianpaints.webp" height="100%" width="100%" alt="" />
-            </div>
-            <div className="slide">
-              <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331373/arcmen/aristo.webp" height="100%" width="100%" alt="" />
-            </div>
-          </div>
-        </div>
-      </Col>
-    </Row>
-  </Container>
-</section>
-
-
-
+            <section className="pt-5 pb-5">
+                <Container>
+                    <Row>
+                        <Col>
+                            <div className="text-center">
+                                <h2>OUR BRAND</h2>
+                            </div>
+                            <div className="slider">
+                                <div className="slide-track">
+                                    <div className="slide">
+                                        <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331379/arcmen/kindom.webp" height="100%" width="100%" alt="" />
+                                    </div>
+                                    <div className="slide">
+                                        <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331378/arcmen/kaff.webp" height="100%" width="100%" alt="" />
+                                    </div>
+                                    <div className="slide">
+                                        <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331378/arcmen/hindware.webp" height="100%" width="100%" alt="" />
+                                    </div>
+                                    <div className="slide">
+                                        <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331374/arcmen/century.webp" height="100%" width="100%" alt="" />
+                                    </div>
+                                    <div className="slide">
+                                        <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331373/arcmen/asianpaints.webp" height="100%" width="100%" alt="" />
+                                    </div>
+                                    <div className="slide">
+                                        <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331373/arcmen/aristo.webp" height="100%" width="100%" alt="" />
+                                    </div>
+                                    <div className="slide">
+                                        <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331379/arcmen/kindom.webp" height="100%" width="100%" alt="" />
+                                    </div>
+                                    <div className="slide">
+                                        <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331378/arcmen/kaff.webp" height="100%" width="100%" alt="" />
+                                    </div>
+                                    <div className="slide">
+                                        <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331378/arcmen/hindware.webp" height="100%" width="100%" alt="" />
+                                    </div>
+                                    <div className="slide">
+                                        <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331374/arcmen/century.webp" height="100%" width="100%" alt="" />
+                                    </div>
+                                    <div className="slide">
+                                        <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331373/arcmen/asianpaints.webp" height="100%" width="100%" alt="" />
+                                    </div>
+                                    <div className="slide">
+                                        <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1734331373/arcmen/aristo.webp" height="100%" width="100%" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
             <section className="project-card">
                 <Container>
                     <Row>
                         <Col>
-                            {/* <Slidercard /> */}
                             <Slider2 />
                         </Col>
                     </Row>
                 </Container>
             </section>
-
             <section>
                 <Container>
                     <Row>

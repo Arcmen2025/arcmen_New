@@ -10,20 +10,20 @@
 // import client3 from "../assets/client3.svg";
 
 export const NAV_LINKS = [
-  { label: "Home",      href: "#"         },
-  { label: "About",     href: "#about"    },
-  { label: "Services",  href: "#services" },
-  { label: "Portfolio", href: "#portfolio"},
-  { label: "Contact",   href: "#contact"  },
+    { label: 'Home', href: '#' },
+    { label: 'About', href: '#about' },
+    { label: 'Services', href: '#services' },
+    { label: 'Portfolio', href: '#portfolio' },
+    { label: 'Contact', href: '#contact' }
 ];
 
 export const STATS = [
-  { value: 15, suffix: " Years", label: "Material Warranty" },
-  { value: 30, suffix: "+ Years", label: "of expertise" },
-  { value: 2500, suffix: "+", label: "Happy Clients" },
-  { value: 35, suffix: " Days", label: "On Time Delivery" },
-  { value: 70, suffix: "% ", prefix: "Pay ", label: "Deliver & Install" },
-  { value: null, suffix: "No", label: "Hidden Cost" }, // no counter
+    { value: 15, suffix: ' Years', label: 'Material Warranty' },
+    { value: 30, suffix: '+ Years', label: 'of expertise' },
+    { value: 2500, suffix: '+', label: 'Happy Clients' },
+    { value: 35, suffix: ' Days', label: 'On Time Delivery' },
+    { value: 70, suffix: '% ', prefix: 'Pay ', label: 'Deliver & Install' },
+    { value: null, suffix: 'No', label: 'Hidden Cost' } // no counter
 ];
 
 // export const FEATURES = [
@@ -80,143 +80,150 @@ export const STATS = [
 
 // export const SPACE_TABS = ["All","Living Room","Bedroom","Kitchen","Dining","Wardrobe","Bathroom","Foyer"];
 export const SPACE_TABS = [
-  // "Modular kitchen",
-  "Bedroom",
-  "Living",
-  "Kitchen",
-  "Dinning",
-  "Pooja room",
-  "Home improvement",
+    // "Modular kitchen",
+    'Bedroom',
+    'Living',
+    'Kitchen',
+    'Dinning',
+    'Pooja room',
+    'Home improvement'
 ];
 
 export const SPACES = [
-  { id:1, label:"Living Room",      tab:"Living Room", bg:"bg-stone-700"   },
-  { id:2, label:"Master Bedroom",   tab:"Bedroom",     bg:"bg-neutral-600" },
-  { id:3, label:"Modular Kitchen",  tab:"Kitchen",     bg:"bg-zinc-700"    },
-  { id:4, label:"Dining Space",     tab:"Dining",      bg:"bg-stone-600"   },
-  { id:5, label:"Walk-in Wardrobe", tab:"Wardrobe",    bg:"bg-neutral-700" },
-  { id:6, label:"Luxury Bathroom",  tab:"Bathroom",    bg:"bg-zinc-600"    },
-  { id:7, label:"Foyer Design",     tab:"Foyer",       bg:"bg-stone-800"   },
-  { id:8, label:"Kids Room",        tab:"Bedroom",     bg:"bg-stone-700"   },
-  { id:9, label:"Home Office",      tab:"Living Room", bg:"bg-neutral-600" },
+    { id: 1, label: 'Living Room', tab: 'Living Room', bg: 'bg-stone-700' },
+    { id: 2, label: 'Master Bedroom', tab: 'Bedroom', bg: 'bg-neutral-600' },
+    { id: 3, label: 'Modular Kitchen', tab: 'Kitchen', bg: 'bg-zinc-700' },
+    { id: 4, label: 'Dining Space', tab: 'Dining', bg: 'bg-stone-600' },
+    { id: 5, label: 'Walk-in Wardrobe', tab: 'Wardrobe', bg: 'bg-neutral-700' },
+    { id: 6, label: 'Luxury Bathroom', tab: 'Bathroom', bg: 'bg-zinc-600' },
+    { id: 7, label: 'Foyer Design', tab: 'Foyer', bg: 'bg-stone-800' },
+    { id: 8, label: 'Kids Room', tab: 'Bedroom', bg: 'bg-stone-700' },
+    { id: 9, label: 'Home Office', tab: 'Living Room', bg: 'bg-neutral-600' }
 ];
 
 export const SOLUTIONS = [
-  {
-    id: 1,
-    title: "Modular Kitchen",
-    desc: "Kitchen Accessories",
-    secdesc: "Appliances",
-    thirddesc: "Countertops",
-  },
-  {
-    id: 2,
-    title: "Bedroom Interior",
-    desc: "Wardrobe Accessories",
-    secdesc: "Cot & Cot Backdrop",
-    thirddesc: "Dressing",
-  },
-  {
-    id: 3,
-    title: "Living Room Interior",
-    desc: "TV Unit",
-    secdesc: "Designer Partitions",
-    thirddesc: "Pooja Unit",
-  },
-  {
-    id: 4,
-    title: "Pooja Room",
-    desc: "Modern Pooja Unit",
-    secdesc: "Traditional Pooja Unit",
-    thirddesc: "Designer Partitions",
-  },
-  {
-    id: 5,
-    title: "Flooring",
-    desc: "Solid Wood Flooring",
-    secdesc: "Laminated Flooring",
-    thirddesc: "Deck Wood Flooring",
-  },
-  {
-    id: 6,
-    title: "Dinning",
-    desc: "Crockery Storage",
-    secdesc: "Dining Table",
-    thirddesc: "& Chairs Appliances",
-  },
-  {
-    id: 7,
-    title: "Home Improvement",
-    desc: "False Ceiling",
-    secdesc: "Painting, Lighting",
-    thirddesc: "Wallpaper, Wall Décor, CNC Wooden Design",
-  },
-  {
-    id: 8,
-    title: "Windows",
-    desc: "Curtains",
-    secdesc: "Blinds, Mosquito Net",
-    thirddesc: "Curtain Rod",
-  },
+    {
+        id: 1,
+        title: 'Modular Kitchen',
+        desc: 'Kitchen Accessories',
+        secdesc: 'Appliances',
+        thirddesc: 'Countertops'
+    },
+    {
+        id: 2,
+        title: 'Bedroom Interior',
+        desc: 'Wardrobe Accessories',
+        secdesc: 'Cot & Cot Backdrop',
+        thirddesc: 'Dressing'
+    },
+    {
+        id: 3,
+        title: 'Living Room Interior',
+        desc: 'TV Unit',
+        secdesc: 'Designer Partitions',
+        thirddesc: 'Pooja Unit'
+    },
+    {
+        id: 4,
+        title: 'Pooja Room',
+        desc: 'Modern Pooja Unit',
+        secdesc: 'Traditional Pooja Unit',
+        thirddesc: 'Designer Partitions'
+    },
+    {
+        id: 5,
+        title: 'Flooring',
+        desc: 'Solid Wood Flooring',
+        secdesc: 'Laminated Flooring',
+        thirddesc: 'Deck Wood Flooring'
+    },
+    {
+        id: 6,
+        title: 'Dinning',
+        desc: 'Crockery Storage',
+        secdesc: 'Dining Table',
+        thirddesc: '& Chairs Appliances'
+    },
+    {
+        id: 7,
+        title: 'Home Improvement',
+        desc: 'False Ceiling',
+        secdesc: 'Painting, Lighting',
+        thirddesc: 'Wallpaper, Wall Décor, CNC Wooden Design'
+    },
+    {
+        id: 8,
+        title: 'Windows',
+        desc: 'Curtains',
+        secdesc: 'Blinds, Mosquito Net',
+        thirddesc: 'Curtain Rod'
+    }
 ];
 
 export const PROCESS_STEPS = [
-  { step:"Step-01", title:"Free Consultation",           desc:" Get free consultation, site visit & quote." },
-  { step:"Step-02", title:"Booking & Concept Development (10%)", desc:"Pay 10% to brainstorm and develop the design concepts & Space planning." },
-  { step:"Step-03", title:"Design Finalization (15%)",         desc:"Pay 15% Finalize the design stage progress, technical documentation & agreement for work execution." },
-  { step:"Step-04", title:"Production & Execution (45%)",   desc:"Pay 45% to Start Production and complete 70% of the work on site." },
-  { step:"Step-05", title:"Completion & Handover (30%)",       desc:"Pay 30% to complete the project's remaining all work & Handover. And provide a warranty." },
+    { step: 'Step-01', title: 'Free Consultation', desc: ' Get free consultation, site visit & quote.' },
+    { step: 'Step-02', title: 'Booking & Concept Development (10%)', desc: 'Pay 10% to brainstorm and develop the design concepts & Space planning.' },
+    { step: 'Step-03', title: 'Design Finalization (15%)', desc: 'Pay 15% Finalize the design stage progress, technical documentation & agreement for work execution.' },
+    { step: 'Step-04', title: 'Production & Execution (45%)', desc: 'Pay 45% to Start Production and complete 70% of the work on site.' },
+    { step: 'Step-05', title: 'Completion & Handover (30%)', desc: "Pay 30% to complete the project's remaining all work & Handover. And provide a warranty." }
 ];
 
-
-
 export const PROJECTS = [
-  { id:1, title:"Arun",     area:"Interior Design - Chennai", bg:"bg-stone-800"   },
-  { id:2, title:"Baskar",   area:"Interior Design - Chennai", bg:"bg-stone-700"   },
-  { id:3, title:"Krishna",area:"Interior Design - Chennai", bg:"bg-neutral-600" },
-  { id:4, title:"Mohan",    area:"Interior Design - Chennai", bg:"bg-zinc-700"    },
-  { id:5, title:"NBS Vijay Shankar",    area:"Interior Design - Chennai", bg:"bg-zinc-700"    },
+    { id: 1, title: 'Arun', area: 'Interior Design - Chennai', bg: 'bg-stone-800' },
+    { id: 2, title: 'Baskar', area: 'Interior Design - Chennai', bg: 'bg-stone-700' },
+    { id: 3, title: 'Krishna', area: 'Interior Design - Chennai', bg: 'bg-neutral-600' },
+    { id: 4, title: 'Mohan', area: 'Interior Design - Chennai', bg: 'bg-zinc-700' },
+    { id: 5, title: 'NBS Vijay Shankar', area: 'Interior Design - Chennai', bg: 'bg-zinc-700' }
 ];
 
 export const TESTIMONIALS = [
-  {
-    img:"https://res.cloudinary.com/da9s9vymf/image/upload/v1775291650/priya_znpa6c.jpg", location:"Chennai", rating:5,
-    text:"We had a good experience with Arcmen Interior Designer in Chennai. We moved into our new house a few months ago. We stepped into their showroom without any idea about interiors. We came to know a lot of new designs and ideas in the market for home interiors through them. Even though our construction got a bit delayed in between, they were very involved and supportive throughout the project until completion and after too. We loved the way our home turned out to be as we had hoped. Only one suggestion is to reach out to interiors before you start your construction to bring out the best possible ideas and outcomes.We worked with our own electricians and the interior site engineer coordinated well with the electrician and plumbers to bring the expected outcome. Thanks to Arcmen."  ,
-    name:"Priya Dharshini",
-  },
-  {
-    img:"https://res.cloudinary.com/da9s9vymf/image/upload/v1775207584/client2_bis6wo.svg", location:"Chennai", rating:5,
-    text:"Arcmen interiors were the right find in terms of budget, communication, design, flexibility, site visits along with their expert suggestions and prompt execution. Our separator design and Pooja were executed perfect and is the highlight of our house. Would totally recommend Mr. Balaraman sir and their team to do up interiors.",
-    name:"krithika sukumar",
-  },
-  {
-    img:"https://res.cloudinary.com/da9s9vymf/image/upload/v1775207585/client3_m1318z.svg", location:"Chennai", rating:5,
-    text:"Our house is located in Ambur, 200 kms away from Chennai. We came to know about Arcmen via google. We contacted Mr. Balaraman. He responded very quickly. He asked us about the details of the house and our expected requirement. Balaraman sir and his team worked very hard to meet our needs and provided their suggestions. Highly knowledgeable right from start to end. After finalizing the 3D design and confirming the drawing details, they executed as same in the design. Arcmen team done a wonderful job to make our new home look perfect with their interior works. They used the same material which was quoted in the agreement. Budget including materials and labour cost didn't exceed the agreement. They completed the work within the given time without any delay using professional carpenters who worked day and night. We really appreciate the Arcmen interior design team for their sincere and perfection in work. Thank you. ",
+    {
+        img: 'https://res.cloudinary.com/da9s9vymf/image/upload/v1775291650/priya_znpa6c.jpg',
+        location: 'Chennai',
+        rating: 5,
+        text: 'We had a good experience with Arcmen Interior Designer in Chennai. We moved into our new house a few months ago. We stepped into their showroom without any idea about interiors. We came to know a lot of new designs and ideas in the market for home interiors through them. Even though our construction got a bit delayed in between, they were very involved and supportive throughout the project until completion and after too. We loved the way our home turned out to be as we had hoped. Only one suggestion is to reach out to interiors before you start your construction to bring out the best possible ideas and outcomes.We worked with our own electricians and the interior site engineer coordinated well with the electrician and plumbers to bring the expected outcome. Thanks to Arcmen.',
+        name: 'Priya Dharshini'
+    },
+    {
+        img: 'https://res.cloudinary.com/da9s9vymf/image/upload/v1775207584/client2_bis6wo.svg',
+        location: 'Chennai',
+        rating: 5,
+        text: 'Arcmen interiors were the right find in terms of budget, communication, design, flexibility, site visits along with their expert suggestions and prompt execution. Our separator design and Pooja were executed perfect and is the highlight of our house. Would totally recommend Mr. Balaraman sir and their team to do up interiors.',
+        name: 'krithika sukumar'
+    },
+    {
+        img: 'https://res.cloudinary.com/da9s9vymf/image/upload/v1775207585/client3_m1318z.svg',
+        location: 'Chennai',
+        rating: 5,
+        text: "Our house is located in Ambur, 200 kms away from Chennai. We came to know about Arcmen via google. We contacted Mr. Balaraman. He responded very quickly. He asked us about the details of the house and our expected requirement. Balaraman sir and his team worked very hard to meet our needs and provided their suggestions. Highly knowledgeable right from start to end. After finalizing the 3D design and confirming the drawing details, they executed as same in the design. Arcmen team done a wonderful job to make our new home look perfect with their interior works. They used the same material which was quoted in the agreement. Budget including materials and labour cost didn't exceed the agreement. They completed the work within the given time without any delay using professional carpenters who worked day and night. We really appreciate the Arcmen interior design team for their sincere and perfection in work. Thank you. ",
 
-    name:"Ramesh M",
-
-  },
+        name: 'Ramesh M'
+    }
 ];
 
 export const FAQS = [
-  {
-    q:"How much does home interior design cost?",
-    a:"Interior design cost depends on home size, materials, and scope of work. We share clear pricing after understanding your needs, with no hidden charges later.",
-  },
-  {
-    q:"Do you provide complete turnkey interior solutions?",
-    a:"Yes. Arcmen Interiors offers complete turnkey interiors, handling design, materials, execution, and final handover under one team.",
-  },
-  {
-    q:"Can I have design ideas before starting the work?",
-    a:"Yes. We provide detailed 3D design previews so you can see layouts, colors, and finishes clearly before approving and starting the interior work.",
-  },
-  {
-    q:"How long will the interior project take?",
-    a:"Project timelines depend on design and scope. After design approval, we follow a clear schedule and complete the work as planned.",
-  },
-  {
-    q:"Do you offer warranty on materials and work?",
-    a:"Yes. We use quality materials and provide warranty support, giving you peace of mind even after your home interior project is completed.",
-  },
+    {
+        q: 'How do I get started with Arcmen Interiors?',
+        a: 'Getting started is very simple. Just contact us for a free consultation. Our interior designers in Chennai will listen to your ideas, understand your budget and give you the best plan forward.'
+    },
+    {
+        q: 'Will I get a fixed price or will costs increase later?',
+        a: 'We are completely transparent with our pricing. Once our interior designers in Chennai finalize your design plan, we give you a clear fixed quote. No hidden costs and no surprises at the end.'
+    },
+    {
+        q: 'What makes Arcmen Interiors different from other interior designers in Chennai?',
+        a: 'We plan smart, use premium materials and handle everything from start to finish. From the first design to the final touch, our team takes care of it all so you can relax.'
+    },
+    {
+        q: 'Does Arcmen offer luxury interior design in Chennai?',
+        a: 'Yes, we do. As luxury interior designers in Chennai, we create beautiful high-end spaces with premium finishes, custom furniture, and designs made just for your lifestyle.'
+    },
+    {
+        q: 'Do you handle both interior design and decoration?',
+        a: 'Absolutely. We are both interior designers and interior decorators in Chennai. We design your space and style every corner so your home looks and feels complete.'
+    },
+    {
+        q: 'Which areas in Chennai do Arcmen Interiors serve?',
+        a: 'We serve all major areas across Chennai including Anna Nagar, Adyar, OMR, Velachery, Porur, and more. Wherever you are in Chennai, we are ready to help you.'
+    }
 ];

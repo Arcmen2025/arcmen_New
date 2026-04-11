@@ -134,18 +134,12 @@ export default function SpacesGrid() {
 
   return (
     <section id="portfolio" className="bg-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-
-
-        {/* Heading */}
+      <div className=" px-6 md:px-20">
         <div className="text-center mb-10 mt-10 md:mt-10">
           <h2 className="sec-head text-black font-extrabold !text-[28px] md:text-[34px]">
             Explore Arcmen's <span className="md:block">Signature Spaces</span>
           </h2>
         </div>
-
-
-        {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-10">
           {SPACE_TABS.map((tab) => (
             <button

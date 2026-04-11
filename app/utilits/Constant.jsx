@@ -1,9 +1,4 @@
 import React from "react";
-// import End from "../assets/end.svg";
-// import Transparent from "../assets/transparent.svg";
-// import Quality from "../assets/Quality.svg";
-// import Time from "../assets/Timely.svg";
-
 
 export const FEATURES = [
   {
@@ -12,10 +7,7 @@ export const FEATURES = [
     para: "Interior Solution",
     desc: (
       <>
-        From design planning to work completion, we handle every detail with precision. <strong>Our
-          interior architects</strong> handle everything in design, materials choosing, and execution
-        process.<strong> Our project</strong> team handle everything in production, purchase, install and
-        handover the project without stress.
+        As end-to-end interior designers in Chennai, we handle everything from design planning to final execution. Our team manages materials, production, and installation to deliver a smooth and stress-free experience.
       </>
     ),
   },
@@ -25,10 +17,7 @@ export const FEATURES = [
     para: "Pricing",
     desc: (
       <>
-        Clarity build trust, we honestly and clear communication
-        regarding your investment at every stage, our detailed final quotes ensuring  there are
-        no hidden charges and unexpected costs added to your bills later on.
-
+        We follow clear and honest pricing at every stage of your project. You get detailed estimates with no hidden costs, so you can plan your home interiors in Chennai with confidence.
       </>
     ),
   },
@@ -38,10 +27,8 @@ export const FEATURES = [
     para: "Materials",
     desc: (
       <>
-        We use only German brand fittings, Water proof boards & Best
-        Woods, hardware’s, paints for your home. Every item is handpicked for its strength and
-        beauties, ensuring your interiors stay looking brand new for many years and long
-        lasting.</>
+        We use high-quality materials and trusted fittings to ensure durability and a long-lasting finish. Every element is carefully selected to enhance both function and style in your home interiors in Chennai.
+      </>
     ),
   },
   {
@@ -50,9 +37,7 @@ export const FEATURES = [
     para: "& Handover",
     desc: (
       <>
-        We value your schedule and work hard to
-        finish on time. Our organised process helps us avoid delays, making sure we hand over
-        your beautiful home key exactly when we promised.
+        Our team follows a well-planned process to complete projects on time. From design to handover, we ensure smooth coordination and timely delivery without delays.
       </>
     ),
   },
@@ -62,22 +47,17 @@ export const FEATURES = [
     para: "One Team",
     desc: (
       <>
-        Architects, interior designers, Engineers, interior fitment,
-        electrical, Plumbing, Smart lighting, counter top works, Automation, Flooring, Wall
-        décor, Soft furnishings.
+        As interior designers in Chennai, we bring everything under one roof — from design planning to execution and final installation. Our team handles every detail to ensure a smooth and well-coordinated experience.
       </>
     ),
   },
   {
     icon: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207564/Timely_vxjjgi.svg",
-    title: "Bespoke ",
+    title: "Bespoke",
     para: "Design Approach",
     desc: (
       <>
-        Every space we create reflection of your lifestyle
-        and aspirations. Our designers fully customized interior spaces aafrom scratch, tailored
-        specifically to a client’s lifestyle, taste, and space rather than using standard templates
-        or modular solutions.
+        Every home is designed to match your lifestyle, needs, and space. We create customized interiors that are both functional and visually appealing, instead of using standard or repetitive designs.
       </>
     ),
   },
@@ -87,9 +67,7 @@ export const FEATURES = [
     para: "Management",
     desc: (
       <>
-        A single point of contact ensures a smooth
-        and stress-free experience. We keep you informed at every stage, coordinating
-        seamlessly to deliver a hassle-free journey from start to finish.
+        A single point of contact manages your project from start to finish. We ensure clear communication, regular updates, and smooth coordination at every stage of your home interiors in Chennai.
       </>
     ),
   },
@@ -99,9 +77,7 @@ export const FEATURES = [
     para: "Support & Assurance",
     desc: (
       <>
-        Our relationship doesn’t end at handover.
-        We provide reliable post-completion support to ensure your space continues to perform
-        and impress long after delivery.
+        Our support continues even after project completion. We provide reliable after-sales service to ensure your home interiors in Chennai remain in good condition and perform well over time.
       </>
     ),
   },

@@ -68,10 +68,8 @@ export default function TestimonialsSection() {
   }, [active]);
 
   return (
-    <section className="pb-20 bg-white">
+    <section className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
-
-        {/* Heading */}
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 40 }}
@@ -83,10 +81,7 @@ export default function TestimonialsSection() {
             Hear from our<span className="md:block">{" "}esteemed Clients!</span>
           </h2>
         </motion.div>
-
         <div className="grid md:grid-cols-12 gap-6 items-stretch">
-
-          {/* VIDEO (UNCHANGED) */}
           <div className="md:col-span-6">
             <div className="relative rounded-[6px] overflow-hidden bg-stone-800 min-h-[350px] md:min-h-[350px]">
 

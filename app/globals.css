@@ -1,11 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-/* @tailwind base; */
 @tailwind components;
 @tailwind utilities;
 
 :root {
     --background: #ffffff;
     --foreground: #171717;
+    --landing: 'Montserrat', system-ui, -apple-system, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,19 +26,15 @@ body {
     margin: 0px !important;
     line-height: 1.85714285714286;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Poppins', sans-serif !important;
+
+
+.landing-font {
+    font-family: var(--landing) !important;
 }
 
 .Build-page {
     background: #4dbc15;
     padding: 60px 0;
-   
 }
 
 .build-header h5 {
@@ -89,7 +86,6 @@ h6 {
         height: 10px;
     }
 }
-
 
 .Build-Décor {
     background: #4dbc15;
@@ -161,12 +157,10 @@ h6 {
 }
 
 @media screen and (max-width: 767px) {
-
     .architecuralPage {
         margin-top: 0px;
     }
 }
-
 
 .nav-link {
     cursor: pointer;
@@ -175,21 +169,20 @@ h6 {
 .modal-header .btn-close {
     border: 0px !important; /* Change border color to red */
     --bs-btn-close-color: #ff0000 !important; /* Change SVG color to red */
-    background-color: #858585;
+    background-color: #706b6b;
 }
 
 .architecuralPage {
     margin-top: 8rem;
 }
 
-
-.banner1{
+.banner1 {
     height: 580px;
     object-fit: cover;
     margin-top: 60px;
 }
 
-.banner2{
+.banner2 {
     display: none;
 }
 
@@ -197,29 +190,26 @@ h6 {
     height: 100%;
 }
 
-
-
 @media screen and (max-width: 989px) {
-    .banner1{
-        margin-top:0;
+    .banner1 {
+        margin-top: 0;
     }
 }
 
 @media screen and (max-width: 700px) {
-    .banner1{
+    .banner1 {
         margin-top: 10px;
         display: none;
     }
 
-    .popup-img1{
+    .popup-img1 {
         object-fit: cover;
     }
 
-    .bannerspace{
+    .bannerspace {
         padding: 0px !important;
     }
 
-    
     /* .modular-desktop{
         display: none;
     } */
@@ -231,21 +221,19 @@ h6 {
 
     .popup-fminter img {
         width: 100%;
-        height: 280px !important;
+        /* height: 280px !important; */
+        height: 250px !important;
         margin-top: 64px;
     }
 
-    .newpopup{
+    .newpopup {
         padding: 4px;
     }
 
-  
-
-    .banner2{
+    .banner2 {
         /* height: 320px !important;  */
         object-fit: cover;
     }
 }
-
 
 /* style={{ height: "580px", objectFit: "cover", marginTop: "60px" }} */

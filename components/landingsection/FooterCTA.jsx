@@ -1,14 +1,10 @@
-// import footerimg from "../../assets/footerbanner.png";
 "use client"
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
-// import { useEffect } from "react";
 
 export default function FooterCTA() {
-
   const [bubbles, setBubbles] = useState([]);
-
-   useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       const id = Date.now();
 
@@ -31,8 +27,6 @@ export default function FooterCTA() {
   return (
     <>
       <section className="relative h-[500px] md:h-[500px] overflow-hidden">
-
-       
         <div className="absolute inset-0">
           <div
             className="absolute inset-0"
@@ -45,87 +39,68 @@ export default function FooterCTA() {
           />
           <div className="absolute inset-0 bg-black/40" />
         </div>
-
-        {/* Center Content */}
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-          
+
           <h2 className="text-white text-3xl md:text-5xl font-bold mb-6 leading-tight">
             Your perfect home is
             <span className="block">one click away.</span>
           </h2>
-
-          {/* Button */}
-          {/* <a
-            href="#contact"
-            className="bg-white text-black px-10 py-2 rounded-md font-medium transition-all duration-300 hover:bg-black hover:text-white hover:scale-105"
-          >
-            Book Free Site Visit
-          </a> */}
-
           <div className="relative inline-block">
 
-    <motion.a
-  href="#contact"
-  initial={{ scale: 1 }}
-  animate={{ scale: [1, 1.06, 1] }}
-  transition={{
-    duration: 2,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
-  whileTap={{ scale: 0.95 }}
-  className="
+            <motion.a
+              href="#contact"
+              initial={{ scale: 1 }}
+              animate={{ scale: [1, 1.06, 1] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="
     inline-block  
     transform-gpu 
     relative z-10 
-    border border-black 
-    bg-[#7c381a] text-white 
+    bg-[#4dbc15] text-white 
     px-10 py-2 rounded-[8px] 
     font-medium text-sm md:text-base 
      hover:text-white transition
   "
->
-  Book Free Site Visit
-</motion.a>
+            >
+              Book Free Site Visit
+            </motion.a>
 
-    {bubbles.map((b) => (
-      <motion.span
-        key={b.id}
-        initial={{ y: 0, opacity: 0.4 }}
-        animate={{ y: -60, opacity: 0.4 }}
-        transition={{ duration: 2, ease: "easeOut" }}
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: `${b.left}%`,
-          width: b.size,
-          height: b.size,
-          borderRadius: "50%",
-          background: "#7c381a",
-          pointerEvents: "none",
-        }}
-      />
-    ))}
-
-  </div>
-
-          {/* Subtext */}
+            {bubbles.map((b) => (
+              <motion.span
+                key={b.id}
+                initial={{ y: 0, opacity: 0.4 }}
+                animate={{ y: -60, opacity: 0.4 }}
+                transition={{ duration: 2, ease: "easeOut" }}
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: `${b.left}%`,
+                  width: b.size,
+                  height: b.size,
+                  borderRadius: "50%",
+                  background: "#4dbc15",
+                  pointerEvents: "none",
+                }}
+              />
+            ))}
+          </div>
           <p className="text-white/70 text-sm md:text-base mt-6 max-w-xl">
             Let's plan your space together.
           </p>
-
         </div>
       </section>
-
-      
-      <footer className="bg-black mx-auto py-8 px-6 md:px-12">
+      <div className="bg-black mx-auto py-8 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
-          
           <p className="text-white text-center md:text-[14px] text-xs ">
             © {new Date().getFullYear()} Arcmen kitchens and interiors. All Rights Reserved.
           </p>
         </div>
-      </footer>
+      </div>
     </>
   );
 }

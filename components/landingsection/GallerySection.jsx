@@ -8,14 +8,12 @@ export default function GallerySection() {
     { img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775458569/arcmenec1_sx8rsq.jpg", label: "Experience center" },
     { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307980/Factory_1_2_ofxco6.jpg", label: "Factory" },
     { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307976/Experience_Center1_yca70b.jpg", label: "Experience center" },
-    // { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307974/Experience_Center_4_ftx7gh.jpg", label: "Experience center" },
     { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307975/Factory_1_3_crdad7.jpg", label: "Factory" },
     { img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775458569/arcmenec2_k2shxn.jpg", label: "Experience center" },
     { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307971/Factory_1_4_molox8.jpg", label: "Factory" },
     { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307972/Experience_Center_2_xcx101.jpg", label: "Experience center" },
   ];
 
-  // preload
   useEffect(() => {
     galleryItems.forEach((item) => {
       const img = new Image();
@@ -23,7 +21,6 @@ export default function GallerySection() {
     });
   }, []);
 
-  // group logic (same as yours)
   const filledItems = [...galleryItems];
   while (filledItems.length % 6 !== 0) {
     filledItems.push(galleryItems[filledItems.length % galleryItems.length]);
@@ -36,16 +33,27 @@ export default function GallerySection() {
 
   return (
     <section className="md:py-12 overflow-hidden">
-      <motion.div className="text-center mb-10"
-      initial={{ opacity: 0, y: 40 }}
+      <div className="text-center mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: false }}
-      >
-        <h2 className="!text-2xl md:text-4xl font-bold">
-          How We Build Your Home 
-        </h2></motion.div>
-
+        >
+          <h2 className="!text-2xl md:text-4xl font-bold">
+            Experience How Your Home Interiors Are Created
+          </h2></motion.div>
+        <motion.div className="text-center "
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: false }}
+        >
+          <p className="text-[#666666] text-sm md:text-[16px] max-w-2xl mx-auto">
+            Visit our experience center and see how we design and build quality home interiors in Chennai
+          </p>
+        </motion.div>
+      </div>
       <div className="overflow-hidden">
         <div className="marquee flex gap-10">
 
@@ -78,7 +86,7 @@ export default function GallerySection() {
 
       <style jsx>{`
         .marquee {
-          animation: scroll 10s linear infinite;
+          animation: scroll 8s linear infinite;
           will-change: transform;
         }
 
@@ -97,7 +105,7 @@ export default function GallerySection() {
 
         @media (max-width: 768px) {
           .marquee {
-            animation-duration: 10s;
+            animation-duration: 20s;
           }
         }
       `}</style>
