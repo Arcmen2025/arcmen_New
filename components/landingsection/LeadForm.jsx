@@ -9,7 +9,7 @@ const FIELDS = [
   { name: "name", placeholder: "Full Name", type: "text" },
   { name: "phone", placeholder: "Mobile Number", type: "tel" },
   { name: "email", placeholder: "Email Id", type: "email" },
-  { name: "location", placeholder: "Location", type: "text" },
+  { name: "city", placeholder: "Location", type: "text" },
 ];
 
 const API_URL =
@@ -22,7 +22,6 @@ export default function LeadForm() {
     email: "",
     city: "",
     project: "",
-    message: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -79,7 +78,6 @@ export default function LeadForm() {
         city: form.city,
         services: form.services,
         projectType: form.project || "Residential Interior",
-        message: form.message,
       };
 
       const response = await axios.post(API_URL, payload);
@@ -94,7 +92,6 @@ export default function LeadForm() {
           city: "",
           services: "",
           project: "",
-          message: "",
         });
 
         setTimeout(() => setSuccess(false), 2500);

@@ -54,7 +54,7 @@ export default function FAQAccordion() {
                   href="mailto:production@arcmen.com"
                   className="text-blue-600 underline"
                 >
-                  production@arcmen.com
+                 contact@arcmeninterior.com
                 </a>
               </span>
             </p>

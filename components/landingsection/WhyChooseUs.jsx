@@ -159,7 +159,7 @@ export default function WhyChooseUs() {
     bg-[#4dbc15] text-white 
     md:px-10 py-2 rounded-[8px] 
     px-4
-    font-medium text-sm md:text-base 
+    font-medium text-xs md:text-base 
      hover:text-white transition
   "
             >

@@ -1,10 +1,8 @@
 "use client";
 import LeadForm from "./LeadForm";
 import { motion } from "framer-motion";
-import { FaStar, FaFileAlt, FaClock } from "react-icons/fa";
+import { FaStar, FaClock } from "react-icons/fa";
 import { MdWork, MdAccessTime } from "react-icons/md";
-import { IoCall } from "react-icons/io5";
-import { FaWhatsapp } from "react-icons/fa";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -21,7 +19,7 @@ const fadeUp = {
 
 export default function Hero() {
   return (
-    <section className="relative md:pt-[40px] min-h-screen flex flex-col justify-center">
+    <section className="relative  pt-10 md:pt-0 min-h-screen flex flex-col justify-center">
       <div className="absolute inset-0">
         <div
           className="absolute inset-0"
@@ -38,17 +36,17 @@ export default function Hero() {
 
       <div className="relative z-10 flex-1 flex items-center">
         <div className="px-6 md:px-32 w-full pb-8">
-          <motion.img
-            src="https://res.cloudinary.com/da9s9vymf/image/upload/v1775207563/whitelogo_ogcb0n.svg"
-            alt="Arcmen Logo"
-            className="w-30 h-30 md:w-[140px] md:h-[100px]  mt-10 md:mt-0"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          />
+
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="text-white mt-10 md:mt-0">
+            <div className="text-white ">
+              <motion.img
+                src="https://res.cloudinary.com/da9s9vymf/image/upload/v1775207563/whitelogo_ogcb0n.svg"
+                alt="Arcmen Logo"
+                className="w-13 md:w-20 object-contain md:hidden"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              />
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
@@ -84,19 +82,18 @@ export default function Hero() {
                 whileInView="show"
                 custom={3}
                 viewport={{ once: true }}
-                className="text-gray-300 text-sm md:text-base mb-6"
+                className="text-gray-200 text-sm md:text-base mb-6"
               >
                 Smart planning, premium designs, <br />
                 and complete execution from design to delivery.
               </motion.p>
-
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="show"
                 custom={4}
                 viewport={{ once: true }}
-                className="flex flex-wrap gap-4 text-sm mb-8"
+                className="flex flex-col gap-2 text-sm mb-8"
               >
                 <div className="flex items-center gap-2">
                   <FaClock size={20} className="text-[#4dbc15]" />
@@ -113,42 +110,36 @@ export default function Hero() {
                   On-Time Delivery
                 </div>
               </motion.div>
-
               <motion.a
+                href="#contact"
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="show"
                 custom={5}
                 viewport={{ once: true }}
-                href="#contact"
-                className="inline-flex items-center gap-2 bg-[#4dbc15] hover:bg-[#3a9c10] text-white font-semibold px-10 py-2.5 rounded-lg transition mb-3"
+                className="relative inline-flex items-center gap-2 
+             bg-[#4dbc15]/10 
+             text-[#4dbc15] font-medium text-sm 
+             px-4 py-2 rounded-full 
+             backdrop-blur-md overflow-hidden"
               >
-                Get  Up to  20% on Interiors
+                <span className="absolute inset-0 rounded-full border border-[#4dbc15]/40"></span>
+                <span className="absolute inset-0 rounded-full overflow-hidden">
+                  <span className="absolute -left-1/2 top-0 h-full w-1/2 
+                     bg-gradient-to-r from-transparent via-[#4dbc15]/40 to-transparent 
+                     animate-[shine_2s_linear_infinite]" />
+                </span>
+                <span className="relative z-10 text-md flex items-center gap-2">
+                  <motion.span
+                  className="text-lg"
+                    animate={{ rotate: [0, 15, -10, 0], y: [0, -4, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.2 }}
+                  >
+                    🎉
+                  </motion.span>
+                  Get 20% Off on Interiors
+                </span>
               </motion.a>
-
-
-
-
-              <motion.div
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="show"
-                custom={8}
-                viewport={{ once: true }}
-                className="flex items-center text-sm border-t border-white/20 px-12"
-              >
-                <a
-                  href="tel:+919876543210"
-                  className="flex items-center gap-1 "
-                >
-                  <IoCall className="text-yellow-600 text-2xl" />
-                  <div className="flex flex-col leading-tight">
-                    <span className="text-yellow-600 font-bold text-lg">
-                      +91 98765 43210
-                    </span>
-                  </div>
-                </a>
-              </motion.div>
             </div>
             <motion.div
               variants={fadeUp}

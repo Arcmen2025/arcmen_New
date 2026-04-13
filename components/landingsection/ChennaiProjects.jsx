@@ -38,7 +38,7 @@ const IMAGES = [
 
 const PROJECTS_DATA = [
   {
-    title: "Mohan - Ocean Chlorophyll Apartment",
+    title: "Mr.Mohan - Ocean Chlorophyll Apartment",
     location: "Porur, Chennai",
     area: "1200 Sq.ft.",
     description: "A compact home crafted for functionality, aesthetics, and everyday comfort.",
@@ -46,15 +46,15 @@ const PROJECTS_DATA = [
     thumbs: [IMAGES[1], IMAGES[2], IMAGES[3], IMAGES[4]],
   },
   {
-    title: "Krishna",
-    location: "Panayur, ECR Chennai",
+    title: "Mr.Krishna",
+    location: "Ranipet TamilNadu",
     area: "3200 Sq.ft.",
     description: "A spacious villa with timeless design, premium finishes, and elegant detailing.",
     mainImage: IMAGES[5],
     thumbs: [IMAGES[6], IMAGES[7], IMAGES[8], IMAGES[9]],
   },
   {
-    title: "Arun",
+    title: "Mr.Arun",
     location: "Kumbakonam, Tamilnadu",
     area: "3200 Sq.ft.",
     description: "A spacious villa with timeless design, premium finishes, and elegant detailing.",
@@ -62,16 +62,16 @@ const PROJECTS_DATA = [
     thumbs: [IMAGES[11], IMAGES[12], IMAGES[13], IMAGES[14]],
   },
   {
-    title: "NBS Vijayshankar",
-    location: "Ranipet",
+    title: "Mr.NBS Vijayshankar",
+    location: "Panaiyur Ecr Chennai",
     area: "3200 Sq.ft.",
     description: "A spacious villa with timeless design, premium finishes, and elegant detailing.",
     mainImage: IMAGES[15],
     thumbs: [IMAGES[16], IMAGES[17], IMAGES[18], IMAGES[19]],
   },
   {
-    title: "Baskar",
-    location: "Kovur",
+    title: "Mr.Baskar",
+    location: "Kovur chennai",
     area: "3200 Sq.ft.",
     description: "A spacious villa with timeless design, premium finishes, and elegant detailing.",
     mainImage: IMAGES[20],
@@ -105,26 +105,14 @@ function ProjectCard({ project, delay }) {
       </div>
       <div className="col-span-1 md:col-span-2 flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-5 pt-1">
         <div>
-          <h3 className="font-playfair text-[18px] md:text-[clamp(18px,2.4vw,24px)] font-bold text-[#1a1a1a] mb-1">
+          <h4 className="font-playfair text-[18px] md:text-[clamp(18px,2.4vw,24px)] font-bold text-[#1a1a1a] mb-1">
             {project.title}
-          </h3>
+          </h4>
           <div className="flex items-center gap-2 text-[12px] md:text-[13px]">
             <BiCurrentLocation size={14} />
             <span>{project.location}</span>
           </div>
         </div>
-        <motion.a
-          animate={{ scale: [1, 1.05, 1] }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          href="#contact"
-          className="inline-flex items-center gap-2 bg-[#4dbc15] hover:bg-[#3a9c10] text-white font-medium px-4 py-2 rounded-lg transition mb-3"
-        >
-          Plan My Home Interiors Now →
-        </motion.a>
       </div>
     </motion.div>
   );
@@ -140,13 +128,13 @@ export default function ChennaiProjects() {
           </p>
           <h2 className="font-playfair text-[22px] md:text-[clamp(28px,4vw,40px)] font-extrabold text-[#1a1a1a] leading-snug">
             Every Home in Chennai We Designed <br className="hidden md:block" />
-            Became a <span className="text-[#c49b66]">Space to Love</span>
+            Became a <span className="text-[#4dbc15]">Space to Love</span>
           </h2>
           <p className="mt-2 text-[13px] md:text-[15px] max-w-xl mx-auto">
             From compact apartments to spacious villas, we design interiors that reflect your story, style, and the way you live.
           </p>
         </div>
-        <div className="flex flex-col gap-8 md:gap-10">
+        <div className="flex flex-col gap-8 md:gap-20">
           {PROJECTS_DATA.map((project, index) => (
             <ProjectCard key={index} project={project} delay={index * 0.2} />
           ))}

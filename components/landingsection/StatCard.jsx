@@ -66,7 +66,7 @@ const AnimatedNumber = memo(({ value, suffix, delay, start }) => {
     );
 });
 
-function TimelineItem({ value, label, suffix = "+", delay, start }) {
+function TimelineItem({ value, label, suffix = "", delay, start }) {
     const [show, setShow] = useState(false);
 
     useEffect(() => {
@@ -124,7 +124,7 @@ export default function StatsSection() {
     return (
         <section
             ref={ref}
-            className="py-16 px-6 md:px-12 bg-gradient-to-br from-[#f7f5f2] via-[#efe7df] to-[#e4d7c8]"
+            className="py-16 px-6 md:px-12 bg-gradient-to-br bg-gray-100"
         >
             <div className="max-w-6xl mx-auto text-center mb-12">
                 <p className="text-[12px] tracking-[4px] uppercase text-[#4dbc15] mb-2">
@@ -144,9 +144,9 @@ export default function StatsSection() {
                 ></div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-10 relative">
-                    <TimelineItem value={2500} label="Happy Clients" delay={0} start={inView} />
-                    <TimelineItem value={35} label="On-Time Delivery %" suffix="%" delay={500} start={inView} />
-                    <TimelineItem value={15} label="Material Warranty (Years)" delay={1000} start={inView} />
+                    <TimelineItem value={2500} label="Happy Clients" suffix="+" delay={0} start={inView} />
+                    <TimelineItem value={35} label="On-Time Delivery" suffix=" days" delay={500} start={inView} />
+                    <TimelineItem value={15} label="Years  Warranty" delay={1000} start={inView} />
                     <TimelineItem value={"No"} label="Hidden Cost" suffix="" delay={1500} start={inView} />
                 </div>
             </div>

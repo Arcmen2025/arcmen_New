@@ -1,5 +1,4 @@
 "use client";
-
 import { PROCESS_STEPS } from "@/app/utilits/constants";
 import { motion } from "framer-motion";
 
@@ -7,7 +6,7 @@ export default function ProcessSection() {
   return (
     <section className="bg-white py-10">
       <div className=" px-6 md:px-20">
-        <div className="bg-[#7aa33a] rounded-[30px] p-8 md:p-14">
+        <div className="bg-[#669c4a] rounded-[30px] p-8 md:p-14">
           <div className="grid md:grid-cols-2 gap-0 items-start">
             <motion.div
               initial={{ opacity: 0, y: 40 }}

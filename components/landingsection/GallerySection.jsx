@@ -85,29 +85,30 @@ export default function GallerySection() {
       </div>
 
       <style jsx>{`
-        .marquee {
-          animation: scroll 8s linear infinite;
-          will-change: transform;
-        }
+    .marquee {
+  display: flex;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+}
 
-        .marquee:hover {
-          animation-play-state: paused;
-        }
+.marquee:hover {
+  animation-play-state: paused;
+}
 
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
 
-        @media (max-width: 768px) {
-          .marquee {
-            animation-duration: 20s;
-          }
-        }
+@media (max-width: 768px) {
+  .marquee {
+    animation-duration: 60s;
+  }
+}
       `}</style>
     </section>
   );
