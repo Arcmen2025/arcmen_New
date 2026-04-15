@@ -20,7 +20,6 @@ export default function LeadForm() {
     name: "",
     phone: "",
     email: "",
-    city: "",
     project: "",
   });
 
@@ -75,22 +74,15 @@ export default function LeadForm() {
         fullName: form.name,
         mobileNumber: form.phone,
         email: form.email,
-        city: form.city,
-        services: form.services,
         projectType: form.project || "Residential Interior",
       };
-
       const response = await axios.post(API_URL, payload);
-
       if (response.status === 200 || response.status === 201) {
         setSuccess(true);
-
         setForm({
           name: "",
           phone: "",
           email: "",
-          city: "",
-          services: "",
           project: "",
         });
 

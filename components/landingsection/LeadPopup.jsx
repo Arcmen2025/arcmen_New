@@ -16,7 +16,6 @@ export default function LeadPopup() {
         name: "",
         phone: "",
         email: "",
-        city: "",
         project: "",
     });
 
@@ -47,7 +46,6 @@ export default function LeadPopup() {
                 fullName: form.name,
                 mobileNumber: form.phone,
                 email: form.email,
-                city: form.city,
                 projectType: form.project || "Residential Interior",
             };
 

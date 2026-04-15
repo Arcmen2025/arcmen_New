@@ -36,17 +36,17 @@ export default function Hero() {
 
       <div className="relative z-10 flex-1 flex items-center">
         <div className="px-6 md:px-32 w-full pb-8">
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <motion.img
+            src="https://res.cloudinary.com/da9s9vymf/image/upload/v1775207563/whitelogo_ogcb0n.svg"
+            alt="Arcmen Logo"
+            className="w-13 md:w-20 object-contain "
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          />
+          <div className="flex flex-col-reverse md:flex-row items-center gap-12">
             <div className="text-white ">
-              <motion.img
-                src="https://res.cloudinary.com/da9s9vymf/image/upload/v1775207563/whitelogo_ogcb0n.svg"
-                alt="Arcmen Logo"
-                className="w-13 md:w-20 object-contain md:hidden"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              />
+
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
@@ -131,7 +131,7 @@ export default function Hero() {
                 </span>
                 <span className="relative z-10 text-md flex items-center gap-2">
                   <motion.span
-                  className="text-lg"
+                    className="text-lg"
                     animate={{ rotate: [0, 15, -10, 0], y: [0, -4, 0] }}
                     transition={{ repeat: Infinity, duration: 1.2 }}
                   >
@@ -147,7 +147,7 @@ export default function Hero() {
               whileInView="show"
               custom={2}
               viewport={{ once: true }}
-              className="flex justify-center md:justify-end"
+              className="flex justify-center md:justify-end w-full md:max-w-2xl"
             >
               <LeadForm />
             </motion.div>
