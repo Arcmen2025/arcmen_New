@@ -78,11 +78,32 @@ const DynamicBlog = () => {
                                     
                                     <div key={index} className="blog-section">
 
-                                        <p className={`dynamic-blog-paragraph ${index % 2 === 0 ? 'image-left' : 'image-right'}`}>
-                                            <img src={data?.blogImage} alt={`blog ${index}`} className="blog-image" loading="lazy" />
-                                        <h4 className="pt-5" style={{fontSize: "24px",fontWeight:"700"}}>{data?.blogTitle}</h4>
-                                            <span dangerouslySetInnerHTML={boldContentAfterColon(data?.content)}></span>
-                                        </p>
+                                       <div className="flex justify-center">
+  <div className="w-full max-w-3xl flex flex-col gap-5 px-4 py-6">
+    
+    <h4
+      className="text-center pt-5"
+      style={{ fontSize: "28px", fontWeight: "700" }}
+    >
+      {data?.blogTitle}
+    </h4>
+
+    <img
+      src={data?.blogImage}
+      alt={`blog ${index}`}
+      className="w-full rounded-lg shadow-md object-cover"
+      loading="lazy"
+      style={{ maxHeight: "400px" }}
+    />
+
+    <div
+      className="text-gray-700 leading-relaxed text-[16px]"
+      dangerouslySetInnerHTML={boldContentAfterColon(data?.content)}
+    />
+  </div>
+</div>
+                                        
+                                        
                                     </div>
 
                                 ))}
