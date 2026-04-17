@@ -111,13 +111,6 @@ export default function LeadPopup() {
                         className="border rounded-lg px-4 py-2 text-sm"
                     />
 
-                    <input
-                        name="city"
-                        placeholder="Location"
-                        onChange={onChange}
-                        className="border rounded-lg px-4 py-2 text-sm"
-                    />
-
                     <select
                         name="project"
                         onChange={onChange}

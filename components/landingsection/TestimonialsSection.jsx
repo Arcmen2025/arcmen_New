@@ -17,7 +17,7 @@ export default function TestimonialsSection() {
     "https://res.cloudinary.com/da9s9vymf/video/upload/v1775474995/3_Testimonial_Domnic_t4xw0t.mp4",
     "https://res.cloudinary.com/da9s9vymf/video/upload/v1775475245/1_Testimonial_Kiran_Kumar_hyclmd.mp4",
     // "https://res.cloudinary.com/da9s9vymf/video/upload/v1775207608/video3_b4iuqz.mp4",
-    
+
   ];
 
   const toggleReadMore = (index) => {
@@ -68,7 +68,7 @@ export default function TestimonialsSection() {
   }, [active]);
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-10 md:py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <motion.div
           className="text-center mb-12"
@@ -77,14 +77,13 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: false }}
         >
-          <h2 className="sec-head text-black font-extrabold !text-[28px] !md:text-[34px] 2xl:text-[48px]">
+          <h2 className="sec-head text-black font-extrabold text-3xl">
             Hear from our<span className="md:block">{" "}esteemed Clients!</span>
           </h2>
         </motion.div>
         <div className="grid md:grid-cols-12 gap-6 items-stretch">
           <div className="md:col-span-6">
             <div className="relative rounded-[6px] overflow-hidden bg-stone-800 min-h-[350px] md:min-h-[350px]">
-
               <motion.div
                 layoutId="testimonial-video"
                 onClick={() => setVideoExpanded(true)}
@@ -103,14 +102,10 @@ export default function TestimonialsSection() {
                   className="w-full h-full rounded-[6px] object-cover"
                 />
               </motion.div>
-
               <div className="absolute inset-0 rounded-[6px] bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
-
               <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between pointer-events-none">
                 <p className="text-white font-bold text-sm leading-snug max-w-[70%]">
-                  {/* Discover what our clients think<br />about our work. */}
                 </p>
-
                 <button
                   onClick={() => setVideoExpanded(true)}
                   className="w-12 h-12 bg-black rounded-full flex items-center justify-center pointer-events-auto"
@@ -128,23 +123,18 @@ export default function TestimonialsSection() {
                 </button>
               </div>
             </div>
-
-            {/* DOTS (UNCHANGED) */}
             <div className="flex justify-center gap-2 mt-4">
               {videos.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setActive(index)}
-                  className={`!w-1 h-1 rounded-full ${
-                    active === index ? "bg-black scale-110" : "bg-gray-300"
-                  }`}
+                  className={`!w-1 h-1 rounded-full ${active === index ? "bg-black scale-110" : "bg-gray-300"
+                    }`}
                 />
               ))}
             </div>
           </div>
-
-          {/* CONTENT (ONLY UPDATED PART) */}
-          <div className="md:col-span-6 flex flex-col gap-4">
+          <div className="hidden md:block md:col-span-6 flex flex-col gap-4">
             {TESTIMONIALS.map((t, i) => {
               const isOpen = expanded === i;
               const isLong = t.text.length > MAX_CHARS;

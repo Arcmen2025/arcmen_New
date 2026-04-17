@@ -59,7 +59,7 @@ function useCountUp(end, duration = 1500, delay = 0, startTrigger = false) {
 const AnimatedNumber = memo(({ value, suffix, delay, start }) => {
     const count = useCountUp(value, 1500, delay, start);
     return (
-        <h2 className="text-2xl md:text-4xl font-semibold text-[#1a1a1a]">
+        <h2 className="text-2xl md:text-3xl font-semibold text-[#1a1a1a]">
             {count}
             {suffix}
         </h2>
@@ -86,11 +86,10 @@ function TimelineItem({ value, label, suffix = "", delay, start }) {
             {typeof value === "number" ? (
                 <AnimatedNumber value={value} suffix={suffix} delay={delay} start={start} />
             ) : (
-                <h2 className="text-2xl md:text-4xl font-semibold text-[#1a1a1a]">
+                <h2 className="text-2xl md:text-3xl font-semibold text-[#1a1a1a]">
                     {value}
                 </h2>
             )}
-
             <p className="text-gray-600 text-sm mt-1">{label}</p>
         </div>
     );
@@ -124,26 +123,20 @@ export default function StatsSection() {
     return (
         <section
             ref={ref}
-            className="py-16 px-6 md:px-12 bg-gradient-to-br bg-gray-100"
+            className="mb-3 md:py-16 px-6 md:px-12 bg-gradient-to-br "
         >
-            <div className="max-w-6xl mx-auto text-center mb-12">
-                <p className="text-[12px] tracking-[4px] uppercase text-[#4dbc15] mb-2">
+            <div className="max-w-6xl mx-auto text-center mb-5 md:mb-12">
+                <p className="font-semibold text-2xl md:text-3xl leading-tight  mb-2">
                     Why Clients Choose Us
                 </p>
-                <h2 className="text-md md:text-4xl font-medium">
-                    Numbers That Define Our Work
-                </h2>
             </div>
-
             <div className="relative max-w-6xl mx-auto">
                 <div className="hidden md:block absolute top-2 left-0 w-full h-[2px] bg-[#4dbc15]"></div>
-
                 <div
                     className="hidden md:block absolute top-2 left-0 h-[2px] bg-[#4dbc15] transition-all"
                     style={{ width: `${progress}%` }}
                 ></div>
-
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-10 relative">
+                <div className="grid grid-cols-2 md:grid-cols-4  md:gap-10 relative">
                     <TimelineItem value={2500} label="Happy Clients" suffix="+" delay={0} start={inView} />
                     <TimelineItem value={35} label="On-Time Delivery" suffix=" days" delay={500} start={inView} />
                     <TimelineItem value={15} label="Years  Warranty" delay={1000} start={inView} />

@@ -9,7 +9,6 @@ const FIELDS = [
   { name: "name", placeholder: "Full Name", type: "text" },
   { name: "phone", placeholder: "Mobile Number", type: "tel" },
   { name: "email", placeholder: "Email Id", type: "email" },
-  { name: "city", placeholder: "Location", type: "text" },
 ];
 
 const API_URL =

@@ -31,20 +31,20 @@ export default function Hero() {
             backgroundRepeat: "no-repeat",
           }}
         />
-        <div className="absolute inset-0 bg-black/65"></div>
+        <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
       <div className="relative z-10 flex-1 flex items-center">
-        <div className="px-6 md:px-32 w-full pb-8">
+        <div className="px-6 md:px-32 w-full">
           <motion.img
             src="https://res.cloudinary.com/da9s9vymf/image/upload/v1775207563/whitelogo_ogcb0n.svg"
             alt="Arcmen Logo"
-            className="w-13 md:w-20 object-contain "
+            className="w-15 md:w-20 object-cover "
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           />
-          <div className="flex flex-col-reverse md:flex-row items-center gap-12">
+          <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="text-white ">
 
               <motion.div
@@ -76,7 +76,7 @@ export default function Hero() {
                 </span>
               </motion.h1>
 
-              <motion.p
+              {/* <motion.p
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="show"
@@ -86,31 +86,31 @@ export default function Hero() {
               >
                 Smart planning, premium designs, <br />
                 and complete execution from design to delivery.
-              </motion.p>
+              </motion.p> */}
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="show"
                 custom={4}
                 viewport={{ once: true }}
-                className="flex flex-col gap-2 text-sm mb-8"
+                className="flex flex-col gap-3 text-sm mb-6"
               >
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   <FaClock size={20} className="text-[#4dbc15]" />
                   30+ Years Experience
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   <MdWork size={20} className="text-[#4dbc15]" />
                   2000+ Projects Completed
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   <MdAccessTime size={20} className="text-[#4dbc15]" />
-                  On-Time Delivery
+                  35 days On-Time Delivery
                 </div>
               </motion.div>
-              <motion.a
+              {/* <motion.a
                 href="#contact"
                 variants={fadeUp}
                 initial="hidden"
@@ -139,7 +139,7 @@ export default function Hero() {
                   </motion.span>
                   Get 20% Off on Interiors
                 </span>
-              </motion.a>
+              </motion.a> */}
             </div>
             <motion.div
               variants={fadeUp}

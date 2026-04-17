@@ -1,7 +1,6 @@
 import fetchHandler, { fetchHandlerForm } from './Handler';
 
 export const createAds = async (body) => {
-    console.log(body,"------------->")
     try {
         const response = await fetchHandlerForm({
             method: 'POST',
@@ -21,7 +20,7 @@ export const getAllAds = async () => {
     try {
         const response = await fetchHandler({
             method: 'GET',
-            endpoint: 'poster', // Replace with your actual API endpoint
+            endpoint: 'poster' // Replace with your actual API endpoint
         });
         return response;
     } catch (error) {
@@ -33,7 +32,7 @@ export const getAllAdsByStatus = async () => {
     try {
         const response = await fetchHandler({
             method: 'GET',
-            endpoint: 'user/poster', // Replace with your actual API endpoint
+            endpoint: 'user/poster' // Replace with your actual API endpoint
         });
         return response;
     } catch (error) {
@@ -41,10 +40,6 @@ export const getAllAdsByStatus = async () => {
         throw new Error('Could not fetch blogs. Please try again later.');
     }
 };
-
-
-
-
 
 export const deleteAds = async (data) => {
     try {
@@ -59,8 +54,6 @@ export const deleteAds = async (data) => {
     }
 };
 
-
-// =======================================================
 export const updateAds = async (body, id) => {
     try {
         const response = await fetchHandlerForm({

@@ -8,16 +8,11 @@ export const AuthendicationAPI = {
                 showMessage({ severity: 'error', title: 'ERROR', content: response.data });
                 return null; // Return null if there's an error
             } else {
-           
                 Cookies.set('token', response.token, { expires: 10000 });
-                // Cookies.set('userrole', response.role, { expires: 10000 });
                 sessionStorage.setItem('username', response.adminname);
                 sessionStorage.setItem('email', response.email);
                 sessionStorage.setItem('admin_id', response.admin_id);
-
-                // Start the token refresh interval
                 this.startTokenRefreshInterval();
-
                 return { email: response.adminname, password: response.token }; // Return name and role
             }
         });
@@ -44,17 +39,19 @@ export const AuthendicationAPI = {
             method: 'POST',
             endpoint: '/refresh-token',
             data: { refreshToken }
-        }).then((response) => {
-            if (response.isError) {
-                console.error('Error refreshing token:', response.data);
-                return;
-            }
+        })
+            .then((response) => {
+                if (response.isError) {
+                    console.error('Error refreshing token:', response.data);
+                    return;
+                }
 
-            Cookies.set('token', response.access_token, { expires: 10000 });
-            // console.log('Token refreshed successfully');
-        }).catch((error) => {
-            console.error('Error refreshing token:', error);
-        });
+                Cookies.set('token', response.access_token, { expires: 10000 });
+                // console.log('Token refreshed successfully');
+            })
+            .catch((error) => {
+                console.error('Error refreshing token:', error);
+            });
     },
     startTokenRefreshInterval() {
         // Set the interval to 15 minutes (900000 milliseconds)

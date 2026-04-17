@@ -41,28 +41,21 @@ export default function FooterCTA() {
         </div>
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
 
-          <h2 className="text-white text-3xl md:text-5xl font-bold mb-6 leading-tight">
-            Your perfect home is
-            <span className="block">one click away.</span>
+          <h2 className="text-white text-3xl font-bold mb-4 leading-tight">
+            Your Perfect Home Is
+            <span className="block">One Click Away.</span>
           </h2>
           <div className="relative inline-block">
 
             <motion.a
               href="#contact"
-              initial={{ scale: 1 }}
-              animate={{ scale: [1, 1.06, 1] }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
               whileTap={{ scale: 0.95 }}
               className="
     inline-block  
     transform-gpu 
     relative z-10 
     bg-[#4dbc15] text-white 
-    px-10 py-2 rounded-[8px] 
+    px-10 py-3 rounded-[8px] 
     font-medium text-sm md:text-base 
      hover:text-white transition
   "

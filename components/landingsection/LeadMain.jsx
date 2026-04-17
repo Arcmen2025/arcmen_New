@@ -18,12 +18,12 @@ export default function LeadMain() {
       <FloatingActions />
       <LeadPopup />
       <Hero />
-      <StatsSection />
       <ChennaiProjects />
-      <SolutionsSlider />
-      <WhyChooseUs />
-      <ProcessSection />
       <TestimonialsSection />
+      <SolutionsSlider />
+      <StatsSection />
+      {/* <WhyChooseUs /> */}
+      <ProcessSection />
       <GallerySection />
       <FAQAccordion />
       <FooterCTA />

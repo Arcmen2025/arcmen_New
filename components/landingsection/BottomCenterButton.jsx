@@ -1,6 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { FaWhatsapp } from "react-icons/fa";
+import { IoMdCall } from "react-icons/io";
 
 export default function BottomCenterButton() {
     const [scrolled, setScrolled] = useState(false);
@@ -43,8 +45,8 @@ export default function BottomCenterButton() {
     }, []);
 
     return (
-        <div className="fixed bottom-10 left-0 w-full z-50 pointer-events-none">
-            <div className="max-w-7xl mx-auto px-20 flex justify-center">
+        <div className="fixed bottom-6 left-0 w-full z-50 pointer-events-none">
+            <div className="max-w-7xl mx-auto px-4 md:px-20 flex justify-center">
 
                 <motion.div
                     initial={{ opacity: 0, y: 100, scale: 0.95 }}
@@ -61,15 +63,36 @@ export default function BottomCenterButton() {
                     }}
                     className="relative pointer-events-auto"
                 >
-
-                    <motion.a
-                        href="#contact"
-                        whileHover={{ scale: 1.05 }}
-                        className="relative bg-[#4dbc15] hover:bg-[#3a9c10] text-white 
-                       px-3 text-xs  md:text-sm md:px-6 py-3 rounded-full shadow-xl z-10  overflow-hidden"
-                    >
+                    <a href="#contact" className="text-md md:text-md font-medium whitespace-nowrap text-white  bg-[#4dbc15] rounded-full py-3 px-3 hidden md:block">
                         Book Free Consultation
-                    </motion.a>
+                    </a>
+                    <div className="md:hidden relative rounded-full p-[2px]
+  bg-[linear-gradient(270deg,#4dbc15,#00c6ff,#4dbc15)]
+  ">
+                        <div className="bg-white border border-gray-700
+    py-3 px-2 rounded-full shadow-xl flex items-center gap-2 overflow-hidden">
+
+                            <a
+                                href="#contact"
+                                className="text-md font-medium whitespace-nowrap text-white  bg-[#4dbc15] rounded-full  py-2 px-3"
+                            >
+                                Book Free Consultation
+                            </a>
+                            <a
+                                href="tel:+919962998008"
+                                className="flex items-center text-white bg-black rounded-full p-2"
+                            >
+                                <IoMdCall size={25} />
+                            </a>
+                            <a
+                                href="https://wa.me/9962998008"
+                                target="_blank"
+                                className="flex items-center bg-green-600 p-2 rounded-full text-white"
+                            >
+                                <FaWhatsapp size={25} />
+                            </a>
+                        </div>
+                    </div>
                     {bubbles.map((b) => (
                         <motion.span
                             key={b.id}

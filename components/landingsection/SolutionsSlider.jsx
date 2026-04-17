@@ -80,7 +80,7 @@ export default function SolutionsSlider() {
 
   return (
     <section className="md:py-16 py-10">
-      <div className="px-6 md:px-20">
+      <div className=" md:px-20">
         <motion.div
           className="text-center mb-10"
           initial={{ opacity: 0, y: 40 }}
@@ -88,7 +88,7 @@ export default function SolutionsSlider() {
           transition={{ duration: 0.6 }}
           viewport={{ once: false }}
         >
-          <h2 className="text-black font-extrabold text-[18px] md:text-[34px] 2xl:text-[48px] leading-tight">
+          <h2 className="text-black font-extrabold text-3xl leading-tight">
             Complete Interior Solutions <br /><span className="text-[#4dbc15]">
               for Modern Homes
             </span>
@@ -128,7 +128,6 @@ export default function SolutionsSlider() {
             ))}
           </motion.div>
         </div>
-
         <div className="flex justify-center gap-4 mt-8">
           <button
             onClick={prevSlide}

@@ -6,7 +6,7 @@ import { IoMdCall } from "react-icons/io";
 
 const FloatingActions = () => {
   return (
-    <div className="fixed right-4 bottom-20 z-50 flex flex-col items-center gap-3">
+    <div className="hidden  fixed right-3 bottom-10 z-50 md:flex flex-col items-center gap-4">
       <motion.a
         href="tel:+919962998008"
         initial={{ scale: 1 }}
@@ -16,7 +16,7 @@ const FloatingActions = () => {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg"
+        className="w-10 h-10  bg-[#4dbc15] rounded-full flex items-center justify-center text-white shadow-lg"
       >
         <IoMdCall size={26} />
       </motion.a>
@@ -30,7 +30,7 @@ const FloatingActions = () => {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg"
+        className="w-10 h-10  bg-[#4dbc15] rounded-full flex items-center justify-center text-white shadow-lg"
       >
         <FaWhatsapp size={24} />
       </motion.a>
