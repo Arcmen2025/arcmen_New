@@ -79,28 +79,35 @@ const DynamicBlog = () => {
                                     <div key={index} className="blog-section">
 
                                        <div className="flex justify-center">
-  <div className="w-full max-w-3xl flex flex-col gap-5 px-4 py-6">
+<div key={index} className="flex justify-center w-full px-2 md:px-0">
+  {/* Added 'w-full' and 'overflow-hidden' to prevent horizontal scroll */}
+  <div className="w-full max-w-4xl flex flex-col gap-6 py-8 overflow-hidden">
     
-    <h4
-      className="text-center pt-5"
-      style={{ fontSize: "28px", fontWeight: "700" }}
-    >
+    {/* Heading: Responsive font sizes */}
+    <h4 className="text-center text-gray-900 text-xl md:text-3xl font-bold px-2">
       {data?.blogTitle}
     </h4>
 
-    <img
-      src={data?.blogImage}
-      alt={`blog ${index}`}
-      className="w-full rounded-lg shadow-md object-cover"
-      loading="lazy"
-      style={{ maxHeight: "400px" }}
-    />
+    {/* Image: Use h-auto and aspect-ratio for better mobile look */}
+    {data?.blogImage && (
+      <div className="w-full">
+        <img
+          src={data?.blogImage}
+          alt={`blog ${index}`}
+          className="w-full h-auto rounded-2xl shadow-lg object-cover max-h-[300px] md:max-h-[500px]"
+          loading="lazy"
+        />
+      </div>
+    )}
 
+    {/* Content: Added 'break-words' and 'w-full' to fix the text overflow */}
     <div
-      className="text-gray-700 leading-relaxed text-[16px]"
+      className="text-gray-700 leading-loose text-[16px] md:text-[18px] w-full break-words px-2"
       dangerouslySetInnerHTML={boldContentAfterColon(data?.content)}
     />
+    
   </div>
+</div>
 </div>
                                         
                                         

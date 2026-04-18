@@ -19,7 +19,7 @@ const fadeUp = {
 
 export default function Hero() {
   return (
-    <section className="relative  pt-10 md:pt-0 min-h-screen flex flex-col justify-center">
+    <section className="relative  py-10 md:py-0 min-h-screen flex flex-col justify-center">
       <div className="absolute inset-0">
         <div
           className="absolute inset-0"
@@ -67,11 +67,11 @@ export default function Hero() {
                 whileInView="show"
                 custom={2}
                 viewport={{ once: true }}
-                className="text-3xl md:text-4xl font-semibold leading-tight mb-4"
+                className="text-2xl md:text-4xl font-semibold leading-tight mb-4 text-[#7ce04a]"
               >
-                Interior Designers <br />
+                Home Interior Designers <br />
                 in Chennai for{" "}
-                <span className="text-[#4dbc15]">
+                <span className="text-white">
                   Modern & Beautiful Homes
                 </span>
               </motion.h1>
@@ -93,7 +93,7 @@ export default function Hero() {
                 whileInView="show"
                 custom={4}
                 viewport={{ once: true }}
-                className="flex flex-col gap-3 text-sm mb-6"
+                className="flex flex-col gap-3 text-sm md:mb-6"
               >
                 <div className="flex items-center gap-3">
                   <FaClock size={20} className="text-[#4dbc15]" />

@@ -1,10 +1,12 @@
 import { createBlog, getAllBlogs, updateBlog } from '@/api/BlogAPIs';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import Swal from 'sweetalert2';
 import { Form, Button, Container, Row, Col, Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import dynamic from 'next/dynamic';
+const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
+import 'react-quill-new/dist/quill.snow.css';
+
 
 const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
     const [blogHeading, setBlogHeading] = useState('');
@@ -23,6 +25,35 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
 
     const blogTitleImageRef = useRef();
     const blogImageRef = useRef();
+
+    // ✅ Quill toolbar with full link support
+    const quillModules = useMemo(() => ({
+        toolbar: {
+            container: [
+                [{ header: [1, 2, 3, 4, 5, 6, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                [{ color: [] }, { background: [] }],
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                [{ align: [] }],
+                ['link'],           // ✅ Link button - works perfectly, no z-index issue
+                ['blockquote', 'code-block'],
+                ['clean']
+            ]
+        },
+        clipboard: {
+            matchVisual: false
+        }
+    }), []);
+
+    const quillFormats = [
+        'header',
+        'bold', 'italic', 'underline', 'strike',
+        'color', 'background',
+        'list', 'bullet',
+        'align',
+        'link',
+        'blockquote', 'code-block'
+    ];
 
     useEffect(() => {
         if (isEditMode && data) {
@@ -48,23 +79,22 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
         const blogContentsArray = [];
         const blogImagesArray = [];
 
-        blogContent.forEach((content, index) => {
+        blogContent.forEach((content) => {
             blogContentsArray.push({
                 blogTitle: content.blog_content_title,
-                content: content.blog_content.replace(/\n/g, '<br>') // Convert newlines to <br>
+                content: content.blog_content
             });
             blogImagesArray.push(content.blog_image);
         });
 
-        // Append the titleImage to the FormData
         if (blogTitleImageRef.current.files[0]) {
             formData.append('titleImage', blogTitleImageRef.current.files[0]);
         }
 
         formData.append('contentSections', JSON.stringify(blogContentsArray));
 
-        blogImagesArray.forEach((image, index) => {
-            formData.append(`blogImages`, image);
+        blogImagesArray.forEach((image) => {
+            formData.append('blogImages', image);
         });
 
         try {
@@ -75,7 +105,9 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
                     title: isEditMode ? 'Blog Successfully Updated' : 'Blog Successfully Created',
                     showConfirmButton: true,
                     timer: 32000,
-                    text: isEditMode ? 'The blog has been successfully updated.' : 'The blog has been successfully created.'
+                    text: isEditMode
+                        ? 'The blog has been successfully updated.'
+                        : 'The blog has been successfully created.'
                 });
                 const response = await getAllBlogs();
                 if (response?.data) {
@@ -96,11 +128,11 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
     };
 
     const handleAddTheContent = () => {
-        if (!blogContentSection || !blogContentSection) {
+        if (!blogContentSection || blogContentSection === '<p><br></p>') {
             Swal.fire({
                 icon: 'error',
                 title: 'Validation Error',
-                text: 'Blog Content Title, Blog Content, and Blog Image fields should not be empty.',
+                text: 'Blog Content fields should not be empty.',
                 showConfirmButton: true
             });
             return;
@@ -126,7 +158,7 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
         setBlogContentTitle('');
         setBlogContentSection('');
         blogImageRef.current.value = '';
-        setBlogImagePreview(null); // Clear the preview after adding the content
+        setBlogImagePreview(null);
     };
 
     const handleDeleteContent = (index) => {
@@ -168,7 +200,13 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
     const handleEdit = (datas, index) => {
         setBlogContentTitle(datas?.blog_content_title);
         setBlogContentSection(datas?.blog_content);
-        setBlogImagePreview(typeof datas?.blog_image === 'string' ? datas?.blog_image : URL.createObjectURL(datas?.blog_image));
+        setBlogImagePreview(
+            typeof datas?.blog_image === 'string'
+                ? datas?.blog_image
+                : datas?.blog_image instanceof File
+                ? URL.createObjectURL(datas?.blog_image)
+                : null
+        );
         setActiveEdit(true);
         setEditIndex(index);
     };
@@ -179,7 +217,9 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
             blog_content: blogContentSection,
             blog_image: blogImageRef.current.files[0] || blogImagePreview
         };
-        setBlogContents((prevContent) => prevContent.map((content, index) => (index === editIndex ? newContent : content)));
+        setBlogContents((prevContent) =>
+            prevContent.map((content, index) => (index === editIndex ? newContent : content))
+        );
         setBlogContentTitle('');
         setBlogContentSection('');
         setBlogImagePreview(null);
@@ -204,13 +244,23 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
                     <Col>
                         <Form.Group controlId="blogHeading">
                             <Form.Label>Blog Heading</Form.Label>
-                            <Form.Control type="text" placeholder="Enter the blog Heading" value={blogHeading} onChange={(e) => setBlogHeading(e.target.value)} />
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter the blog Heading"
+                                value={blogHeading}
+                                onChange={(e) => setBlogHeading(e.target.value)}
+                            />
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group controlId="blogAuthor">
                             <Form.Label>Author</Form.Label>
-                            <Form.Control type="text" placeholder="Enter the author" value={blogAuthor} onChange={(e) => setBlogAuthor(e.target.value)} />
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter the author"
+                                value={blogAuthor}
+                                onChange={(e) => setBlogAuthor(e.target.value)}
+                            />
                         </Form.Group>
                     </Col>
                 </Row>
@@ -219,14 +269,32 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
                     <Col>
                         <Form.Group controlId="blogSubTtitle">
                             <Form.Label>Blog Sub content</Form.Label>
-                            <Form.Control as="textarea" cols={12} rows={10} placeholder="Type the blog sub title content" value={blogSubContent} onChange={(e) => setBlogSubContent(e.target.value)} />
+                            <Form.Control
+                                as="textarea"
+                                cols={12}
+                                rows={10}
+                                placeholder="Type the blog sub title content"
+                                value={blogSubContent}
+                                onChange={(e) => setBlogSubContent(e.target.value)}
+                            />
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group controlId="blogTitleImage">
                             <Form.Label>Upload the Title image</Form.Label>
-                            <Form.Control type="file" ref={blogTitleImageRef} onChange={handleTitleImageChange} accept="image/*" />
-                            {titleImagePreview && <img src={titleImagePreview} alt="Title Preview" style={{ marginTop: '10px', width: '200px', height: '200px', objectFit: 'contain' }} />}
+                            <Form.Control
+                                type="file"
+                                ref={blogTitleImageRef}
+                                onChange={handleTitleImageChange}
+                                accept="image/*"
+                            />
+                            {titleImagePreview && (
+                                <img
+                                    src={titleImagePreview}
+                                    alt="Title Preview"
+                                    style={{ marginTop: '10px', width: '200px', height: '200px', objectFit: 'contain' }}
+                                />
+                            )}
                             {!titleImagePreview && (
                                 <div style={{ textAlign: 'center', color: '#ccc' }}>
                                     <p>Click to upload image</p>
@@ -236,19 +304,30 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
                         </Form.Group>
                     </Col>
                 </Row>
+
                 <Row className="mb-3">
                     <Col>
                         <Form.Group controlId="blog_url">
                             <Form.Label>Blog URL</Form.Label>
-                            <Form.Control type="text" placeholder="Enter the blog URL and its should be an unique" value={blogURL} onChange={(e) => setBlogURL(e.target.value)} />
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter the blog URL and it should be unique"
+                                value={blogURL}
+                                onChange={(e) => setBlogURL(e.target.value)}
+                            />
                         </Form.Group>
                     </Col>
                 </Row>
+
                 <Row className="mb-3">
                     <Col>
                         <Form.Group controlId="blogPostCategory">
                             <Form.Label>Blog Post Category</Form.Label>
-                            <Form.Control as="select" value={blogPostCategory} onChange={(e) => setBlogPostCategory(e.target.value)}>
+                            <Form.Control
+                                as="select"
+                                value={blogPostCategory}
+                                onChange={(e) => setBlogPostCategory(e.target.value)}
+                            >
                                 <option value="">Select the post category</option>
                                 <option value="Modular">Modular Kitchen</option>
                                 <option value="Interior">Interior Design</option>
@@ -258,18 +337,35 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
                     <Col>
                         <Form.Group controlId="blog_content_title">
                             <Form.Label>Blog Content Title</Form.Label>
-                            <Form.Control type="text" placeholder="Enter the blog content title" value={blogContentTitle} onChange={(e) => setBlogContentTitle(e.target.value)} />
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter the blog content title"
+                                value={blogContentTitle}
+                                onChange={(e) => setBlogContentTitle(e.target.value)}
+                            />
                         </Form.Group>
                     </Col>
                 </Row>
+
                 <Row className="mb-3">
                     <Col>
                         <Form.Group controlId="blog_image">
                             <Form.Label>Upload Blog Image</Form.Label>
-                            <Form.Control type="file" ref={blogImageRef} onChange={handleBlogImageChange} accept="image/*" />
-                            {blogImagePreview && <img src={blogImagePreview} alt="Blog Image Preview" style={{ marginTop: '10px', width: '200px', height: '200px' }} />}
+                            <Form.Control
+                                type="file"
+                                ref={blogImageRef}
+                                onChange={handleBlogImageChange}
+                                accept="image/*"
+                            />
+                            {blogImagePreview && (
+                                <img
+                                    src={blogImagePreview}
+                                    alt="Blog Image Preview"
+                                    style={{ marginTop: '10px', width: '200px', height: '200px' }}
+                                />
+                            )}
                             {!blogImagePreview && (
-                                <div style={{ textAlign: 'center', color: '#ccc',marginTop:'10px' }}>
+                                <div style={{ textAlign: 'center', color: '#ccc', marginTop: '10px' }}>
                                     <p>Click to upload image</p>
                                     <p>Size: 500 x 500</p>
                                 </div>
@@ -277,22 +373,27 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
                         </Form.Group>
                     </Col>
                 </Row>
+
+                {/* ✅ React Quill replaces CKEditor — link tooltip is inline, no z-index issues */}
                 <Row className="mb-3">
                     <Col>
                         <Form.Group controlId="blog_content">
-  <Form.Label>Blog Content</Form.Label>
-
-  <CKEditor
-    editor={ClassicEditor}
-    data={blogContentSection}
-    onChange={(event, editor) => {
-      const data = editor.getData();
-      setBlogContentSection(data);
-    }}
-  />
-</Form.Group>
+                            <Form.Label>Blog Content</Form.Label>
+                            <div style={{ background: '#fff' }}>
+                                <ReactQuill
+                                    theme="snow"
+                                    value={blogContentSection}
+                                    onChange={(value) => setBlogContentSection(value)}
+                                    modules={quillModules}
+                                    formats={quillFormats}
+                                    placeholder="Write your blog content here..."
+                                    style={{ minHeight: '200px' }}
+                                />
+                            </div>
+                        </Form.Group>
                     </Col>
                 </Row>
+
                 {activeEdit ? (
                     <section className="d-flex justify-content-center">
                         <div>
@@ -309,8 +410,12 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
                         Add Content
                     </Button>
                 )}
+
                 {blogContent.length > 0 && (
-                    <div className="table-responsive mt-4" style={{ maxHeight: '300px', overflowY: 'auto', overflowX: 'auto' }}>
+                    <div
+                        className="table-responsive mt-4"
+                        style={{ maxHeight: '300px', overflowY: 'auto', overflowX: 'auto' }}
+                    >
                         <Table striped bordered hover>
                             <thead>
                                 <tr>
@@ -325,24 +430,28 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
                                 {blogContent.map((data, index) => (
                                     <tr key={index}>
                                         <td>{data.blog_content_title}</td>
-                                        <td>{data.blog_content}</td>
+                                        {/* ✅ Render HTML content correctly from Quill */}
+                                        <td
+                                            dangerouslySetInnerHTML={{ __html: data.blog_content }}
+                                            style={{ maxWidth: '300px', wordBreak: 'break-word' }}
+                                        />
                                         <td>
-  {data.blog_image ? (
-    <img
-      src={
-        typeof data.blog_image === 'string'
-          ? data.blog_image
-          : data.blog_image instanceof File
-          ? URL.createObjectURL(data.blog_image)
-          : ''
-      }
-      alt="blog image"
-      style={{ width: '100px', height: '100px' }}
-    />
-  ) : (
-    <span>No Image</span>
-  )}
-</td>
+                                            {data.blog_image ? (
+                                                <img
+                                                    src={
+                                                        typeof data.blog_image === 'string'
+                                                            ? data.blog_image
+                                                            : data.blog_image instanceof File
+                                                            ? URL.createObjectURL(data.blog_image)
+                                                            : ''
+                                                    }
+                                                    alt="blog image"
+                                                    style={{ width: '100px', height: '100px' }}
+                                                />
+                                            ) : (
+                                                <span>No Image</span>
+                                            )}
+                                        </td>
                                         <td>
                                             <Button variant="success" onClick={() => handleEdit(data, index)}>
                                                 Edit
@@ -359,6 +468,7 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
                         </Table>
                     </div>
                 )}
+
                 <div className="m-3">
                     <Button variant="success" type="submit" className="m-2">
                         Save
@@ -368,6 +478,31 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
                     </Button>
                 </div>
             </Form>
+
+            {/* ✅ Quill editor height fix */}
+            <style jsx global>{`
+                .ql-editor {
+                    min-height: 200px;
+                    font-size: 15px;
+                }
+                .ql-toolbar {
+                    border-radius: 4px 4px 0 0;
+                }
+                .ql-container {
+                    border-radius: 0 0 4px 4px;
+                }
+                /* Fix Quill link tooltip visibility */
+                .ql-tooltip {
+                    z-index: 9999 !important;
+                    position: fixed !important;
+                    left: 50% !important;
+                    transform: translateX(-50%) !important;
+                }
+                .ql-tooltip input[type='text'] {
+                    pointer-events: all !important;
+                    user-select: text !important;
+                }
+            `}</style>
         </Container>
     );
 };

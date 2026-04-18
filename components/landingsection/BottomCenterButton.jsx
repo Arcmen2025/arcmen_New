@@ -75,6 +75,19 @@ export default function BottomCenterButton() {
                             <a
                                 href="#contact"
                                 className="text-md font-medium whitespace-nowrap text-white  bg-[#4dbc15] rounded-full  py-2 px-3"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    const el = document.getElementById("contact");
+                                    if (el) {
+                                        const yOffset = -200; // adjust this (header height)
+                                        const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+                                        window.scrollTo({
+                                            top: y,
+                                            behavior: "smooth",
+                                        });
+                                    }
+                                }}
                             >
                                 Book Free Consultation
                             </a>

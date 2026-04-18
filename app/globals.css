@@ -235,4 +235,31 @@ body {
     }
 }
 
+/* Allow CKEditor balloon panel inputs to receive focus and typing */
+.ck.ck-balloon-panel {
+    z-index: 99999 !important;
+    position: fixed !important;
+}
+
+.ck.ck-balloon-panel .ck-input,
+.ck.ck-balloon-panel .ck-input-text,
+.ck.ck-balloon-panel input[type="text"],
+.ck.ck-balloon-panel input[type="url"] {
+    pointer-events: all !important;
+    user-select: text !important;
+    -webkit-user-select: text !important;
+    cursor: text !important;
+    opacity: 1 !important;
+}
+
+.ck.ck-balloon-panel .ck-link-form,
+.ck.ck-balloon-panel .ck-link-form__layout {
+    pointer-events: all !important;
+}
+
+/* Fix Bootstrap interfering with CKEditor */
+.ck-body-wrapper * {
+    pointer-events: all !important;
+    box-sizing: border-box !important;
+}
 /* style={{ height: "580px", objectFit: "cover", marginTop: "60px" }} */
