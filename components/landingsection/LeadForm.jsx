@@ -4,6 +4,7 @@ import axios from "axios";
 import { FaCheckCircle } from "react-icons/fa";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const FIELDS = [
   { name: "name", placeholder: "Full Name", type: "text" },
@@ -15,6 +16,12 @@ const API_URL =
   "https://api-arcmeninterior.webdadsprojects.com/api/v1/forms/landing-page/contact-us";
 
 export default function LeadForm() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  
+  // Check if success param exists in URL
+  const isSuccessParam = searchParams.has("thank-you");
+  
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -23,18 +30,42 @@ export default function LeadForm() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(isSuccessParam);
   const [bubbles, setBubbles] = useState([]);
 
+  // Update success state when URL param changes
+  useEffect(() => {
+    setSuccess(isSuccessParam);
+  }, [isSuccessParam]);
 
+  // Lock scroll when loading or success popup is open
   useEffect(() => {
     if (loading || success) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, [loading, success]);
 
+  // Auto close success popup and remove URL param
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => {
+        setSuccess(false);
+        // Remove success param from URL after popup closes
+        router.replace(window.location.pathname);
+      }, 2500);
+
+      return () => clearTimeout(timer);
+    }
+  }, [success, router]);
+
+  // Bubble effect
   useEffect(() => {
     const interval = setInterval(() => {
       const id = Date.now();
@@ -61,7 +92,6 @@ export default function LeadForm() {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-
     if (!/^[6-9]\d{9}$/.test(form.phone)) {
       alert("Please enter a valid 10-digit mobile number");
       return;
@@ -75,20 +105,25 @@ export default function LeadForm() {
         email: form.email,
         projectType: form.project || "Residential Interior",
       };
+      
       const response = await axios.post(API_URL, payload);
+      
       if (response.status === 200 || response.status === 201) {
-        setSuccess(true);
+        // Clear form
         setForm({
           name: "",
           phone: "",
           email: "",
           project: "",
         });
-
-        setTimeout(() => setSuccess(false), 2500);
+        
+        // Add success param to URL and show popup
+        router.push(`${window.location.pathname}?thank-you`);
+        setSuccess(true);
       }
     } catch (error) {
       console.error("API Error:", error);
+      alert("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -107,23 +142,22 @@ export default function LeadForm() {
 
   return (
     <>
-
+      {/* LOADING POPUP */}
       {typeof window !== "undefined" &&
         loading &&
         createPortal(
           <div className="fixed inset-0 z-[2147483647] flex items-center justify-center bg-black/70 backdrop-blur-sm">
             <div className="flex items-center gap-2 bg-white text-black rounded-lg px-4 py-3 shadow-xl">
               <div className="w-4 h-4 border-2 border-[#7aa33a] border-t-transparent rounded-full animate-spin"></div>
-
               <p className="text-sm font-medium text-[#7aa33a]">
                 Submitting your request...
               </p>
-
             </div>
           </div>,
           document.body
         )}
 
+      {/* SUCCESS POPUP */}
       {typeof window !== "undefined" &&
         success &&
         createPortal(
@@ -138,25 +172,15 @@ export default function LeadForm() {
           </div>,
           document.body
         )}
+        
+      {/* FORM */}
       <motion.div
         id="contact"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-
-        className="
-  w-full md:w-[70%]
-   p-6
-  rounded-3xl
-
-  bg-white/10
-  backdrop-blur-xl
-  border border-white/20
-
-  shadow-[0_8px_32px_rgba(255,255,255,0.15)]
-  text-white
-"
+        className="w-full md:w-[70%] p-6 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(255,255,255,0.15)] text-white"
       >
         <form onSubmit={onSubmit} className="flex flex-col gap-4 md:gap-0">
           {FIELDS.map((field) => (
@@ -187,6 +211,7 @@ export default function LeadForm() {
               className={inputClass}
             />
           ))}
+          
           <select
             name="project"
             value={form.project}
@@ -201,9 +226,9 @@ export default function LeadForm() {
             <option className="text-black">4 BHK +</option>
             <option className="text-black">Villa</option>
           </select>
+          
           <div className="flex justify-center mt-2 md:mb-2">
             <div className="relative inline-block">
-
               <motion.button
                 type="submit"
                 disabled={loading}
@@ -214,20 +239,11 @@ export default function LeadForm() {
                   ease: "easeInOut",
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="
-        relative z-10
-        inline-block
-        w-full sm:w-auto
-        px-6 sm:px-10
-        border-0
-        bg-[#4dbc15] text-white font-semibold
-        py-[12px] rounded-lg
-         transition duration-300 text-sm
-        disabled:opacity-50
-      "
+                className="relative z-10 inline-block w-full sm:w-auto px-6 sm:px-10 border-0 bg-[#4dbc15] text-white font-semibold py-[12px] rounded-lg transition duration-300 text-sm disabled:opacity-50"
               >
                 Book a Free Consultation
               </motion.button>
+              
               {bubbles?.map((b) => (
                 <motion.span
                   key={b.id}

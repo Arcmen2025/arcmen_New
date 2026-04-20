@@ -39,7 +39,7 @@ export default function Hero() {
           <motion.img
             src="https://res.cloudinary.com/da9s9vymf/image/upload/v1775207563/whitelogo_ogcb0n.svg"
             alt="Arcmen Logo"
-            className="w-15 md:w-20 object-cover "
+            className="w-[130px] h-21 md:w-22 object-cover "
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}

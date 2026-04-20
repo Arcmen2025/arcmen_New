@@ -268,7 +268,7 @@ const Herosection = () => {
                                                     <Col lg={12}>
                                                         <div className="mb-2 ">
                                                             <div className="mb-4">
-                                                                <ReCAPTCHA ref={recaptchaRef} sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} onChange={handleRecaptchaChange} />
+                                                                <ReCAPTCHA ref={recaptchaRef} sitekey={process.env.NEXT_PUBLIC_API_BASE_URL} onChange={handleRecaptchaChange} />
                                                                 {errors.recaptcha && <span className="text-danger">{errors.recaptcha}</span>}
                                                             </div>{' '}
                                                             <button type="submit" className="sumbit-btn">
