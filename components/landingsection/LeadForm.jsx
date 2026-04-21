@@ -4,7 +4,7 @@ import axios from "axios";
 import { FaCheckCircle } from "react-icons/fa";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const FIELDS = [
   { name: "name", placeholder: "Full Name", type: "text" },
@@ -17,10 +17,6 @@ const API_URL =
 
 export default function LeadForm() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  
-  // Check if success param exists in URL
-  const isSuccessParam = searchParams.has("thank-you");
   
   const [form, setForm] = useState({
     name: "",
@@ -30,40 +26,20 @@ export default function LeadForm() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(isSuccessParam);
   const [bubbles, setBubbles] = useState([]);
 
-  // Update success state when URL param changes
+  // Lock scroll when loading
   useEffect(() => {
-    setSuccess(isSuccessParam);
-  }, [isSuccessParam]);
-
-  // Lock scroll when loading or success popup is open
-  useEffect(() => {
-    if (loading || success) {
+    if (loading) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
     
-    // Cleanup on unmount
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [loading, success]);
-
-  // Auto close success popup and remove URL param
-  useEffect(() => {
-    if (success) {
-      const timer = setTimeout(() => {
-        setSuccess(false);
-        // Remove success param from URL after popup closes
-        router.replace(window.location.pathname);
-      }, 2500);
-
-      return () => clearTimeout(timer);
-    }
-  }, [success, router]);
+  }, [loading]);
 
   // Bubble effect
   useEffect(() => {
@@ -90,44 +66,35 @@ export default function LeadForm() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const onSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!/^[6-9]\d{9}$/.test(form.phone)) {
-      alert("Please enter a valid 10-digit mobile number");
-      return;
-    }
+  if (!/^[6-9]\d{9}$/.test(form.phone)) {
+    alert("Please enter a valid 10-digit mobile number");
+    return;
+  }
 
-    try {
-      setLoading(true);
-      const payload = {
-        fullName: form.name,
-        mobileNumber: form.phone,
-        email: form.email,
-        projectType: form.project || "Residential Interior",
-      };
-      
-      const response = await axios.post(API_URL, payload);
-      
-      if (response.status === 200 || response.status === 201) {
-        // Clear form
-        setForm({
-          name: "",
-          phone: "",
-          email: "",
-          project: "",
-        });
-        
-        // Add success param to URL and show popup
-        router.push(`${window.location.pathname}?thank-you`);
-        setSuccess(true);
-      }
-    } catch (error) {
-      console.error("API Error:", error);
-      alert("Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
+  try {
+    setLoading(true);
+    const payload = {
+      fullName: form.name,
+      mobileNumber: form.phone,
+      email: form.email,
+      projectType: form.project || "Residential Interior",
+    };
+    
+    const response = await axios.post(API_URL, payload);
+    
+    if (response.status === 200 || response.status === 201) {
+      // ✅ THIS LINE AUTOMATICALLY ROUTES TO THANKYOU_PAGE
+      router.push("/interior-designers-chennai/thank-you");
     }
-  };
+  } catch (error) {
+    console.error("API Error:", error);
+    alert("Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   const inputClass = `
     w-full bg-transparent 
@@ -151,22 +118,6 @@ export default function LeadForm() {
               <div className="w-4 h-4 border-2 border-[#7aa33a] border-t-transparent rounded-full animate-spin"></div>
               <p className="text-sm font-medium text-[#7aa33a]">
                 Submitting your request...
-              </p>
-            </div>
-          </div>,
-          document.body
-        )}
-
-      {/* SUCCESS POPUP */}
-      {typeof window !== "undefined" &&
-        success &&
-        createPortal(
-          <div className="fixed inset-0 z-[2147483647] flex items-center justify-center bg-black/70 backdrop-blur-sm">
-            <div className="flex flex-col items-center text-center gap-3 bg-white text-black px-8 py-6 rounded-2xl shadow-2xl">
-              <FaCheckCircle className="text-green-500 text-5xl" />
-              <h3 className="text-lg font-semibold">Thank You!</h3>
-              <p className="text-sm text-gray-600">
-                We will contact you shortly.
               </p>
             </div>
           </div>,

@@ -203,27 +203,27 @@ export const TESTIMONIALS = [
 
 export const FAQS = [
     {
-        q: 'How much do interior designers cost in Chennai?',
-        a: 'Interior design costs in Chennai typically range from ₹800 to ₹2500 per square foot depending on the style, materials, and scope of work. A standard 2BHK home interior can cost between ₹3,00,000 to ₹8,00,000 with complete execution.'
+        q: 'How much does home interior cost in Chennai?',
+        a: 'Home interior cost depends on your space, materials, and design style. Basic interiors are budget-friendly, while premium designs cost more.'
     },
     {
-        q: 'How do I find the best home interior designers in Chennai?',
-        a: 'Look for designers with a strong portfolio, verified client reviews, and end-to-end execution experience. Arcmen has 30+ years of experience and 2000+ completed projects across Chennai making them one of the most trusted choices.'
+        q: 'Do you offer free consultation for home interiors?',
+        a: 'Yes. We provide free consultation for home interior projects to understand your needs and suggest the best design.'
     },
     {
-        q: 'Are there affordable interior designers in Chennai for small budgets?',
-        a: 'Yes. Many interior designers in Chennai offer flexible packages starting from ₹800 per sq ft. Arcmen offers budget-friendly designs without compromising on quality with customised plans for every budget.'
+        q: 'How long does a home interior project take?',
+        a: 'Most home interior projects take 4 to 8 weeks, depending on size and customization.'
     },
     {
-        q: 'What does a home interior designer in Chennai do?',
-        a: 'A home interior designer handles everything from space planning, furniture selection, false ceiling, lighting, modular kitchen, wardrobes to complete handover. You get a beautiful home without the stress of managing multiple vendors.'
+        q: 'Will I get a 3D design for my home interior?',
+        a: 'Yes. You will get a 3D design to visualize your home interior before starting the work.'
     },
     {
-        q: 'How long does a home interior project take in Chennai?',
-        a: 'A typical 2BHK home interior project takes 45 to 90 days depending on the scope of work. At Arcmen we follow a strict timeline with on-time delivery guaranteed on every project.'
+        q: 'What services are included in home interiors?',
+        a: 'Home interior services include modular kitchen, wardrobes, TV units, false ceiling, and full home design.'
     },
     {
-        q: 'Why should I hire an interior designer in Chennai instead of doing it myself?',
-        a: 'A professional interior designer saves you time, money, and costly mistakes. They have trade contacts, design expertise, and project management experience that ensures your home looks exactly how you imagined — within budget and on time.'
+        q: 'How can I get started with my home interior?',
+        a: 'You can call, WhatsApp, or fill out the form to book a free consultation for your home interior project.'
     }
 ];
