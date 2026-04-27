@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { FEATURES } from "@/app/utilits/Constant";
+import { FEATURES } from "@/app/utilits/constants";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 
 

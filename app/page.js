@@ -10,9 +10,6 @@ export default function Home() {
         <div>
             <Header />
             <Herosection />
-
-            {/* <AutoSlider/> */}
-
             <Flipbox />
             <Footer />
         </div>

@@ -7,7 +7,6 @@ export function proxy(request) {
     const isProtectedPath = protectedPaths.some((path) => request.nextUrl.pathname.startsWith(path));
 
     if (isProtectedPath && !userToken) {
-        // Custom HTML page for access denied
         const htmlResponse = `
       <!DOCTYPE html>
       <html lang="en">

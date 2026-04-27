@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 
 export default function GallerySection() {
   const galleryItems = [
-    { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307984/Factory_1_1_cuhzxv.jpg", label: "Factory" },
-    { img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775458569/arcmenec1_sx8rsq.jpg", label: "Experience center" },
-    { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307980/Factory_1_2_ofxco6.jpg", label: "Factory" },
-    { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307976/Experience_Center1_yca70b.jpg", label: "Experience center" },
-    { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307975/Factory_1_3_crdad7.jpg", label: "Factory" },
-    { img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775458569/arcmenec2_k2shxn.jpg", label: "Experience center" },
-    { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307971/Factory_1_4_molox8.jpg", label: "Factory" },
-    { img: "https://res.cloudinary.com/da9s9vymf/image/upload/f_auto,q_auto,w_600/v1775307972/Experience_Center_2_xcx101.jpg", label: "Experience center" },
+    { img: "https://assets.webdads2u.com/images/1777292950986-img_2531.jpg", label: "Factory" },
+    { img: "https://assets.webdads2u.com/images/1777293377509-1.jpg", label: "Experience center" },
+    { img: "https://assets.webdads2u.com/images/1777293016597-img_2532.jpg", label: "Factory" },
+    { img: "https://assets.webdads2u.com/images/1777293605603-9.jpg", label: "Experience center" },
+    { img: "https://assets.webdads2u.com/images/1777293043137-img_2518.jpg", label: "Factory" },
+    { img: "https://assets.webdads2u.com/images/1777293511410-4.jpg", label: "Experience center" },
+    { img: "https://assets.webdads2u.com/images/1777293087700-img_2516.jpg", label: "Factory" },
+    { img: "https://assets.webdads2u.com/images/1777293405969-5.jpg", label: "Experience center" },
   ];
 
   useEffect(() => {

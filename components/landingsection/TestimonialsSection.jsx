@@ -9,14 +9,11 @@ export default function TestimonialsSection() {
   const [active, setActive] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [videoExpanded, setVideoExpanded] = useState(false);
-
   const videoRef = useRef(null);
   const videos = [
-    "https://res.cloudinary.com/da9s9vymf/video/upload/v1775475206/2_Testimonial_Ranjith_uc1lqa.mp4",
-    // "https://res.cloudinary.com/da9s9vymf/video/upload/v1775207665/video1_kli1vl.mp4",
-    "https://res.cloudinary.com/da9s9vymf/video/upload/v1775474995/3_Testimonial_Domnic_t4xw0t.mp4",
-    "https://res.cloudinary.com/da9s9vymf/video/upload/v1775475245/1_Testimonial_Kiran_Kumar_hyclmd.mp4",
-    // "https://res.cloudinary.com/da9s9vymf/video/upload/v1775207608/video3_b4iuqz.mp4",
+    "https://assets.webdads2u.com/videos/1777289307438-whatsapp-video-2026-04-27-at-11-56-48.mp4",
+    "https://assets.webdads2u.com/videos/1777289382270-whatsapp-video-2026-04-27-at-11-56-27.mp4",
+    "https://assets.webdads2u.com/videos/1777289480900-whatsapp-video-2026-04-27-at-11-46-27.mp4",
 
   ];
 
@@ -24,7 +21,6 @@ export default function TestimonialsSection() {
     setExpanded(expanded === index ? null : index);
   };
 
-  // ✅ NEW: TEXT TRUNCATION
   const MAX_CHARS = 140;
 
   const truncateText = (text, isOpen) => {
@@ -42,21 +38,6 @@ export default function TestimonialsSection() {
     }
   }, [isPlaying, videoExpanded]);
 
-  const handlePlayPause = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (!isPlaying) {
-      video.currentTime = 0;
-      video.muted = false;
-      video.play();
-      setIsPlaying(true);
-    } else {
-      video.pause();
-      video.muted = true;
-      setIsPlaying(false);
-    }
-  };
 
   useEffect(() => {
     const video = videoRef.current;
@@ -144,9 +125,7 @@ export default function TestimonialsSection() {
                   <div className="w-10 h-10 bg-stone-300 rounded-full flex items-center justify-center flex-shrink-0">
                     <img src={t.img} alt={t.name} className="w-full h-full object-cover rounded-full" />
                   </div>
-
                   <div className="flex flex-col">
-                    {/* ✅ INLINE READ MORE FIX */}
                     <p className="text-sm mb-0">
                       {truncateText(t.text, isOpen)}
                       {!isOpen && isLong && "... "}

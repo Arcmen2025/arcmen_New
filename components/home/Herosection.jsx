@@ -1,17 +1,14 @@
 'use client';
-
 import React, { useEffect, useState, useRef } from 'react';
 import { Col, Container, Row, Form } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
 import Quickservice from './Quickservice';
 import Modal from 'react-bootstrap/Modal';
-import { interiorDesignEnquiryFormAPI, quickServiceRequestFormAPI } from '@/api/ArcmenFormAPI';
+import { quickServiceRequestFormAPI } from '@/api/ArcmenFormAPI';
 import Swal from 'sweetalert2';
-import { getAllAdsByStatus } from '@/api/AdsPostingAPI';
 import ReCAPTCHA from 'react-google-recaptcha';
 const Herosection = () => {
     const [show, setShow] = useState(false);
-    const [posterImage, setPosterImage] = useState('https://res.cloudinary.com/dpflidsbg/image/upload/v1739421470/Interior_Architecture_Studio_nq3oib.png');
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -75,28 +72,7 @@ const Herosection = () => {
         }));
     };
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const result = await getAllAdsByStatus();
-                if (result?.data) {
-                    // console.log(result, '===========>');
-                    if (result.data.posters.length > 0 && result.data.posters[0].posterImage && result.data.posters[0].status === 1) {
-                        setPosterImage(result?.data?.posters[0]?.posterImage);
-                    }
-                }
-            } catch (e) {
-                console.log(e);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops.',
-                    text: 'Something error while fetching the blogs.',
-                    timer: 3000
-                });
-            }
-        };
-        fetchData();
-    }, []);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -143,25 +119,17 @@ const Herosection = () => {
                             <Carousel fade>
                                 <Carousel.Item>
                                     <img
-                                        
-                                        className="d-md-block w-100 object-cover banner1 d-hidden"
-                                        src="https://res.cloudinary.com/da9s9vymf/image/upload/v1775734827/arcmendes_w1dcvj.png"
+
+                                        className="d-md-block w-full h-full banner1 d-hidden"
+                                        src="https://assets.webdads2u.com/images/1777263507880-adbannerdesktop.jpeg"
                                     />
-                                    {/* <img   
-                                        className="d-md-none w-100 h-[500px] object-cover banner2 d-block"
-                                        src="https://res.cloudinary.com/da9s9vymf/image/upload/v1775735796/mobilearcmen_oi4lrg.jpg"
-                                    />
-                                     */}
-                                      <img   
+                                    <img
                                         className="d-md-none w-100 h-[auto] object-cover banner2 d-block"
-                                        src="https://res.cloudinary.com/da9s9vymf/image/upload/v1775735796/mobilearcmen_oi4lrg.jpg"
+                                        src="https://assets.webdads2u.com/images/1777263532305-adbanner.jpeg"
                                     />
-                                    
                                     <Carousel.Caption>
-                                        {/* <h3> HOME INTERIOR DESIGNER IN CHENNAI</h3> */}
                                         <h3> </h3>
                                         <h3></h3>
-                                        {/* <p>We are Professional Residential Turnkey Interior Designer & Decorator in Chennai</p> */}
                                         <p>
                                         </p>
                                     </Carousel.Caption>
@@ -173,10 +141,8 @@ const Herosection = () => {
                                         alt="First slide"
                                     />
                                     <Carousel.Caption>
-                                        {/* <h3> HOME INTERIOR DESIGNER IN CHENNAI</h3> */}
                                         <h3>CHENNAI'S BEST LUXURY HOME INTERIOR DESIGNER </h3>
                                         <h3></h3>
-                                        {/* <p>We are Professional Residential Turnkey Interior Designer & Decorator in Chennai</p> */}
                                         <p>Our designs meet perfect execution with high quality standards
                                         </p>
                                     </Carousel.Caption>
@@ -221,8 +187,8 @@ const Herosection = () => {
                                 <Modal.Header closeButton style={{ borderBottom: '0px' }}>
                                     <Modal.Title></Modal.Title>
                                 </Modal.Header>
-                                <Modal.Body className="pe-0 pb-0 pl-md-1 bannerspace">
-                                    <div className="popup-fminter">
+                                <Modal.Body className="pe-0 pb-0 pl-md-1">
+                                    <div className="popup-fminter d-flex flex-column flex-md-row">
                                         <div className="form-inter newpopup">
                                             <p>Fill out all required fields below and we will get back to you as soon as possible.</p>
                                             <form onSubmit={handleSubmit} className="con-form-page ">
@@ -280,14 +246,7 @@ const Herosection = () => {
                                             </form>
                                         </div>
                                         <div className="popup-img1 d-none d-md-block" style={{ borderRadius: '0px 10px 10px 0px' }}>
-                                            <img src={"https://res.cloudinary.com/da9s9vymf/image/upload/v1775735286/arcmenpopup_n1paxk.png"} alt="Offer"></img>
-                                        </div>
-                                        <div className="popup-img2  d-md-none">
-                                            <img
-                                                src="https://res.cloudinary.com/da9s9vymf/image/upload/v1775739731/popuparcmen_kn3y5t.png"
-                                                alt="Offer"
-                                                className=" popup-image"
-                                            />
+                                            <img src={"https://assets.webdads2u.com/images/1777263532305-adbanner.jpeg"} alt="Offer"></img>
                                         </div>
                                     </div>
                                 </Modal.Body>

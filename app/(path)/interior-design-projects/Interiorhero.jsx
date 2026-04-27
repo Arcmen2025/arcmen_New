@@ -22,7 +22,7 @@ const Interiorhero = () => {
                 <Container>
                     <Row>
                         <div className="text-center">
-                            <h4 style={{fontWeight:"700"}}>Our Works Interior Designer in Chennai</h4>
+                            <h4 style={{ fontWeight: "700" }}>Our Works Interior Designer in Chennai</h4>
                             <p>View Completed Projects</p>
                         </div>
 
@@ -55,7 +55,7 @@ const Interiorhero = () => {
                                 </div>
                             </div>
                         </Col>
-                        
+
                         <Col lg={4} md={6} xs={12}>
                             <div className="project-card">
                                 <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1735216494/arcmen/Gallery/interior-design-projects/moha-family.jpg " className="image"></img>
@@ -126,8 +126,8 @@ const Interiorhero = () => {
                                 </div>
                             </div>
                         </Col>
-                       
-                          <Col lg={4} md={6} xs={12}>
+
+                        <Col lg={4} md={6} xs={12}>
                             <div className="project-card">
                                 <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1735216688/arcmen/Gallery/interior-design-projects/harish-family.jpg" alt="narayana-rao-individual-house interior designing company" className="image"></img>
                                 <div className="overlay">
@@ -152,7 +152,7 @@ const Interiorhero = () => {
                             </div>
                         </Col>
 
-                        
+
                         <Col lg={4} md={6} xs={12}>
                             <div className="project-card">
                                 <img
@@ -189,7 +189,7 @@ const Interiorhero = () => {
                                 </div>
                             </div>
                         </Col>
-                        
+
                         <Col lg={4} md={6} xs={12}>
                             <div className="project-card">
                                 <img

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import AutoSlider from '../slider';
-import Slidercard from './Slidercard';
 import Clientslider from '../../app/(path)/about-the-best-interior-designer-in-chennai/clientslider';
 import Link from 'next/link';
 import Slider2 from '../Slider2';
@@ -60,10 +59,7 @@ const Flipbox = () => {
                     </Row>
                 </Container>
             </section>
-            {/* Flip box end */}
-
-            {/* Slider start */}
-            <section>
+            <section className='py-5'>
                 <Container>
                     <Row>
                         <Col>
@@ -276,8 +272,8 @@ const Flipbox = () => {
                 <Container fluid>
                     <Row>
                         <Col lg={12}>
+                            <h2 className='text-center'>EXPLORE ARCMEN'S INTERIOR DESIGN STUDIO & EXPERIENCE CENTER TOUR EXCELLENCE</h2>
                             <div className="text-center">
-                                <h2 style={{ color: '#4DBC15 !important' }}>EXPLORE ARCMEN'S INTERIOR DESIGN STUDIO & EXPERIENCE CENTER TOUR EXCELLENCE</h2>
                                 <iframe
                                     width="100%"
                                     height="600"

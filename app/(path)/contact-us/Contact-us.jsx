@@ -23,14 +23,14 @@ function Contactus() {
             <section>
                 <Container className='form-page'>
                     <Row>
-                        <Col sm={12} className='text-center'>
+                        <Col sm={12} className='text-center mb-5'>
                             <h2>Get In Touch</h2>
                             <h3>Let's Discuss Your Projects</h3>
                         </Col>
-                        <Col sm={12} md={6} lg={6}>
+                        <Col sm={12} md={6} lg={5}>
                             <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1735027756/arcmen/contact/contact-us-image.jpg" alt="Contact Us" className='img-fluid' loading='lazy' />
                         </Col>
-                        <Col sm={12} md={6} lg={6}>
+                        <Col sm={12} md={6} lg={7}>
                             <ContactForm />
                         </Col>
                     </Row>

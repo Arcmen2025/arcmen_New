@@ -43,7 +43,9 @@
     }
     img {
         width: 100%;
-        transition: transform 0.3s ease, opacity 0.3s ease;
+        transition:
+            transform 0.3s ease,
+            opacity 0.3s ease;
     }
 
     img:hover {
@@ -219,7 +221,9 @@
     flex: 0 0 auto;
     text-align: center;
     width: 100%;
-    transition: opacity 0.5s, visibility 0.5s;
+    transition:
+        opacity 0.5s,
+        visibility 0.5s;
 }
 
 .heroSlider-cliend .slide.active {
@@ -364,20 +368,12 @@ button {
 }
 
 // Popup form
-.popup-fminter {
-    img {
-        width: 400px;
-        height: 100%;
-    }
-}
+
 .modal-dialog {
     width: 800px;
     max-width: 800px;
 }
-.popup-fminter {
-    display: flex;
-    column-gap: 13px;
-}
+
 .form-inter {
     p {
         font-size: 14px;
@@ -436,17 +432,17 @@ button {
     justify-content: center;
     align-items: center;
 }
-.popup-shw{
-    .burget-check{
-      label{
-        font-size: 12px;
-      }
+.popup-shw {
+    .burget-check {
+        label {
+            font-size: 12px;
+        }
     }
-    .form-check-inline{
-      margin-right:5px;
+    .form-check-inline {
+        margin-right: 5px;
     }
-  }
- 
+}
+
 // ================================================================================================================================================
 // ================================================================================================================================================
 // ================================================================================================================================================
@@ -460,7 +456,7 @@ button {
     margin-bottom: 1rem;
 }
 
-.custom-checkbox input[type="checkbox"] {
+.custom-checkbox input[type='checkbox'] {
     display: none;
 }
 
@@ -482,15 +478,17 @@ button {
     border: 2px solid #ccc;
     border-radius: 4px;
     background-color: #fff;
-    transition: background-color 0.3s, border-color 0.3s;
+    transition:
+        background-color 0.3s,
+        border-color 0.3s;
 }
 
-.custom-checkbox input[type="checkbox"]:checked + label:before {
+.custom-checkbox input[type='checkbox']:checked + label:before {
     background-color: #007bff;
     border-color: #007bff;
 }
 
-.custom-checkbox input[type="checkbox"]:checked + label:after {
+.custom-checkbox input[type='checkbox']:checked + label:after {
     content: '';
     position: absolute;
     left: 6px;

@@ -68,8 +68,6 @@ export default function RootLayout({ children }) {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
                 <link rel="icon" href="https://res.cloudinary.com/dpflidsbg/image/upload/v1735293696/arcmen/fav-icon.jpg" type="image/x-icon" sizes="any" />
-                {/* <!-- Meta Pixel Code --> */}
-
                 <script
                     dangerouslySetInnerHTML={{
                         __html: `!function(f,b,e,v,n,t,s)
@@ -95,10 +93,7 @@ fbq('track', 'PageView');
                 <noscript>
                     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM4FGMCH" height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>
                 </noscript>
-
-                {/* <Header /> */}
                 <div>{children}</div>
-                {/* <Footer /> */}
             </body>
         </html>
     );

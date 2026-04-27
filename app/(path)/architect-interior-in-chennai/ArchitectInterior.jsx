@@ -20,11 +20,9 @@ function Architectinterior() {
             <section>
                 <Container>
                     <Row className="Architecturalservices">
-                        <Col className="text-center work-iamge" sm={12}>
+                        <Col className="text-center work-iamge my-5" sm={12}>
                             <h4>How it works our Architectural Services</h4>
                         </Col>
-                        {/* card */}
-
                         <Col sm={12} md={6} lg={4} className="a-services">
                             <div className="card text-center" >
                                 <div className="card-image mb-4">

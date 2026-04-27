@@ -1,39 +1,37 @@
 "use client";
 import { motion } from "framer-motion";
-import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { BiCurrentLocation } from "react-icons/bi";
-import { FaFileAlt } from "react-icons/fa";
 
 const IMAGES = [
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775892669/01_ixwn9u.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775892734/04.Dinning_Lift_Lobby_xtvmqm.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775892736/03_z4jztu.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775892733/02_h3j26v.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775892949/13.Master_bedroom_fluted_cnc_2_umspcy.jpg",
+  "https://assets.webdads2u.com/images/1777290869100-05-dinning.jpg",
+  "https://assets.webdads2u.com/images/1777290897972-13-master-bedroom-fluted-cnc-2.jpeg",
+  "https://assets.webdads2u.com/images/1777290929436-01.jpg",
+  "https://assets.webdads2u.com/images/1777290955909-02.jpg",
+  "https://assets.webdads2u.com/images/1777291043916-07-kitchen.jpg",
 
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893034/01_Kitchen_Tall_Unit_view_AM2897_Krishnakiran_vucvxq.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893034/01_GF_Bedroom_Cot_view_AM2897_Krishna_ok_zk70cj.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893035/Daughter_bedroom_wardrobe_Rev-05_AM2897_Krishna_ok_phr4zl.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893033/01_GF_Bedroom_Dressing_AM2897_Krishna_ok_pqsq1c.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893032/01_Daughter_Bedroom_Study_AM2897_Krishna_-_ok_mufsba.jpg",
+  "https://assets.webdads2u.com/images/1777291342075-01-kitchen-hob-sink-view_am2897_krishnakiran-xx.jpg",
+  "https://assets.webdads2u.com/images/1777291448485-02-gf-bedroom-east-wall_am2897_krishna-ok.jpg",
+  "https://assets.webdads2u.com/images/1777291474301-01-daughter-bedroom-study_am2897_krishna---ok.jpg",
+  "https://assets.webdads2u.com/images/1777291524186-daughter-bedroom-wardrobe-rev-05_am2897_krishna-ok.jpg",
+  "https://assets.webdads2u.com/images/1777291573463-01-gf-bedroom-cot-view_am2897_krishna-ok.jpg",
 
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893358/03._Arcmen_interior_designer_chennai_olro9m.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893355/13._Arcmen_interior_designer_chennai_u6tv88.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893356/06._Arcmen_interior_designer_chennai_wryw3x.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893353/01._Arcmen_interior_designer_chennai_gsm3vn.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893352/02._Arcmen_interior_designer_chennai_bbiyen.jpg",
+  "https://assets.webdads2u.com/images/1777291096435-01--arcmen-interior-designer-chennai.jpg",
+  "https://assets.webdads2u.com/images/1777291221872-04--arcmen-interior-designer-chennai.jpg",
+  "https://assets.webdads2u.com/images/1777291253039-06--arcmen-interior-designer-chennai.jpg",
+  "https://assets.webdads2u.com/images/1777291279122-10--arcmen-interior-designer-chennai.jpg",
+  "https://assets.webdads2u.com/images/1777291307466-14--arcmen-interior-designer-chennai.jpg",
 
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893597/09.son_Bedroom_cot_view_tmqwvs.png",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893594/05.Livng_Tv_Wall_xnek4i.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893604/01.elevation_whnt2r.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893599/06.Kitchen_ngymow.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893596/08.Bedroom_cot_view_q1djzp.png",
+  "https://assets.webdads2u.com/images/1777291622500-01-elevation.jpg",
+  "https://assets.webdads2u.com/images/1777291692848-03-living.jpg",
+  "https://assets.webdads2u.com/images/1777291716636-07-bedroom-cot-view-2.png",
+  "https://assets.webdads2u.com/images/1777291738215-09-son-bedroom-cot-view.png",
+  "https://assets.webdads2u.com/images/1777291788150-10-m--bedroom-toilet.png",
 
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893806/07_phkohc.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893807/11_dd4nwv.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893805/09_n9gtfq.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893806/08_aldm9h.jpg",
-  "https://res.cloudinary.com/da9s9vymf/image/upload/v1775893807/12_cwurrm.jpg",
+  "https://assets.webdads2u.com/images/1777291815667-01.jpg",
+  "https://assets.webdads2u.com/images/1777291850150-02.jpg",
+  "https://assets.webdads2u.com/images/1777291879491-03.jpg",
+  "https://assets.webdads2u.com/images/1777291940269-12.jpg",
+  "https://assets.webdads2u.com/images/1777291904238-10.jpg",
 ];
 
 const PROJECTS_DATA = [
@@ -46,31 +44,32 @@ const PROJECTS_DATA = [
     thumbs: [IMAGES[1], IMAGES[2], IMAGES[3], IMAGES[4]],
   },
   {
-    title: "Mr.Krishna",
-    location: "Ranipet TamilNadu",
-    area: "3BHK Starting at ₹4.5L",
-    description: "A spacious villa with timeless design, premium finishes, and elegant detailing.",
-    mainImage: IMAGES[5],
-    thumbs: [IMAGES[6], IMAGES[7], IMAGES[8], IMAGES[9]],
-  },
-  {
-    title: "Mr.Arun",
-    location: "Kumbakonam, Tamilnadu",
+    title: "Arun_Kumbakonam",
+    location: " Tamilnadu",
     area: "2BHK Starting at ₹3.5L",
     description: "A spacious villa with timeless design, premium finishes, and elegant detailing.",
     mainImage: IMAGES[10],
     thumbs: [IMAGES[11], IMAGES[12], IMAGES[13], IMAGES[14]],
   },
   {
-    title: "Mr.NBS Vijayshankar",
-    location: "Panaiyur Ecr Chennai",
+    title: "Krishna_Ranipet",
+    location: "Ranipet TamilNadu",
+    area: "3BHK Starting at ₹4.5L",
+    description: "A spacious villa with timeless design, premium finishes, and elegant detailing.",
+    mainImage: IMAGES[5],
+    thumbs: [IMAGES[6], IMAGES[7], IMAGES[8], IMAGES[9]],
+  },
+
+  {
+    title: "NBS Vijayshankar Panaiyur",
+    location: " Ecr Chennai",
     area: "3BHK Starting at ₹4.5L",
     description: "A spacious villa with timeless design, premium finishes, and elegant detailing.",
     mainImage: IMAGES[15],
     thumbs: [IMAGES[16], IMAGES[17], IMAGES[18], IMAGES[19]],
   },
   {
-    title: "Mr.Baskar",
+    title: " Baskar_Kovur",
     location: "Kovur chennai",
     area: "2BHK Starting at ₹3.5L",
     description: "A spacious villa with timeless design, premium finishes, and elegant detailing.",

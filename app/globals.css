@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;600;700;800&display=swap');
 
 @tailwind components;
 @tailwind utilities;
@@ -6,7 +6,7 @@
 :root {
     --background: #ffffff;
     --foreground: #171717;
-    --landing: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --landing: 'DM Sans', system-ui, -apple-system, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,7 +22,7 @@ body {
     overflow-x: hidden;
 }
 body {
-    font-family: 'Poppins', sans-serif !important;
+    font-family: 'DM Sans', sans-serif !important;
     margin: 0px !important;
     line-height: 1.85714285714286;
 }
@@ -185,8 +185,20 @@ body {
     display: none;
 }
 
-.popup-fminter img {
+.popup-fminter {
+    height: 550px; /* control height */
+    align-items: stretch;
+}
+
+.form-inter {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.popup-img1 img {
+    width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 @media screen and (max-width: 989px) {
@@ -205,22 +217,8 @@ body {
         object-fit: cover;
     }
 
-    .bannerspace {
-        padding: 0px !important;
-    }
-
-    /* .modular-desktop{
-        display: none;
-    } */
-
-    /* .popup-fminter img {
-        height: 320px !important;
-        object-fit: cover;
-    } */
-
     .popup-fminter img {
         width: 100%;
-        /* height: 280px !important; */
         height: 250px !important;
         margin-top: 64px;
     }
@@ -230,12 +228,10 @@ body {
     }
 
     .banner2 {
-        /* height: 320px !important;  */
         object-fit: cover;
     }
 }
 
-/* Allow CKEditor balloon panel inputs to receive focus and typing */
 .ck.ck-balloon-panel {
     z-index: 99999 !important;
     position: fixed !important;
@@ -243,8 +239,8 @@ body {
 
 .ck.ck-balloon-panel .ck-input,
 .ck.ck-balloon-panel .ck-input-text,
-.ck.ck-balloon-panel input[type="text"],
-.ck.ck-balloon-panel input[type="url"] {
+.ck.ck-balloon-panel input[type='text'],
+.ck.ck-balloon-panel input[type='url'] {
     pointer-events: all !important;
     user-select: text !important;
     -webkit-user-select: text !important;

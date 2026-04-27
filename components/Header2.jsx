@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import Offcanvasmobile from './Mobile-nav3.jsx';
 import '../style/homestyle.scss';
 import '../style/Header.css';
 import { usePathname, useRouter } from 'next/navigation.js';
@@ -15,7 +14,6 @@ const Header = () => {
     const [activeTab, setActiveTab] = useState('');
 
     useEffect(() => {
-        // Set the active tab based on the current URL
         const path = pathname;
         if (path === '/admin-panel') {
             setActiveTab('Home');
@@ -25,13 +23,6 @@ const Header = () => {
         else if (path === '/admin-panel/admin-profile') {
             setActiveTab('Profile');
         }
-        //  else if (path === '/admin-panel/career-leads') {
-        //     setActiveTab('Career Lead');
-        // } else if (path === '/admin-panel/interior-design-inquiry') {
-        //     setActiveTab('Interior Design Inquiry');
-        // } else if (path === '/admin-panel/modular-kitchen-inquiry') {
-        //     setActiveTab('Modular Kitchen Inquiry');
-        // } 
     }, [pathname]);
 
     const handleLogout = () => {
@@ -43,7 +34,6 @@ const Header = () => {
         <div style={{ boxShadow: `0px 2px 4px rgba(0, 0, 0, 0.2)` }}>
             <section>
                 <Container>
-                    {/* <Row className="d-none d-lg-block"> */}
                     <Row className="">
                         <Col>
                             <div className="navbar">
@@ -64,31 +54,16 @@ const Header = () => {
                                                 Blog
                                             </Link>
                                         </li>
+                                        {/* <li>
+                                            <Link href="/admin-panel/cdn" style={{ color: activeTab === 'cdn' ? '#4dbc15' : 'black' }}>
+                                                CDN
+                                            </Link>
+                                        </li> */}
                                         <li>
                                             <Link href="/admin-panel/admin-profile" style={{ color: activeTab === 'Profile' ? '#4dbc15' : 'black' }}>
                                                 Profile
                                             </Link>
                                         </li>
-                                        {/* <li>
-                                            <Link href="/admin-panel/career-leads" style={{ color: activeTab === 'Career Lead' ? '#4dbc15' : 'black' }}>
-                                                Career Lead
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link href="/admin-panel/interior-design-inquiry" style={{ color: activeTab === 'Interior Design Inquiry' ? '#4dbc15' : 'black' }}>
-                                                Interior Design Inquiry
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link href="/admin-panel/modular-kitchen-inquiry" style={{ color: activeTab === 'Modular Kitchen Inquiry' ? '#4dbc15' : 'black' }}>
-                                                Modular Kitchen Inquiry
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link href="/admin-panel/quick-service" style={{ color: activeTab === 'Quick Service' ? '#4dbc15' : 'black' }}>
-                                                Quick Service
-                                            </Link>
-                                        </li> */}
                                         <li>
                                             <span onClick={handleLogout} style={{ color: activeTab === 'Log Out' ? '#4dbc15' : 'black' }}>
                                                 Log Out
@@ -99,9 +74,6 @@ const Header = () => {
                             </div>
                         </Col>
                     </Row>
-                    {/* <Row className="d-block d-lg-none">
-                        <Offcanvasmobile />
-                    </Row> */}
                 </Container>
             </section>
         </div>

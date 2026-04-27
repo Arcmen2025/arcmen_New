@@ -24,7 +24,6 @@ const Quickservice = () => {
         let newErrors = {};
         let isValid = true;
 
-        // Email validation
         if (!formData.email) {
             newErrors.email = 'Email is required';
             isValid = false;
@@ -33,7 +32,6 @@ const Quickservice = () => {
             isValid = false;
         }
 
-        // Mobile number validation
         if (!formData.mobile) {
             newErrors.mobile = 'Mobile number is required';
             isValid = false;
@@ -42,7 +40,6 @@ const Quickservice = () => {
             isValid = false;
         }
 
-        // Service name validation
         if (!formData.serviceName) {
             newErrors.serviceName = 'Service name is required';
             isValid = false;
@@ -57,7 +54,6 @@ const Quickservice = () => {
         if (validate()) {
             try {
                 const response = await quickServiceRequestFormAPI(formData);
-                // console.log(response);
                 Swal.fire({
                     icon: 'success',
                     title: 'Form submitted succesfully',
@@ -97,8 +93,9 @@ const Quickservice = () => {
                                             name="serviceName"
                                             value={formData.serviceName}
                                             onChange={handleChange}
-                                            className="w-100 p-2"
+                                            className="w-100 p-2 outline-0"
                                             required
+
                                         >
                                             <option value="">Services</option>
                                             <option value="Full home interior decor">Full home interior decor</option>
@@ -117,7 +114,7 @@ const Quickservice = () => {
                                             value={formData.email}
                                             onChange={handleChange}
                                             placeholder="Your email"
-                                            className="w-100 p-2"
+                                            className="w-100 p-2  outline-0"
                                             required
                                         />
                                         {errors.email && <p className="error" style={{ color: "red" }} >{errors.email}</p>}
@@ -129,13 +126,13 @@ const Quickservice = () => {
                                             name="mobile"
                                             value={formData.mobile}
                                             onChange={handleChange}
-                                            placeholder="Mobile Number"
-                                            className="w-100 p-2"
+                                            placeholder="Mobile Numbe r"
+                                            className="w-100 p-2  outline-0"
                                             required
                                         />
                                         {errors.mobile && <p className="error" style={{ color: "red" }}>{errors.mobile}</p>}
                                     </div>
-                                    <button type="submit" style={{ color: "white", borderRadius: "5px" }}>SUBMIT</button>
+                                    <button className='pb-4' type="submit" >SUBMIT</button>
                                 </form>
                             </div>
                         </Col>

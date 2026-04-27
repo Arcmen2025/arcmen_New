@@ -31,7 +31,7 @@ export default function FooterCTA() {
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: `url(https://res.cloudinary.com/da9s9vymf/image/upload/v1775207590/footerbanner_fa2zsj.png)`,
+              backgroundImage: `url(https://assets.webdads2u.com/images/1777294954753-image-40.png)`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",

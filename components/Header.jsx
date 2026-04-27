@@ -17,14 +17,12 @@ const Header = () => {
     const path = usePathname();
     const [activeTab, setActiveTab] = useState('');
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [recaptcha, setRecaptcha] = useState(null);
     const recaptchaRef = useRef(null);
 
     useEffect(() => {
-        // Set the active tab based on the current URL
         if (path === '/') {
             setActiveTab('Home');
         } else if (path === '/about-the-best-interior-designer-in-chennai') {
@@ -76,7 +74,6 @@ const Header = () => {
             isValid = false;
         }
 
-        // Mobile number validation
         if (!formData.mobile) {
             tempErrors.mobile = 'Mobile number is required';
             isValid = false;
@@ -85,12 +82,10 @@ const Header = () => {
             isValid = false;
         }
 
-        // Service name validation
         if (!formData.location) {
             tempErrors.location = 'Location is required';
             isValid = false;
         }
-        // Service name validation
         if (!formData.serviceName) {
             tempErrors.serviceName = 'Service name is required';
             isValid = false;
@@ -157,9 +152,9 @@ const Header = () => {
         };
         fetchData();
     }, []);
- if (path === "/interior-designers-chennai") {
-  return null;
-}
+    if (path === "/interior-designers-chennai") {
+        return null;
+    }
 
     return (
         <>
@@ -200,7 +195,6 @@ const Header = () => {
                         <Container>
                             <Row className="d-none d-lg-block">
                                 <Col>
-                                    {/* <div className="navbar" > */}
                                     <div className="navbar p-0">
                                         <div className="logo">
                                             <Link href="/">
@@ -230,12 +224,8 @@ const Header = () => {
                                             </li>
                                             <li className="dropdown">
                                                 <Link href="/modular-kitchen" style={{ color: activeTab === 'Modular Kitchen' ? '#4dbc15' : 'black' }}>
-                                                    {/* Modular Kitchen <IoIosArrowDown />{' '} */}
                                                     Modular Kitchen
                                                 </Link>
-                                                {/* <div className="dropdown-content">
-                                                <Link href="/island-kitchen-designer">Island Kitchen</Link>
-                                            </div> */}
                                             </li>
                                             <li className="dropdown">
                                                 <Link href="#" style={{ color: activeTab === 'Gallery' ? '#4dbc15' : 'black' }}>
@@ -392,7 +382,6 @@ const Header = () => {
                                                 </form>
                                             </div>
                                             <div className="popup-img" style={{ borderRadius: '0px 10px 10px 0px' }}>
-                                                {/* <img src="https://res.cloudinary.com/dpflidsbg/image/upload/v1739421470/Interior_Architecture_Studio_nq3oib.png" alt="Offer"></img> */}
                                                 <img src={"https://res.cloudinary.com/da9s9vymf/image/upload/v1767155204/homepage-desktop-popup.jpg"} style={{ borderRadius: '0px 10px 10px 0px' }} alt="Offer"></img>
                                             </div>
                                         </div>

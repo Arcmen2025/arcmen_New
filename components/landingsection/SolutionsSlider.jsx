@@ -7,42 +7,42 @@ const SOLUTIONS = [
   {
     title: "Wardrobes",
     desc: "Modular wardrobe, internal storage sliding/hinged doors, mirrors & accessories.",
-    img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207595/modularkitchen_l4h8ah.jpg",
+    img: "https://assets.webdads2u.com/images/1777289818363-whatsapp-image-2026-04-27-at-12-08-36.jpeg",
   },
   {
     title: "Bedrooms",
     desc: "wardrobe, Dressing unit, cot & headboards",
-    img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207579/Bedroomser_hf3gcu.jpg",
+    img: "https://assets.webdads2u.com/images/1777289907245-whatsapp-image-2026-04-27-at-12-10-01.jpeg",
   },
   {
     title: "Living Rooms",
     desc: "Tv unit, Designer partitions, Pooja unit",
-    img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207595/livingser_pqap2k.jpg",
+    img: "https://assets.webdads2u.com/images/1777290009459-whatsapp-image-2026-04-27-at-12-07-27.jpeg",
   },
   {
     title: "Pooja Rooms",
     desc: "Mandir unit, wall panels, storage drawers, lighting, decorative elements, partitions & finishes",
-    img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207603/poojaser_arg5cb.jpg",
+    img: "https://assets.webdads2u.com/images/1777289776112-whatsapp-image-2026-04-27-at-12-08-03.jpeg",
   },
   {
     title: "Modular Kitchens",
     desc: "Appliances, Accessories, counter tops",
-    img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775913286/ChatGPT_Image_Apr_11_2026_06_40_21_PM_eud13r.png",
+    img: "https://assets.webdads2u.com/images/1777289722608-whatsapp-image-2026-04-27-at-12-06-55.jpeg",
   },
   {
     title: "Dining Rooms",
     desc: "Dining table & chairs, crockery unit, lighting, wall décor, partitions & storage solutions",
-    img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207589/Dinning_d6dqvu.jpg",
+    img: "https://assets.webdads2u.com/images/1777289950456-whatsapp-image-2026-04-27-at-12-10-49.jpeg",
   },
   {
     title: "Full Home Interiors",
     desc: "Furniture, False ceiling, lightning, plumbing, sofa, Rug & curtains etc...",
-    img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775207589/home6_o7s2tf.jpg",
+    img: "https://assets.webdads2u.com/images/1777290091489-whatsapp-image-2026-04-27-at-12-09-26.jpeg",
   },
   {
     title: "Bathrooms",
     desc: "wardrobe Dressing Unit Cot & headboards.",
-    img: "https://res.cloudinary.com/da9s9vymf/image/upload/v1775913098/ChatGPT_Image_Apr_11_2026_06_40_03_PM_umwqdk.png",
+    img: "https://assets.webdads2u.com/images/1777290125992-whatsapp-image-2026-04-27-at-12-07-12.jpeg",
   },
 ];
 

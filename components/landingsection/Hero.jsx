@@ -25,19 +25,18 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "url('https://res.cloudinary.com/da9s9vymf/image/upload/v1775912901/Luxurious_modern_living_room_design_1_jcgrnq.png')",
+              "url('https://assets.webdads2u.com/images/1777294826799-aranprime-kbytcpi1i5i-unsplash-1.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
         />
-        <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
       <div className="relative z-10 flex-1 flex items-center">
         <div className="px-6 md:px-32 w-full">
           <motion.img
-            src="https://res.cloudinary.com/da9s9vymf/image/upload/v1775207563/whitelogo_ogcb0n.svg"
+            src="https://assets.webdads2u.com/images/1777294926124-djfvkpfrfmvfizw7x6ox-1.png"
             alt="Arcmen Logo"
             className="w-[130px] h-21 md:w-22 object-cover "
             initial={{ opacity: 0, y: 20 }}
