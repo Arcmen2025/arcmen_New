@@ -17,7 +17,7 @@ const API_URL =
 
 export default function LeadForm() {
   const router = useRouter();
-  
+
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -28,24 +28,21 @@ export default function LeadForm() {
   const [loading, setLoading] = useState(false);
   const [bubbles, setBubbles] = useState([]);
 
-  // Lock scroll when loading
   useEffect(() => {
     if (loading) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
-    
+
     return () => {
       document.body.style.overflow = "auto";
     };
   }, [loading]);
 
-  // Bubble effect
   useEffect(() => {
     const interval = setInterval(() => {
       const id = Date.now();
-
       const newBubble = {
         id,
         left: Math.random() * 100,
@@ -66,35 +63,35 @@ export default function LeadForm() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const onSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!/^[6-9]\d{9}$/.test(form.phone)) {
-    alert("Please enter a valid 10-digit mobile number");
-    return;
-  }
-
-  try {
-    setLoading(true);
-    const payload = {
-      fullName: form.name,
-      mobileNumber: form.phone,
-      email: form.email,
-      projectType: form.project || "Residential Interior",
-    };
-    
-    const response = await axios.post(API_URL, payload);
-    
-    if (response.status === 200 || response.status === 201) {
-      // ✅ THIS LINE AUTOMATICALLY ROUTES TO THANKYOU_PAGE
-      router.push("/interior-designers-chennai/thank-you");
+    if (!/^[6-9]\d{9}$/.test(form.phone)) {
+      alert("Please enter a valid 10-digit mobile number");
+      return;
     }
-  } catch (error) {
-    console.error("API Error:", error);
-    alert("Something went wrong. Please try again.");
-  } finally {
-    setLoading(false);
-  }
-};
+
+    try {
+      setLoading(true);
+      const payload = {
+        fullName: form.name,
+        mobileNumber: form.phone,
+        email: form.email,
+        projectType: form.project || "Residential Interior",
+      };
+
+      const response = await axios.post(API_URL, payload);
+
+      if (response.status === 200 || response.status === 201) {
+        // ✅ THIS LINE AUTOMATICALLY ROUTES TO THANKYOU_PAGE
+        router.push("/interior-designers-chennai/thank-you");
+      }
+    } catch (error) {
+      console.error("API Error:", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const inputClass = `
     w-full bg-transparent 
@@ -123,7 +120,7 @@ export default function LeadForm() {
           </div>,
           document.body
         )}
-        
+
       {/* FORM */}
       <motion.div
         id="contact"
@@ -162,7 +159,7 @@ export default function LeadForm() {
               className={inputClass}
             />
           ))}
-          
+
           <select
             name="project"
             value={form.project}
@@ -177,7 +174,7 @@ export default function LeadForm() {
             <option className="text-black">4 BHK +</option>
             <option className="text-black">Villa</option>
           </select>
-          
+
           <div className="flex justify-center mt-2 md:mb-2">
             <div className="relative inline-block">
               <motion.button
@@ -194,7 +191,7 @@ export default function LeadForm() {
               >
                 Book a Free Consultation
               </motion.button>
-              
+
               {bubbles?.map((b) => (
                 <motion.span
                   key={b.id}

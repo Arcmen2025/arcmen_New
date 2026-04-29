@@ -8,9 +8,7 @@ import Hero from "./Hero";
 import LeadPopup from "./LeadPopup";
 import ProcessSection from "./ProcessSection";
 import SolutionsSlider from "./SolutionsSlider";
-import StatsSection from "./StatCard";
 import TestimonialsSection from "./TestimonialsSection";
-import WhyChooseUs from "./WhyChooseUs";
 
 export default function LeadMain() {
   return (
@@ -21,8 +19,6 @@ export default function LeadMain() {
       <ChennaiProjects />
       <TestimonialsSection />
       <SolutionsSlider />
-      <StatsSection />
-      {/* <WhyChooseUs /> */}
       <ProcessSection />
       <GallerySection />
       <FAQAccordion />

@@ -51,18 +51,14 @@ export default function TestimonialsSection() {
   return (
     <section className="py-10 md:py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <motion.div
+        <div
           className="text-center mb-12"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: false }}
         >
           <h2 className="sec-head text-black font-extrabold text-3xl">
             Hear from our<span className="md:block">{" "}esteemed Clients!</span>
           </h2>
-        </motion.div>
-        <div className="grid md:grid-cols-12 gap-6 items-stretch">
+        </div>
+        <div className="grid md:grid-cols-12 gap-6 items-center">
           <div className="md:col-span-6">
             <div className="relative rounded-[6px] overflow-hidden bg-stone-800 min-h-[350px] md:min-h-[350px]">
               <motion.div
@@ -115,7 +111,7 @@ export default function TestimonialsSection() {
               ))}
             </div>
           </div>
-          <div className="hidden md:block md:col-span-6 flex flex-col gap-4">
+          <div className="hidden md:block md:col-span-6 flex flex-col">
             {TESTIMONIALS.map((t, i) => {
               const isOpen = expanded === i;
               const isLong = t.text.length > MAX_CHARS;
@@ -123,7 +119,7 @@ export default function TestimonialsSection() {
               return (
                 <div key={i} className="bg-stone-50 flex gap-6 rounded-2xl p-2 border border-stone-100">
                   <div className="w-10 h-10 bg-stone-300 rounded-full flex items-center justify-center flex-shrink-0">
-                    <img src={t.img} alt={t.name} className="w-full h-full object-cover rounded-full" />
+                    <img src={"https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2558760599.jpg"} alt={t.name} className="w-full h-full object-cover rounded-full" />
                   </div>
                   <div className="flex flex-col">
                     <p className="text-sm mb-0">
@@ -151,7 +147,6 @@ export default function TestimonialsSection() {
         </div>
       </div>
 
-      {/* POPUP (UNCHANGED) */}
       <AnimatePresence>
         {videoExpanded && (
           <motion.div

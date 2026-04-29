@@ -1,41 +1,40 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
-import { FaWhatsapp } from "react-icons/fa";
-import { IoMdCall } from "react-icons/io";
 
-const FloatingActions = () => {
+import React from "react";
+
+export default function FloatingActions() {
   return (
-    <div className="hidden  fixed right-3 bottom-10 z-50 md:flex flex-col items-center gap-4">
-      <motion.a
+    <div className="hidden fixed right-3 bottom-10 z-50 md:flex flex-col items-center gap-4">
+      <a
         href="tel:+919962998008"
-        initial={{ scale: 1 }}
-        animate={{ scale: [1, 1.10, 1] }}
-        transition={{
-          duration: 1.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="w-10 h-10  bg-[#4dbc15] rounded-full flex items-center justify-center text-white shadow-lg"
+        className="w-10 h-10 bg-[#4dbc15] rounded-full flex items-center justify-center text-white shadow-lg animate-pulse"
       >
-        <IoMdCall size={26} />
-      </motion.a>
-      <motion.a
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+        >
+          <path d="M3.654 1.328a.678.678 0 0 1 .58-.328h2.026c.28 0 .53.178.62.445l.547 1.64a.678.678 0 0 1-.165.676l-1.272 1.272a11.72 11.72 0 0 0 5.516 5.516l1.272-1.272a.678.678 0 0 1 .676-.165l1.64.547a.678.678 0 0 1 .445.62v2.026a.678.678 0 0 1-.328.58l-1.272.764a2.25 2.25 0 0 1-2.278.03C6.516 13.21 2.79 9.484 1.206 6.704a2.25 2.25 0 0 1 .03-2.278l.764-1.272z" />
+        </svg>
+      </a>
+
+      <a
         href="https://wa.me/9962998008"
         target="_blank"
-        initial={{ scale: 1 }}
-        animate={{ scale: [1, 1.10, 1] }}
-        transition={{
-          duration: 1.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="w-10 h-10  bg-[#4dbc15] rounded-full flex items-center justify-center text-white shadow-lg"
+        className="w-10 h-10 bg-[#4dbc15] rounded-full flex items-center justify-center text-white shadow-lg animate-pulse"
       >
-        <FaWhatsapp size={24} />
-      </motion.a>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+        >
+          <path d="M13.601 2.326A7.84 7.84 0 0 0 8.003 0C3.58 0 0 3.582 0 8.003c0 1.41.37 2.784 1.073 3.99L0 16l4.133-1.063a7.94 7.94 0 0 0 3.87 1.003h.003c4.422 0 8.003-3.582 8.003-8.003a7.94 7.94 0 0 0-2.408-5.611zM8.003 14.5a6.47 6.47 0 0 1-3.293-.898l-.235-.139-2.454.63.654-2.394-.153-.246a6.47 6.47 0 0 1-1.002-3.45c0-3.585 2.916-6.5 6.5-6.5a6.46 6.46 0 0 1 4.598 1.905 6.46 6.46 0 0 1 1.902 4.595c0 3.585-2.916 6.5-6.5 6.5zm3.652-4.838c-.2-.1-1.184-.584-1.367-.65-.183-.067-.317-.1-.45.1-.133.2-.516.65-.633.783-.117.133-.233.15-.433.05-.2-.1-.845-.311-1.61-.992-.596-.531-1-1.187-1.117-1.387-.117-.2-.012-.308.088-.408.09-.089.2-.233.3-.35.1-.117.133-.2.2-.333.067-.133.033-.25-.017-.35-.05-.1-.45-1.084-.617-1.484-.163-.392-.328-.338-.45-.344l-.383-.007c-.133 0-.35.05-.533.25-.183.2-.7.684-.7 1.667s.717 1.933.817 2.067c.1.133 1.41 2.153 3.417 3.017.477.206.85.329 1.14.421.479.152.915.13 1.26.079.385-.057 1.184-.484 1.35-.951.167-.467.167-.867.117-.951-.05-.083-.183-.133-.383-.233z" />
+        </svg>
+      </a>
     </div>
   );
-};
-
-export default FloatingActions;
+}

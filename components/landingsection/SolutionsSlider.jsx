@@ -81,19 +81,15 @@ export default function SolutionsSlider() {
   return (
     <section className="md:py-16 py-10">
       <div className=" md:px-20">
-        <motion.div
+        <div
           className="text-center mb-10"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: false }}
         >
           <h2 className="text-black font-extrabold text-3xl leading-tight">
             Complete Interior Solutions <br /><span className="text-[#4dbc15]">
               for Modern Homes
             </span>
           </h2>
-        </motion.div>
+        </div>
         <div className="overflow-hidden w-full" ref={containerRef}>
           <motion.div
             className="flex"
