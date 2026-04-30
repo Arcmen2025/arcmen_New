@@ -61,6 +61,20 @@ const PROJECTS_DATA = [
   },
 ];
 
+const scrollToContact = () => {
+  const el = document.getElementById("contact");
+  if (el) {
+    const yOffset = -200;
+    const y =
+      el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({
+      top: y,
+      behavior: "smooth",
+    });
+  }
+};
+
 function ProjectCard({ project }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-2 items-start">
@@ -71,8 +85,9 @@ function ProjectCard({ project }) {
         <img
           src={project.mainImage}
           alt={project.title}
+          onClick={scrollToContact}
           loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 cursor-pointer"
         />
       </div>
 
@@ -82,7 +97,8 @@ function ProjectCard({ project }) {
             key={i}
             src={src}
             loading="lazy"
-            className="w-full aspect-[4/3] object-cover rounded shadow-md"
+            onClick={scrollToContact}
+            className="w-full aspect-[4/3] object-cover rounded shadow-md cursor-pointer"
           />
         ))}
       </div>
