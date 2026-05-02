@@ -12,7 +12,7 @@ export default function BottomCenterButton() {
         let lastState = false;
 
         const handleScroll = () => {
-            const shouldShow = window.scrollY > 520;
+            const shouldShow = window.scrollY > 1300;
 
             if (shouldShow !== lastState) {
                 setScrolled(shouldShow);

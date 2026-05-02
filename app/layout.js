@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style/responsive.scss';
 import './globals.css';
 import Script from 'next/script';
-import { DM_Sans } from 'next/font/google';
+import { DM_Sans, Montserrat } from 'next/font/google';
 
 export const metadata = {
     alternates: {
@@ -39,6 +39,12 @@ const dmSans = DM_Sans({
     subsets: ['latin'],
     display: 'swap',
     fallback: ['system-ui', 'Arial']
+});
+
+const montserrat = Montserrat({
+    subsets: ['latin'],
+    weight: ['400', '500', '600', '700', '800'],
+    display: 'swap'
 });
 
 export default function RootLayout({ children }) {
@@ -96,7 +102,7 @@ fbq('track', 'PageView');
                     <img height="1" width="1" style={{ display: 'none' }} src="https://www.facebook.com/tr?id=1002700818509764&ev=PageView&noscript=1" />
                 </noscript>
             </head>
-            <body className={dmSans.className}>
+            <body className={`${dmSans.className} ${montserrat.className}`}>
                 <noscript>
                     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM4FGMCH" height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>
                 </noscript>

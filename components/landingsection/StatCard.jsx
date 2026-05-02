@@ -59,10 +59,10 @@ function useCountUp(end, duration = 1500, delay = 0, startTrigger = false) {
 const AnimatedNumber = memo(({ value, suffix, delay, start }) => {
     const count = useCountUp(value, 1500, delay, start);
     return (
-        <h2 className="text-2xl md:text-3xl font-semibold text-[#1a1a1a]">
+        <span className="text-xl md:text-3xl font-semibold text-[#1a1a1a]">
             {count}
             {suffix}
-        </h2>
+        </span>
     );
 });
 
@@ -82,13 +82,12 @@ function TimelineItem({ value, label, suffix = "", delay, start }) {
                 className={`w-4 h-4 rounded-full mb-4 z-10 transition-all duration-500 ${show ? "bg-[#4dbc15] scale-100" : "bg-gray-300 scale-75"
                     }`}
             ></div>
-
             {typeof value === "number" ? (
                 <AnimatedNumber value={value} suffix={suffix} delay={delay} start={start} />
             ) : (
-                <h2 className="text-2xl md:text-3xl font-semibold text-[#1a1a1a]">
+                <span className="text-xl md:text-3xl font-semibold text-[#1a1a1a]">
                     {value}
-                </h2>
+                </span>
             )}
             <p className="text-gray-600 text-sm mt-1">{label}</p>
         </div>
@@ -123,11 +122,15 @@ export default function StatsSection() {
     return (
         <section
             ref={ref}
-            className="mb-3 md:py-16 px-6 md:px-12 bg-gradient-to-br "
+            className="mb-3 pt-5 md:py-16 px-6 md:px-12 bg-gradient-to-br "
         >
-            <div className="max-w-6xl mx-auto text-center mb-5 md:mb-12">
+            <div className="max-w-6xl mx-auto text-center mb-4  md:mb-12">
                 <p className="font-semibold text-2xl md:text-3xl leading-tight  mb-2">
-                    Why Clients Choose Us
+                    <span className="text-[#4dbc15]">
+                        Why Home Owners
+                    </span>
+                    <br />
+                    Choose Arcmen
                 </p>
             </div>
             <div className="relative max-w-6xl mx-auto">
@@ -137,10 +140,10 @@ export default function StatsSection() {
                     style={{ width: `${progress}%` }}
                 ></div>
                 <div className="grid grid-cols-2 md:grid-cols-4  md:gap-10 relative">
-                    <TimelineItem value={2500} label="Happy Clients" suffix="+" delay={0} start={inView} />
-                    <TimelineItem value={35} label="On-Time Delivery" suffix=" days" delay={500} start={inView} />
-                    <TimelineItem value={15} label="Years  Warranty" delay={1000} start={inView} />
-                    <TimelineItem value={"No"} label="Hidden Cost" suffix="" delay={1500} start={inView} />
+                    <TimelineItem value={30} label="Years as Chennai's Trusted Interior Designers" suffix="+" delay={0} start={inView} />
+                    <TimelineItem value={2500} label="Home Interior Projects Completed" suffix="+" delay={500} start={inView} />
+                    <TimelineItem value={35} label="On-Time Delivery" suffix=" days" delay={1000} start={inView} />
+                    <TimelineItem value={15} label="Warranty on All Home Interiors" suffix=" years" delay={1500} start={inView} />
                 </div>
             </div>
         </section>

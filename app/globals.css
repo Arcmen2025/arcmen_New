@@ -26,7 +26,7 @@ body {
 }
 
 .landing-font {
-    font-family: var(--landing) !important;
+    font-family: 'Montserrat', sans-serif !important;
 }
 
 .Build-page {

@@ -152,10 +152,16 @@ const Header = () => {
         };
         fetchData();
     }, []);
-    if (path === "/interior-designers-chennai") {
+
+    const blockedPaths = [
+        "/interior-designers-chennai",
+        "/home-interior-designers-in-chennai"
+    ];
+
+
+    if (blockedPaths.includes(path)) {
         return null;
     }
-
     return (
         <>
             {/* <section style={{ marginBottom: '80px' }}> */}

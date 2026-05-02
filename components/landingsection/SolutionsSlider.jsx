@@ -2,6 +2,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
 const SOLUTIONS = [
   {
@@ -47,6 +48,10 @@ const SOLUTIONS = [
 ];
 
 export default function SolutionsSlider() {
+  const pathname = usePathname();
+  const isTargetPage =
+    pathname === "/home-interior-designers-in-chennai";
+
   const [index, setIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef(null);
@@ -80,14 +85,26 @@ export default function SolutionsSlider() {
 
   return (
     <section className="md:py-16 py-10">
-      <div className=" md:px-20">
+      <div className="px-4 md:px-20">
         <div
           className="text-center mb-10"
         >
           <h2 className="text-black font-extrabold text-3xl leading-tight">
-            Complete Interior Solutions <br /><span className="text-[#4dbc15]">
-              for Modern Homes
-            </span>
+            {isTargetPage ? (
+              <>
+                Complete Home Interior <br />
+                <span className="text-[#4dbc15]">
+                  Design Services in Chennai
+                </span>
+              </>
+            ) : (
+              <>
+                Complete Interior Design Services in Chennai  <br />
+                <span className="text-[#4dbc15]">
+                  Homes, Apartments & Turnkey Projects
+                </span>
+              </>
+            )}
           </h2>
         </div>
         <div className="overflow-hidden w-full" ref={containerRef}>

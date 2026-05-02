@@ -201,6 +201,33 @@ export const TESTIMONIALS = [
     }
 ];
 
+export const FAQS_CHENNAI = [
+    {
+        q: 'How do I find the best interior designers in Chennai?',
+        a: 'Finding the best interior designers in Chennai starts with checking their portfolio, client reviews, and pricing transparency. Arcmen is a leading interior design company in Chennai with 30+ years experience, 2500+ completed projects, and a 4.7★ rating. Book a free consultation to get started!'
+    },
+    {
+        q: 'What is the price range for interior designers in Chennai?',
+        a: 'Interior designers in Chennai price varies based on the size of your space and design style. At Arcmen, 2BHK home interiors start from ₹3.5L and 3BHK from ₹4.5L. We offer affordable interior designers in Chennai with no hidden costs and full transparency.'
+    },
+    {
+        q: 'Do you offer luxury interior design in Chennai?',
+        a: 'Yes! Arcmen offers luxury interior designers in Chennai for premium homes, villas, and apartments. From high-end materials to custom furniture — we create stunning luxury interiors tailored to your lifestyle and budget.'
+    },
+    {
+        q: 'Can interior designers in Chennai handle apartment interiors?',
+        a: "Absolutely! We are experienced interior designers for apartments in Chennai. Whether it's a compact 2BHK or a spacious penthouse — our team handles complete apartment interior design in Chennai with 3D visualization, on-time delivery, and warranty."
+    },
+    {
+        q: 'Are you a turnkey interior design company in Chennai?',
+        a: 'Yes! Arcmen is a top turnkey interior design company in Chennai. We handle everything — from design concept to final handover. No need to manage multiple vendors. One company, complete solution, zero stress!'
+    },
+    {
+        q: 'Why choose Arcmen as your interior designers in Chennai?',
+        a: 'Arcmen is one of the best interior design companies in Chennai because: 30+ Years experience, 2500+ Happy clients with a 4.7★ rating, 35-day on-time delivery guarantee, 15-year warranty, transparent payment process, and free consultation with 3D design. Book your free site visit today!'
+    }
+];
+
 export const FAQS = [
     {
         q: 'How much does home interior cost in Chennai?',

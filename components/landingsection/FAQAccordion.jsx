@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
-import { FAQS } from "@/app/utilits/constants";
+import { FAQS, FAQS_CHENNAI } from "@/app/utilits/constants";
+import { usePathname } from "next/navigation";
+
 
 function Item({ faq, open, onToggle }) {
   return (
@@ -39,6 +41,12 @@ function Item({ faq, open, onToggle }) {
 
 export default function FAQAccordion() {
   const [openIdx, setOpenIdx] = useState(0);
+  const pathname = usePathname();
+
+  const isTargetPage =
+    pathname === "/home-interior-designers-in-chennai";
+
+  const data = !isTargetPage ? FAQS_CHENNAI : FAQS;
 
   return (
     <section className="py-16 bg-[#f5f5f5]">
@@ -54,13 +62,13 @@ export default function FAQAccordion() {
                   href="mailto:production@arcmen.com"
                   className="text-blue-600 underline"
                 >
-                 contact@arcmeninterior.com
+                  contact@arcmeninterior.com
                 </a>
               </span>
             </p>
           </div>
           <div className="flex flex-col">
-            {FAQS.map((faq, i) => (
+            {data?.map((faq, i) => (
               <Item
                 key={i}
                 faq={faq}

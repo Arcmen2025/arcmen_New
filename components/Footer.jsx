@@ -9,10 +9,14 @@ import { usePathname } from 'next/navigation';
 
 const Footer = () => {
     const path = usePathname();
+    const blockedPaths = [
+        "/interior-designers-chennai",
+        "/home-interior-designers-in-chennai"
+    ];
 
-      if (path === "/interior-designers-chennai") {
-    return null;
-  }
+    if (blockedPaths.includes(path)) {
+        return null;
+    }
 
     return (
         <div>

@@ -1,8 +1,13 @@
 "use client"
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function FooterCTA() {
+  const pathname = usePathname();
+
+  const isTargetPage =
+    pathname === "/home-interior-designers-in-chennai";
   const [bubbles, setBubbles] = useState([]);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -41,10 +46,23 @@ export default function FooterCTA() {
         </div>
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
 
-          <h2 className="text-white text-3xl font-bold mb-4 leading-tight">
-            Your Perfect Home Is
-            <span className="block">One Click Away.</span>
-          </h2>
+          <div className="text-white text-sm md:text-lg mb-4 leading-relaxed md:max-w-4xl">
+            {!isTargetPage ? (
+              <>
+                Looking for the best interior designers in Chennai? Arcmen is a leading
+                interior design company in Chennai offering affordable and luxury
+                interior design services. Whether you need expert designers for
+                apartments or turnkey interiors — we handle everything with
+                transparency and quality.
+              </>
+            ) : (
+              <>
+                Looking for the best home interior designers in Chennai? Arcmen offers
+                complete home interior design services for 2BHK, 3BHK, and luxury homes.
+                From modern interiors to affordable solutions — we cover everything!
+              </>
+            )}
+          </div>
           <div className="relative inline-block">
 
             <motion.a
