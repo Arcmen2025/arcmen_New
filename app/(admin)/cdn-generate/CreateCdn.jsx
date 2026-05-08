@@ -1,5 +1,8 @@
+"use client";
+
 import { useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
+import fetchHandler from "@/api/Handler";
 
 const CreateCdn = ({ onClose, setUploadResult }) => {
   const [previewUrl, setPreviewUrl] = useState(null);
@@ -9,41 +12,64 @@ const CreateCdn = ({ onClose, setUploadResult }) => {
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
+    if (!selectedFile) return;
     setFile(selectedFile);
-
-    if (selectedFile) {
-      const url = URL.createObjectURL(selectedFile);
-      setPreviewUrl(url);
-    }
+    setPreviewUrl(URL.createObjectURL(selectedFile));
   };
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     if (!file || !category) {
       alert("Please select category and file");
       return;
     }
 
-    setLoading(true);
-    setTimeout(() => {
-      const generatedData = {
-        key: file.name,
-        url: previewUrl,
-        type: category,
-      };
+    try {
+      setLoading(true);
 
-      setUploadResult(generatedData);
-      setLoading(false);
+      const formData = new FormData();
+
+      formData.append("file", file);
+      formData.append("type", category);
+
+      const res = await fetchHandler({
+        method: "POST",
+        endpoint: "media/upload",
+        data: formData,
+        isFormData: true,
+      });
+
+      if (res?.isError) {
+        alert("Upload failed");
+        return;
+      }
+
+      const uploadedFile = res?.data?.file;
+      setUploadResult({
+        key: uploadedFile?.key,
+        url: uploadedFile?.s3Url,
+        type: category,
+      });
+
       onClose();
-    }, 1000);
+    } catch (error) {
+      console.log(error);
+      alert("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <>
-      <div className="flex items-center px-6 mt-20">
-        <button onClick={onClose} className="p-1 rounded hover:bg-gray-100 border-0 flex ">
+      <div className="flex items-center px-6 mt-20 gap-3">
+        <button
+          onClick={onClose}
+          className="p-1 rounded hover:bg-gray-100 border-0 flex"
+        >
           <BsArrowLeft size={20} />
         </button>
-        <h2 className="text-xl font-semibold ">CDN Generate</h2>
+
+        <h2 className="text-xl font-semibold">CDN Generate</h2>
       </div>
 
       <div className="p-6 mt-6 mx-auto bg-white rounded-xl shadow">
@@ -57,7 +83,6 @@ const CreateCdn = ({ onClose, setUploadResult }) => {
             onChange={(e) => setCategory(e.target.value)}
             className="w-full border border-gray-300 rounded-lg px-3 py-2"
           >
-            <option value="">Select Category</option>
             <option value="images">Images</option>
             <option value="videos">Videos</option>
           </select>
@@ -93,6 +118,7 @@ const CreateCdn = ({ onClose, setUploadResult }) => {
               type="file"
               className="hidden"
               onChange={handleFileChange}
+              accept={category === "images" ? "image/*" : "video/*"}
             />
           </label>
         </div>
@@ -106,7 +132,7 @@ const CreateCdn = ({ onClose, setUploadResult }) => {
               : "bg-black hover:bg-gray-800"
               }`}
           >
-            {loading ? "Generating..." : "Generate CDN Link"}
+            {loading ? "Uploading..." : "Generate CDN Link"}
           </button>
         </div>
       </div>

@@ -18,7 +18,6 @@ const CdnGenerateSection = () => {
 
   const fetchFiles = async () => {
     setLoading(true);
-
     const res = await fetchHandler({
       method: "GET",
       endpoint: `media/list?type=${category}&limit=10`,
@@ -26,6 +25,7 @@ const CdnGenerateSection = () => {
 
     if (!res?.isError) {
       const apiFiles = res?.data?.files || [];
+
       const formatted = apiFiles?.map((item) => ({
         key: item.key,
         url: item.url || item.location,
@@ -44,6 +44,16 @@ const CdnGenerateSection = () => {
     fetchFiles();
   }, [category]);
 
+  useEffect(() => {
+    if (uploadResult) {
+      fetchFiles();
+    }
+  }, [uploadResult]);
+
+  useEffect(() => {
+    fetchFiles();
+  }, [category]);
+
   const filteredFiles = files
     .filter((item) =>
       item.key.toLowerCase().includes(search.toLowerCase())
@@ -55,12 +65,37 @@ const CdnGenerateSection = () => {
     setShowDeleteModal(true);
   };
 
-  const handleConfirmDelete = () => {
-    setFiles((prev) =>
-      prev.filter((f) => f.key !== selectedItem.key)
-    );
-    setShowDeleteModal(false);
-    setSelectedItem(null);
+  const handleConfirmDelete = async () => {
+    if (!selectedItem) return;
+
+    try {
+      setLoading(true);
+
+      const res = await fetchHandler({
+        method: "DELETE",
+        endpoint: "media/delete",
+        data: {
+          key: selectedItem.key,
+        },
+      });
+
+      if (res?.isError) {
+        alert("Delete failed");
+        return;
+      }
+
+      setFiles((prev) =>
+        prev.filter((f) => f.key !== selectedItem.key)
+      );
+
+      setShowDeleteModal(false);
+      setSelectedItem(null);
+    } catch (error) {
+      console.log(error);
+      alert("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleCancelDelete = () => {

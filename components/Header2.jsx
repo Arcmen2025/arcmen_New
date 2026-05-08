@@ -54,11 +54,11 @@ const Header = () => {
                                                 Blog
                                             </Link>
                                         </li>
-                                        {/* <li>
+                                        <li>
                                             <Link href="/admin-panel/cdn" style={{ color: activeTab === 'cdn' ? '#4dbc15' : 'black' }}>
                                                 CDN
                                             </Link>
-                                        </li> */}
+                                        </li>
                                         <li>
                                             <Link href="/admin-panel/admin-profile" style={{ color: activeTab === 'Profile' ? '#4dbc15' : 'black' }}>
                                                 Profile

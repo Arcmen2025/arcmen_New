@@ -10,12 +10,17 @@ const getJsonResponseSafe = async (response) => {
     }
 };
 
-const fetchHandler = async ({ method, endpoint, data }) => {
+const fetchHandler = async ({ method, endpoint, data, isFormData = false }) => {
     const API_BASE_URLS = process.env.NEXT_PUBLIC_API_BASE_URL + endpoint;
-    const headers = {
-        'Content-Type': 'application/json'
-    };
+
+    const headers = {};
+
+    if (!isFormData) {
+        headers['Content-Type'] = 'application/json';
+    }
+
     const accessToken = Cookies.get('token');
+
     if (accessToken) {
         headers['Authorization'] = `Bearer ${accessToken}`;
     }
@@ -28,7 +33,7 @@ const fetchHandler = async ({ method, endpoint, data }) => {
     };
 
     if (method !== 'GET' && data) {
-        options.body = JSON.stringify(data);
+        options.body = isFormData ? data : JSON.stringify(data);
     }
 
     try {
@@ -38,14 +43,21 @@ const fetchHandler = async ({ method, endpoint, data }) => {
             return await getJsonResponseSafe(response);
         } else {
             const errorResult = await getJsonResponseSafe(response);
-            return { isError: true, error: errorResult };
+
+            return {
+                isError: true,
+                error: errorResult
+            };
         }
     } catch (error) {
         console.error('Fetch error:', error);
-        return { isError: true, error: 'Network or server error. Please try again later.' };
+
+        return {
+            isError: true,
+            error: 'Network or server error. Please try again later.'
+        };
     }
 };
-
 export default fetchHandler;
 
 export const fetchHandler2 = async ({ method, endpoint, data }) => {

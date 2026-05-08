@@ -46,10 +46,10 @@ export const MediaCard = ({ item, category, onDelete }) => {
     <div className="bg-white border border-gray-100  overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200">
       <div className="relative h-36 bg-gray-100">
         {category === "images" ? (
-          <img src={item.url} alt="" className="w-full h-full object-cover" />
+          <img src={item.s3Url || item.url} alt="" className="w-full h-full object-cover" />
         ) : (
           <video
-            src={item.url}
+            src={item.s3Url || item.url}
             className="w-full h-full object-cover"
             controls
           />
@@ -59,7 +59,7 @@ export const MediaCard = ({ item, category, onDelete }) => {
       <div className="p-3 space-y-2">
         <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-2.5 py-1.5">
           <span className="flex-1 text-[11px] text-gray-400 truncate">
-            {item.url}
+            {item.s3Url || item.url}
           </span>
           <button
             onClick={handleCopy}
