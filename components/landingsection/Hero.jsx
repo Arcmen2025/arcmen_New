@@ -37,8 +37,8 @@ export default function Hero() {
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-2.5 rounded-md mb-3 md:mb-6">
                 <span className="text-xs md:text-sm text-white">
                   {isTargetPage
-                    ? "⭐ Chennai's Best Home Interior Designers "
-                    : "⭐ Chennai's Top Interior Designers"}
+                    ? "⭐ Chennai's Best Home Interior Designers Company"
+                    : "⭐ Chennai's Top Interior Designers Company"}
                 </span>
               </div>
               <h1 className="text-2xl md:text-4xl font-semibold leading-tight mb-4 text-[#7ce04a]">

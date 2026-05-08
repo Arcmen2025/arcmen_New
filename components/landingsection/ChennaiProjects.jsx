@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const IMAGES = [
   "https://assets.webdads2u.com/images/1777290869100-05-dinning.jpg",
@@ -67,8 +67,7 @@ const scrollToContact = () => {
   const el = document.getElementById("contact");
   if (el) {
     const yOffset = -200;
-    const y =
-      el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
     window.scrollTo({ top: y, behavior: "smooth" });
   }
 };
@@ -93,8 +92,9 @@ function ProjectCard({ project }) {
             key={i}
             src={src}
             onClick={scrollToContact}
-            className={`w-full aspect-[4/3] object-cover rounded cursor-pointer ${i >= 2 ? "hidden md:block" : ""
-              }`}
+            className={`w-full aspect-[4/3] object-cover rounded cursor-pointer ${
+              i >= 2 ? "hidden md:block" : ""
+            }`}
           />
         ))}
       </div>
@@ -110,17 +110,31 @@ function ProjectCard({ project }) {
 
 export default function ChennaiProjects() {
   const pathname = usePathname();
-
-  const isTargetPage =
-    pathname === "/home-interior-designers-in-chennai";
+  const isTargetPage = pathname === "/home-interior-designers-in-chennai";
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const dragStartX = useRef(null);
 
+  const handleDragStart = (clientX) => {
+    dragStartX.current = clientX;
+  };
+
+  const handleDragEnd = (clientX) => {
+    if (dragStartX.current === null) return;
+    const diff = dragStartX.current - clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        setCurrentIndex((prev) => Math.min(prev + 1, PROJECTS_DATA.length - 1));
+      } else {
+        setCurrentIndex((prev) => Math.max(prev - 1, 0));
+      }
+    }
+    dragStartX.current = null;
+  };
 
   return (
     <section className="py-8 overflow-hidden">
       <div className="max-w-[1300px] mx-auto px-4">
-
         <div className="text-center mb-8 md:mb-12">
           <p className="inline-block text-[11px] md:text-[12px] tracking-[3px] uppercase px-4 py-1.5 mb-3 rounded-full backdrop-blur-md bg-white/60 text-[#4dbc15] border border-[#4dbc15]/40 shadow-[0_0_10px_rgba(77,188,21,0.2)] font-medium">
             Our Project
@@ -134,7 +148,7 @@ export default function ChennaiProjects() {
               </>
             ) : (
               <>
-                Every Home in Chennai We Designed <br className="hidden md:block" />
+                Every Home interiors in Chennai We Designed <br className="hidden md:block" />
                 Became a{" "}
                 <span className="text-[#4dbc15]">Space to Love</span>
               </>
@@ -142,34 +156,41 @@ export default function ChennaiProjects() {
           </h2>
         </div>
 
-        <div className="overflow-hidden">
+        <div
+          className="overflow-hidden cursor-grab active:cursor-grabbing select-none"
+          onMouseDown={(e) => handleDragStart(e.clientX)}
+          onMouseUp={(e) => handleDragEnd(e.clientX)}
+          onMouseLeave={() => { dragStartX.current = null; }}
+          onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
+          onTouchEnd={(e) => handleDragEnd(e.changedTouches[0].clientX)}
+        >
           <div
             className="flex transition-transform duration-500"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
-            {PROJECTS_DATA?.map((project, index) => (
+            {PROJECTS_DATA.map((project, index) => (
               <div key={index} className="min-w-full">
                 <ProjectCard project={project} />
               </div>
             ))}
           </div>
         </div>
+
         <div className="flex justify-center gap-2 mt-3">
           {PROJECTS_DATA.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrentIndex(i)}
-              className={`h-2 w-2 rounded-full transition-transform duration-300 ${currentIndex === i
-                ? "bg-black scale-150"
-                : "bg-gray-400 opacity-50"
-                }`}
+              className={`h-2 w-2 rounded-full transition-transform duration-300 ${
+                currentIndex === i ? "bg-black scale-150" : "bg-gray-400 opacity-50"
+              }`}
             />
           ))}
         </div>
 
         <div className="flex justify-center mt-10 md:mt-6">
           <motion.div animate={{ scale: [1, 1.05, 1] }} repeat={Infinity}>
-            <Link href="#contact" className="bg-[#4dbc15]  text-white px-5 py-2 rounded">
+            <Link href="#contact" className="bg-[#4dbc15] text-white px-5 py-2 rounded">
               Get a Free interior Quote
             </Link>
           </motion.div>

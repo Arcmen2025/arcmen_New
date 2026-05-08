@@ -17,7 +17,6 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
     const [blogAuthor, setBlogAuthor] = useState('');
     const [blogURL, setBlogURL] = useState('');
     const [blogContent, setBlogContents] = useState([]);
-
     const [titleImagePreview, setTitleImagePreview] = useState(null);
     const [blogImagePreview, setBlogImagePreview] = useState(null);
     const [activeEdit, setActiveEdit] = useState(false);
@@ -26,7 +25,6 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
     const blogTitleImageRef = useRef();
     const blogImageRef = useRef();
 
-    // ✅ Quill toolbar with full link support
     const quillModules = useMemo(() => ({
         toolbar: {
             container: [
@@ -204,8 +202,8 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
             typeof datas?.blog_image === 'string'
                 ? datas?.blog_image
                 : datas?.blog_image instanceof File
-                ? URL.createObjectURL(datas?.blog_image)
-                : null
+                    ? URL.createObjectURL(datas?.blog_image)
+                    : null
         );
         setActiveEdit(true);
         setEditIndex(index);
@@ -442,8 +440,8 @@ const CreateBlog = ({ handleClose, id, data, isEditMode, setBlogDatas }) => {
                                                         typeof data.blog_image === 'string'
                                                             ? data.blog_image
                                                             : data.blog_image instanceof File
-                                                            ? URL.createObjectURL(data.blog_image)
-                                                            : ''
+                                                                ? URL.createObjectURL(data.blog_image)
+                                                                : ''
                                                     }
                                                     alt="blog image"
                                                     style={{ width: '100px', height: '100px' }}

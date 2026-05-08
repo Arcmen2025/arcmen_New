@@ -13,7 +13,7 @@ const FIELDS = [
 ];
 
 const API_URL =
-  "https://api-arcmeninterior.webdadsprojects.com/api/v1/forms/landing-page/contact-us";
+  "https://api.arcmeninterior.com/api/v1/forms/landing-page/contact-us";
 
 export default function LeadForm() {
   const router = useRouter();

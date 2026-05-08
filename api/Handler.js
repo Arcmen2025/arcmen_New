@@ -5,7 +5,6 @@ const getJsonResponseSafe = async (response) => {
     if (contentType && contentType.includes('application/json')) {
         return await response.json();
     } else {
-        // Return raw text if not JSON
         const text = await response.text();
         return { isError: true, error: text || 'Unexpected non-JSON response' };
     }
@@ -88,7 +87,6 @@ export const fetchHandler2 = async ({ method, endpoint, data }) => {
 
 export const fetchHandlerForm = async ({ method, endpoint, body }) => {
     const API_BASE_URLS = process.env.NEXT_PUBLIC_API_BASE_URL + endpoint;
-    console.log('Base URLsssssssssss', process.env.NEXT_PUBLIC_API_BASE_URL);
 
     const headers = {};
     const accessToken = Cookies.get('token');
@@ -103,9 +101,8 @@ export const fetchHandlerForm = async ({ method, endpoint, body }) => {
         credentials: 'same-origin'
     };
 
-    // For FormData, do not set Content-Type, browser sets it automatically
     if (method !== 'GET' && body) {
-        options.body = body; // body is FormData or similar
+        options.body = body;
     }
 
     try {

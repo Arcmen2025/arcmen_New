@@ -1,20 +1,16 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TESTIMONIALS } from "@/app/utilits/constants";
 
 export default function TestimonialsSection() {
   const [expanded, setExpanded] = useState(null);
   const [active, setActive] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [videoExpanded, setVideoExpanded] = useState(false);
-  const videoRef = useRef(null);
-  const videos = [
-    "https://assets.webdads2u.com/videos/1777289307438-whatsapp-video-2026-04-27-at-11-56-48.mp4",
-    "https://assets.webdads2u.com/videos/1777289382270-whatsapp-video-2026-04-27-at-11-56-27.mp4",
-    "https://assets.webdads2u.com/videos/1777289480900-whatsapp-video-2026-04-27-at-11-46-27.mp4",
 
+  const videos = [
+    "https://www.youtube.com/embed/tEgRxrM_pl4",
   ];
 
   const toggleReadMore = (index) => {
@@ -25,39 +21,22 @@ export default function TestimonialsSection() {
 
   const truncateText = (text, isOpen) => {
     if (isOpen || text.length <= MAX_CHARS) return text;
+
     const sliced = text.slice(0, MAX_CHARS);
+
     return sliced.slice(0, sliced.lastIndexOf(" "));
   };
-
-  useEffect(() => {
-    if (!isPlaying && !videoExpanded) {
-      const interval = setInterval(() => {
-        setActive((prev) => (prev + 1) % videos.length);
-      }, 4000);
-      return () => clearInterval(interval);
-    }
-  }, [isPlaying, videoExpanded]);
-
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.pause();
-    video.muted = true;
-    setIsPlaying(false);
-  }, [active]);
 
   return (
     <section className="py-10 md:py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <div
-          className="text-center mb-12"
-        >
+        <div className="text-center mb-12">
           <h2 className="sec-head text-black font-extrabold text-3xl">
-            Hear from our<span className="md:block">{" "}esteemed Clients!</span>
+            Hear from our
+            <span className="md:block"> esteemed Clients!</span>
           </h2>
         </div>
+
         <div className="grid md:grid-cols-12 gap-6 items-center">
           <div className="md:col-span-6">
             <div className="relative rounded-[6px] overflow-hidden bg-stone-800 min-h-[350px] md:min-h-[350px]">
@@ -65,66 +44,74 @@ export default function TestimonialsSection() {
                 layoutId="testimonial-video"
                 onClick={() => setVideoExpanded(true)}
                 className="absolute inset-0 cursor-pointer"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: false }}
               >
-                <video
-                  ref={videoRef}
-                  key={active}
+                <iframe
                   src={videos[active]}
-                  muted
-                  playsInline
-                  className="w-full h-full rounded-[6px] object-cover"
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  className="w-full h-full rounded-[6px]"
                 />
               </motion.div>
+
               <div className="absolute inset-0 rounded-[6px] bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
-              <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between pointer-events-none">
-                <p className="text-white font-bold text-sm leading-snug max-w-[70%]">
-                </p>
+
+              <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-end">
                 <button
                   onClick={() => setVideoExpanded(true)}
-                  className="w-12 h-12 bg-black rounded-full flex items-center justify-center pointer-events-auto"
+                  className="w-12 h-12 bg-black rounded-full flex items-center justify-center"
                 >
-                  {isPlaying ? (
-                    <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <rect x="6" y="5" width="4" height="14" />
-                      <rect x="14" y="5" width="4" height="14" />
-                    </svg>
-                  ) : (
-                    <svg className="w-8 h-8 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  )}
+                  <svg
+                    className="w-8 h-8 text-white ml-0.5"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
                 </button>
               </div>
             </div>
-            <div className="flex justify-center gap-2 mt-4">
+
+            <div className="flex justify-center  mt-4">
               {videos.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setActive(index)}
-                  className={`!w-1 h-1 rounded-full ${active === index ? "bg-black scale-110" : "bg-gray-300"
-                    }`}
+                  className={`!w-1 h-1 rounded-full ${
+                    active === index
+                      ? "bg-black scale-110"
+                      : "bg-gray-300"
+                  }`}
                 />
               ))}
             </div>
           </div>
-          <div className="hidden md:block md:col-span-6 flex flex-col">
+
+          <div className="hidden md:block md:col-span-6 flex flex-col  ">
             {TESTIMONIALS.map((t, i) => {
               const isOpen = expanded === i;
               const isLong = t.text.length > MAX_CHARS;
 
               return (
-                <div key={i} className="bg-stone-50 flex gap-6 rounded-2xl p-2 border border-stone-100">
+                <div
+                  key={i}
+                  className="bg-stone-50 flex gap-6 rounded-2xl p-2 border border-stone-100"
+                >
                   <div className="w-10 h-10 bg-stone-300 rounded-full flex items-center justify-center flex-shrink-0">
-                    <img src={"https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2558760599.jpg"} alt={t.name} className="w-full h-full object-cover rounded-full" />
+                    <img
+                      src="https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2558760599.jpg"
+                      alt={t.name}
+                      className="w-full h-full object-cover rounded-full"
+                    />
                   </div>
+
                   <div className="flex flex-col">
                     <p className="text-sm mb-0">
                       {truncateText(t.text, isOpen)}
+
                       {!isOpen && isLong && "... "}
+
                       {isLong && (
                         <span
                           onClick={() => toggleReadMore(i)}
@@ -143,7 +130,6 @@ export default function TestimonialsSection() {
               );
             })}
           </div>
-
         </div>
       </div>
 
@@ -158,15 +144,17 @@ export default function TestimonialsSection() {
           >
             <motion.div
               layoutId="testimonial-video"
-              className="w-[90%] md:w-[40%] lg:w-[50%] p-[6px] bg-[#7aa33a] rounded-2xl"
+              className="w-[90%] md:w-[70%] lg:w-[60%] aspect-video p-[6px] bg-[#7aa33a] rounded-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="w-full h-full rounded-xl overflow-hidden">
-                <video
-                  src={videos[active]}
-                  autoPlay
-                  controls
-                  className="w-full h-full object-cover"
+                <iframe
+                  src={`${videos[active]}?autoplay=1`}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  className="w-full h-full"
                 />
               </div>
             </motion.div>

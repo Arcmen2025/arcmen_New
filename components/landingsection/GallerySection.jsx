@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 
 export default function GallerySection() {
   const galleryItems = [
-    { img: "https://assets.webdads2u.com/images/1777292950986-img_2531.jpg", label: "Factory" },
-    { img: "https://assets.webdads2u.com/images/1777293377509-1.jpg", label: "Experience center" },
-    { img: "https://assets.webdads2u.com/images/1777293016597-img_2532.jpg", label: "Factory" },
-    { img: "https://assets.webdads2u.com/images/1777293605603-9.jpg", label: "Experience center" },
-    { img: "https://assets.webdads2u.com/images/1777293043137-img_2518.jpg", label: "Factory" },
-    { img: "https://assets.webdads2u.com/images/1777293511410-4.jpg", label: "Experience center" },
-    { img: "https://assets.webdads2u.com/images/1777293087700-img_2516.jpg", label: "Factory" },
-    { img: "https://assets.webdads2u.com/images/1777293405969-5.jpg", label: "Experience center" },
+    { img: "https://assets.webdads2u.com/images/1778232139175-factory1--1-.jpg", label: "Factory" },
+    { img: "https://assets.webdads2u.com/images/1778232215029-experience-center--1-.jpg", label: "Experience center" },
+    { img: "https://assets.webdads2u.com/images/1778232235191-factory2--1-.jpg", label: "Factory" },
+    { img: "https://assets.webdads2u.com/images/1778232260122-experiencecenter2--1-.jpg", label: "Experience center" },
+    { img: "https://assets.webdads2u.com/images/1778232291033-factory3--1-.jpg", label: "Factory" },
+    { img: "https://assets.webdads2u.com/images/1778232327470-experience-center3--1-.jpg", label: "Experience center" },
+    { img: "https://assets.webdads2u.com/images/1778232366846-factory4--1-.jpg", label: "Factory" },
+    { img: "https://assets.webdads2u.com/images/1778232350137-experiencecenter31.jpg", label: "Experience center" },
   ];
 
   useEffect(() => {

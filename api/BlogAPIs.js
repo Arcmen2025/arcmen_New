@@ -1,7 +1,6 @@
 import fetchHandler, { fetchHandlerForm } from './Handler';
 
 export const createBlog = async (body) => {
-    console.log(body,"------------->")
     try {
         const response = await fetchHandlerForm({
             method: 'POST',
@@ -21,7 +20,7 @@ export const getAllBlogs = async () => {
     try {
         const response = await fetchHandler({
             method: 'GET',
-            endpoint: 'blog/', // Replace with your actual API endpoint
+            endpoint: 'blog/'
         });
         return response;
     } catch (error) {
@@ -29,11 +28,12 @@ export const getAllBlogs = async () => {
         throw new Error('Could not fetch blogs. Please try again later.');
     }
 };
+
 export const getAllUserBlogs = async () => {
     try {
         const response = await fetchHandler({
             method: 'GET',
-            endpoint: 'blog/users/getblogs', // Replace with your actual API endpoint
+            endpoint: 'blog/users/getblogs'
         });
         return response;
     } catch (error) {
@@ -41,10 +41,6 @@ export const getAllUserBlogs = async () => {
         throw new Error('Could not fetch blogs. Please try again later.');
     }
 };
-
-
-
-
 
 export const deleteBlog = async (data) => {
     try {
@@ -59,8 +55,6 @@ export const deleteBlog = async (data) => {
     }
 };
 
-
-// =======================================================
 export const updateBlog = async (body, id) => {
     try {
         const response = await fetchHandlerForm({
@@ -115,16 +109,7 @@ export const getSingleBlog = async (blogUrl) => {
     }
 };
 
-
-
-
-// =========================================================================================================================================================
-// =========================================================================================================================================================
-// =========================================================================================================================================================
-// =========================================================================================================================================================
-
-
-export const deleteBlogContentSection = async (data,id) => {
+export const deleteBlogContentSection = async (data, id) => {
     try {
         const response = await fetchHandler({
             method: 'DELETE',

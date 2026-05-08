@@ -3,27 +3,21 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import './BlogPage.scss';
-// import { getAllBlogs } from '../../../api/BlogAPIs';
 import { getAllUserBlogs } from '../../../api/BlogAPIs';
 import PreLoader from '@/components/PreLoader';
-
 import { useMyContext } from '@/components/ContextAPIProvide';
-import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 
 const BlogPage = () => {
     const [blogs, setBlogs] = useState([]);
     const { updateState } = useMyContext();
-    const router = useRouter();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // const response = await getAllBlogs();
                 const response = await getAllUserBlogs();
-                // console.log('response', response);
                 if (response?.data) {
-                    setBlogs(response.data.blogs);
+                    setBlogs(response?.data?.blogs);
                 }
             } catch (error) {
                 console.error('Error fetching blogs:', error);
@@ -36,7 +30,6 @@ const BlogPage = () => {
     const handleBlogClick = (blogId) => {
         Cookies.set('blogId', blogId, { expires: 20 / 24 });
         updateState({ blogIdGet: blogId });
-        // router.push(`/blog/${blogUrl}`);
     };
 
     return (
@@ -79,7 +72,7 @@ const BlogPage = () => {
                                             <div className="blog-title_image">
                                                 <div onClick={() => handleBlogClick(blog?._id)} style={{ cursor: 'pointer' }}>
                                                     <Link href={`/blog/${blog?.blogUrl}`} style={{ display: 'block' }}>
-                                                        <img loading="lazy" decoding="async" src={`${blog?.titleImage}`} alt={`${blog?.title}`} />
+                                                        <img loading="lazy" decoding="async" src={`${process.env.NEXT_PUBLIC_IMAGE_URL}${blog?.titleImage}`} alt={`${blog?.title}`} />
                                                     </Link>
                                                 </div>
                                             </div>
@@ -96,9 +89,7 @@ const BlogPage = () => {
                             </>
                         ) : (
 
-                            // <Col className="text-center ">
-                                <PreLoader />
-                            // </Col>
+                            <PreLoader />
                         )}
                     </Row>
                 </Container>
