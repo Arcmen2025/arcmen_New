@@ -8,42 +8,42 @@ const SOLUTIONS = [
   {
     title: "Wardrobes",
     desc: "Modular wardrobe, internal storage sliding/hinged doors, mirrors & accessories.",
-    img: "https://assets.webdads2u.com/images/1777289818363-whatsapp-image-2026-04-27-at-12-08-36.jpeg",
+    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239332591-wardrobes.jpeg",
   },
   {
     title: "Bedrooms",
     desc: "wardrobe, Dressing unit, cot & headboards",
-    img: "https://assets.webdads2u.com/images/1777289907245-whatsapp-image-2026-04-27-at-12-10-01.jpeg",
+    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239222887-bed-room.jpeg",
   },
   {
     title: "Living Rooms",
     desc: "Tv unit, Designer partitions, Pooja unit",
-    img: "https://assets.webdads2u.com/images/1777290009459-whatsapp-image-2026-04-27-at-12-07-27.jpeg",
+    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239377960-living-room.jpeg",
   },
   {
     title: "Pooja Rooms",
     desc: "Mandir unit, wall panels, storage drawers, lighting, decorative elements, partitions & finishes",
-    img: "https://assets.webdads2u.com/images/1777289776112-whatsapp-image-2026-04-27-at-12-08-03.jpeg",
+    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239361627-pooja-room-.jpeg",
   },
   {
     title: "Modular Kitchens",
     desc: "Appliances, Accessories, counter tops",
-    img: "https://assets.webdads2u.com/images/1777289722608-whatsapp-image-2026-04-27-at-12-06-55.jpeg",
+    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239396411-modular-kitchen.jpeg",
   },
   {
     title: "Dining Rooms",
     desc: "Dining table & chairs, crockery unit, lighting, wall décor, partitions & storage solutions",
-    img: "https://assets.webdads2u.com/images/1777289950456-whatsapp-image-2026-04-27-at-12-10-49.jpeg",
+    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239047275-dinning-room.jpeg",
   },
   {
     title: "Full Home Interiors",
     desc: "Furniture, False ceiling, lightning, plumbing, sofa, Rug & curtains etc...",
-    img: "https://assets.webdads2u.com/images/1777290091489-whatsapp-image-2026-04-27-at-12-09-26.jpeg",
+    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239248402-full-home-interiors.jpeg",
   },
   {
     title: "Bathrooms",
     desc: "wardrobe Dressing Unit Cot & headboards.",
-    img: "https://assets.webdads2u.com/images/1777290125992-whatsapp-image-2026-04-27-at-12-07-12.jpeg",
+    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239270180-bathrooms.jpeg",
   },
 ];
 

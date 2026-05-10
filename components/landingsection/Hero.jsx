@@ -15,7 +15,7 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "url('https://assets.webdads2u.com/images/1777437914021-whatsapp-image-2026-04-29-at-10-06-07-am.jpg')",
+              "url('https://assets.webdads2u.com/images/1778238183878-1777437914021-whatsapp-image-2026-04-29-at-10-06-07-am--1-.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",

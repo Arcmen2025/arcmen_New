@@ -1,13 +1,4 @@
-// src/data/constants.js
 
-// import End from "../assets/end.svg";
-// import Transparent from "../assets/transparent.svg";
-// import Quality from "../assets/Quality.svg";
-// import Time from "../assets/Timely.svg";
-
-// import client1 from "../assets/client1.svg";
-// import client2 from "../assets/client2.svg";
-// import client3 from "../assets/client3.svg";
 
 export const NAV_LINKS = [
     { label: 'Home', href: '#' },
@@ -26,59 +17,6 @@ export const STATS = [
     { value: null, suffix: 'No', label: 'Hidden Cost' } // no counter
 ];
 
-// export const FEATURES = [
-//   {
-//     icon: End,
-//     title: "End-to-End",
-//     para: "Interior Solution",
-//     desc: <>From design planning to work completion, we handle every detail with precision. <strong>Our interior architects</strong>  handle everything in design, materials choosing, and execution  process. Our project team handle everything in production, purchase, install and handover the project without stress. </>,
-//   },
-//   {
-//     icon: Transparent,
-//     title: "Transparent",
-//     para: "Pricing",
-//     desc: "Clarity builds trust. We ensure honest and clear communication regarding your investment at every stage. Our detailed final quotes guarantee no hidden charges or unexpected costs later.",
-//   },
-//   {
-//     icon: Quality,
-//     title: "Quality",
-//     para: "Materials",
-//     desc: "We use only premium materials including German fittings, waterproof boards, high-quality wood, hardware, and paints. Every element is carefully chosen for durability and aesthetics, ensuring long-lasting interiors.",
-//   },
-//   {
-//     icon: Time,
-//     title: "Timely Execution",
-//     para: "& Handover",
-//     desc: "We value your time and ensure on-time project completion. Our organized workflow prevents delays and guarantees your home is delivered exactly as promised.",
-//   },
-
-//   {
-//     icon: End,
-//     title: "One Place",
-//     para: "One Team",
-//     desc: "Architects, interior designers, Engineers, interior fitment, electrical, Plumbing, Smart lighting, counter top works, Automation, Flooring, Wall decor, Soft furnishings. ",
-//   },
-//   {
-//     icon: Transparent,
-//     title: "Bespoke ",
-//     para: "Design Approach",
-//     desc: " Every space we create reflection of your lifestyle and aspirations. Our designers fully customized interior spaces aafrom scratch, tailored specifically to a client’s lifestyle, taste, and space rather than using standard templates or modular solutions. ",
-//   },
-//   {
-//     icon: Quality,
-//     title: "Dedicated Project",
-//     para: "Management",
-//     desc: " A single point of contact ensures a smooth and stress-free experience. We keep you informed at every stage, coordinating seamlessly to deliver a hassle-free journey from start to finish.",
-//   },
-//   {
-//     icon: Time,
-//     title: "After-Sales",
-//     para: "Support & Assurance",
-//     desc: "Our relationship doesn’t end at handover. We provide reliable post-completion support to ensure your space continues to perform and impress long after delivery. ",
-//   },
-// ];
-
-// export const SPACE_TABS = ["All","Living Room","Bedroom","Kitchen","Dining","Wardrobe","Bathroom","Foyer"];
 export const SPACE_TABS = [
     // "Modular kitchen",
     'Bedroom',

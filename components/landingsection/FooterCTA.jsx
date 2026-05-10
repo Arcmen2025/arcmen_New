@@ -28,7 +28,7 @@ export default function FooterCTA() {
 
     return () => clearInterval(interval);
   }, []);
-
+``
   return (
     <>
       <section className="relative h-[500px] md:h-[500px] overflow-hidden">
@@ -36,7 +36,7 @@ export default function FooterCTA() {
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: `url(https://assets.webdads2u.com/images/1777294954753-image-40.png)`,
+              backgroundImage: `url(https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239998177-1777294954753-image-4.jpeg)`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
