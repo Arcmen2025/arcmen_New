@@ -1,64 +1,78 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { usePathname } from "next/navigation";
+import LeadFormMobile from "./LeadFormMobile";
 
 const SOLUTIONS = [
   {
     title: "Wardrobes",
-    desc: "Modular wardrobe, internal storage sliding/hinged doors, mirrors & accessories.",
-    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239332591-wardrobes.jpeg",
+    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778650035209-wardrobes.webp",
   },
   {
     title: "Bedrooms",
-    desc: "wardrobe, Dressing unit, cot & headboards",
-    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239222887-bed-room.jpeg",
+    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778649860515-bedroom.webp",
   },
   {
     title: "Living Rooms",
-    desc: "Tv unit, Designer partitions, Pooja unit",
-    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239377960-living-room.jpeg",
+    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778649706005-living-room.webp",
   },
   {
     title: "Pooja Rooms",
-    desc: "Mandir unit, wall panels, storage drawers, lighting, decorative elements, partitions & finishes",
-    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239361627-pooja-room-.jpeg",
+    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778649735991-pooja-room.webp",
   },
   {
     title: "Modular Kitchens",
-    desc: "Appliances, Accessories, counter tops",
-    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239396411-modular-kitchen.jpeg",
+    img: "https://assets.webdads2u.com/images/1777289722608-whatsapp-image-2026-04-27-at-12-06-55.jpeg",
   },
   {
     title: "Dining Rooms",
-    desc: "Dining table & chairs, crockery unit, lighting, wall décor, partitions & storage solutions",
-    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239047275-dinning-room.jpeg",
+    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778649889908-dining-room.webp",
   },
   {
     title: "Full Home Interiors",
-    desc: "Furniture, False ceiling, lightning, plumbing, sofa, Rug & curtains etc...",
-    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239248402-full-home-interiors.jpeg",
+    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778649654225-full-home-interiors.webp",
   },
   {
     title: "Bathrooms",
-    desc: "wardrobe Dressing Unit Cot & headboards.",
-    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239270180-bathrooms.jpeg",
+    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778649821501-bathroom.webp",
+  },
+  {
+    title: "Kitchen",
+    img: "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778649918175-kitchen.webp",
   },
 ];
 
-export default function SolutionsSlider() {
+export default function SolutionsSlider({setIsMobileFormOpen,isMobileFormOpen}) {
   const pathname = usePathname();
   const isTargetPage =
     pathname === "/home-interior-designers-in-chennai";
 
   const [index, setIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
   const containerRef = useRef(null);
   const [containerWidth, setContainerWidth] = useState(0);
+  const autoPlayRef = useRef(null);
 
   const total = SOLUTIONS.length;
   const data = [...SOLUTIONS, ...SOLUTIONS];
+
+  // Responsive card width based on screen size
+  const getCardWidth = () => {
+    if (typeof window !== 'undefined') {
+      const width = window.innerWidth;
+      if (width < 640) return width - 32; // Full width minus padding
+      if (width < 768) return 280;
+      if (width < 1024) return 300;
+      return 320;
+    }
+    return 296;
+  };
+
+  const [cardWidth, setCardWidth] = useState(296);
 
   useEffect(() => {
     const handleResize = () => {
@@ -66,6 +80,7 @@ export default function SolutionsSlider() {
       setIsMobile(mobile);
       if (containerRef.current) {
         setContainerWidth(containerRef.current.offsetWidth);
+        setCardWidth(getCardWidth());
       }
     };
     handleResize();
@@ -73,89 +88,227 @@ export default function SolutionsSlider() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
+  // Start autoplay function
+  const startAutoPlay = () => {
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+    }
+    // Auto-slide works on both mobile and desktop
+    autoPlayRef.current = setInterval(() => {
       setIndex((prev) => (prev + 1) % total);
-    }, 3000);
-    return () => clearInterval(interval);
+    }, 2000);
+  };
+
+  // Auto-slide effect - runs on mount only
+  useEffect(() => {
+    startAutoPlay();
+    return () => {
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current);
+      }
+    };
   }, []);
 
-  const nextSlide = () => setIndex((prev) => (prev + 1) % total);
-  const prevSlide = () => setIndex((prev) => (prev === 0 ? total - 1 : prev - 1));
+  const nextSlide = () => {
+    setIndex((prev) => (prev + 1) % total);
+    resetAutoPlay();
+  };
+
+  const prevSlide = () => {
+    setIndex((prev) => (prev === 0 ? total - 1 : prev - 1));
+    resetAutoPlay();
+  };
+
+  const resetAutoPlay = () => {
+    // Clear existing interval
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+    }
+    // Start new interval
+    autoPlayRef.current = setInterval(() => {
+      setIndex((prev) => (prev + 1) % total);
+    }, 4000);
+  };
+
+  // Mouse/Touch Drag functionality
+  const handleDragStart = (e) => {
+    setIsDragging(true);
+    // Pause autoplay while dragging
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+    }
+    const clientX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+    setStartX(clientX);
+    setDragOffset(0);
+  };
+
+  const handleDragMove = (e) => {
+    if (!isDragging) return;
+    const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+    const diff = startX - clientX;
+    setDragOffset(diff);
+  };
+
+  const handleDragEnd = (e) => {
+    if (!isDragging) {
+      setIsDragging(false);
+      return;
+    }
+    setIsDragging(false);
+    
+    let clientX;
+    if (e.type === 'touchend') {
+      clientX = e.changedTouches ? e.changedTouches[0].clientX : startX;
+    } else {
+      clientX = e.clientX;
+    }
+    
+    const diff = startX - clientX;
+    const threshold = isMobile ? 50 : 80;
+    
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+    
+    setDragOffset(0);
+    resetAutoPlay();
+  };
+
+  const getTranslateX = () => {
+    let baseX = 0;
+    if (isMobile) {
+      baseX = -(index * containerWidth);
+    } else {
+      baseX = -(index * (cardWidth + 16));
+    }
+    
+    // Add drag offset during dragging
+    if (isDragging && dragOffset !== 0) {
+      const dragLimit = isMobile ? containerWidth : cardWidth + 16;
+      const limitedOffset = Math.min(Math.max(dragOffset, -dragLimit), dragLimit);
+      return baseX - limitedOffset;
+    }
+    
+    return baseX;
+  };
 
   return (
-    <section className="md:py-16 py-10">
-      <div className="px-4 md:px-20">
-        <div
-          className="text-center mb-10"
-        >
-          <h2 className="text-black font-extrabold text-3xl leading-tight">
+    <section className="py-6 sm:py-6 md:py-6 lg:py-6 bg-gradient-to-b from-gray-50 to-white">
+      <div className="w-full max-w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
+        {/* Header Section */}
+        <div className="text-center mb-8 sm:mb-6 md:mb-8 lg:mb-10">
+          <h2 className="font-playfair !text-lg sm:!text-base md:!text-xl lg:!text-2xl font-extrabold text-[#1a1a1a] leading-tight">
             {isTargetPage ? (
               <>
-                Complete Home Interior <br />
-                <span className="text-[#4dbc15]">
+                Complete Home Interior <br className="hidden sm:block" />
+                <span className="text-[#4dbc15] relative inline-block">
                   Design Services in Chennai
+                  <svg className="absolute -bottom-2 left-0 w-full h-1 sm:h-1.5" viewBox="0 0 200 8" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 4 L200 4" stroke="#4dbc15" strokeWidth="2" strokeDasharray="4 4" fill="none"/>
+                  </svg>
                 </span>
               </>
             ) : (
               <>
-                Complete Interior Design Services in Chennai  <br />
-                <span className="text-[#4dbc15]">
-                  Homes, Apartments & Turnkey Projects
+                Complete Interior Design Services in <br className="hidden sm:block" />
+                <span className="text-[#4dbc15] relative inline-block">
+                  <span className="text-black">Chennai</span> Homes, Apartments & Turnkey Projects
+                  <svg className="absolute -bottom-2 left-0 w-full h-1 sm:h-1.5" viewBox="0 0 200 8" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 4 L200 4" strokeWidth="2" strokeDasharray="4 4" fill="none"/>
+                  </svg>
                 </span>
               </>
             )}
           </h2>
         </div>
-        <div className="overflow-hidden w-full" ref={containerRef}>
-          <motion.div
-            className="flex"
-            animate={{
-              x: isMobile ? -(index * containerWidth) : -index * 296,
-            }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
+
+        {/* Slider Container */}
+        <div className="relative">
+          <div 
+            className="overflow-hidden w-full cursor-grab active:cursor-grabbing"
+            ref={containerRef}
           >
-            {data.map((s, i) => (
-              <div
-                key={i}
-                style={isMobile ? { minWidth: containerWidth, width: containerWidth } : {}}
-                className={`${isMobile ? "px-2" : "w-[280px] min-w-[280px] mr-4"} flex-shrink-0`}
-              >
-                <div className="bg-white rounded-lg overflow-hidden shadow-md">
-
-                  <div className="h-[260px] overflow-hidden">
-                    <img
-                      src={s.img}
-                      alt={s.title}
-                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                    />
+            <motion.div
+              className="flex"
+              animate={{
+                x: getTranslateX(),
+              }}
+              transition={{ duration: isDragging ? 0 : 0.5, ease: "easeInOut" }}
+              onMouseDown={handleDragStart}
+              onMouseMove={handleDragMove}
+              onMouseUp={handleDragEnd}
+              onMouseLeave={() => {
+                if (isDragging) {
+                  setIsDragging(false);
+                  setDragOffset(0);
+                  resetAutoPlay();
+                }
+              }}
+              onTouchStart={handleDragStart}
+              onTouchMove={handleDragMove}
+              onTouchEnd={handleDragEnd}
+              style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+            >
+              {data.map((s, i) => (
+                <div
+                  key={i}
+                  style={isMobile ? { 
+                    minWidth: containerWidth, 
+                    width: containerWidth 
+                  } : { 
+                    width: cardWidth, 
+                    minWidth: cardWidth 
+                  }}
+                  className="flex-shrink-0 px-0"
+                >
+                  <div className="relative bg-white rounded-xl lg:rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 group mx-2 sm:mx-0">
+                    {/* Full Image Container with smaller height */}
+                    <div className="relative overflow-hidden bg-gray-100 aspect-[4/4]">
+                      <img
+                        src={s.img}
+                        alt={s.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                        draggable={false}
+                      />
+                      
+                      {/* Dark Overlay for better text visibility */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                      
+                      {/* Heading on Top - Left Aligned */}
+                      <div className="absolute top-0 left-0 right-0 p-4 sm:p-5 md:p-6">
+                        <h3 className="inline-block text-white bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-sm sm:text-sm md:text-sm font-semibold">
+                          {s.title}
+                        </h3>
+                      </div>
+                    </div>
                   </div>
-
-                  <div className="p-4">
-                    <h3 className="text-[17px] font-bold mb-1">{s.title}</h3>
-                    <p className="text-[13px] text-gray-600">{s.desc}</p>
-                  </div>
-
                 </div>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-        <div className="flex justify-center gap-4 mt-8">
-          <button
-            onClick={prevSlide}
-            className="w-12 h-12 rounded-full bg-[#F2F2F2] flex items-center justify-center hover:bg-black hover:text-white"
+              ))}
+            </motion.div>
+          </div>
+           {/* CTA Button */}
+        <div className="flex justify-center mt-4 sm:mt-6 md:mt-10">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsMobileFormOpen(true)}
+           className="inline-block bg-[#4dbc15] hover:bg-[#3da010] text-white text-sm sm:text-base md:text-lg font-semibold px-10 sm:px-10 md:px-10 py-2 sm:py-3 md:py-3 rounded-full shadow-lg hover:shadow-xl"
           >
-            <FaArrowLeft />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="w-12 h-12 rounded-full bg-[#F2F2F2] flex items-center justify-center hover:bg-black hover:text-white"
-          >
-            <FaArrowRight />
-          </button>
+            Get free Quote
+          </motion.button>
         </div>
-
+        {isMobile && (
+  <div className="flex items-center justify-center mt-4">
+    <LeadFormMobile isMobile={true} />
+  </div>
+)}
+        </div>
+        
       </div>
     </section>
   );

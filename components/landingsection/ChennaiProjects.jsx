@@ -2,38 +2,36 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+
 
 const IMAGES = [
   "https://assets.webdads2u.com/images/1777290869100-05-dinning.jpg",
   "https://assets.webdads2u.com/images/1777290897972-13-master-bedroom-fluted-cnc-2.jpeg",
   "https://assets.webdads2u.com/images/1777290929436-01.jpg",
   "https://assets.webdads2u.com/images/1777290955909-02.jpg",
-  
-  "https://assets.webdads2u.com/images/1777291043916-07-kitchen.jpg",
-  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778242360942-daughterbedroomwardroberev-05_am2897_krishnaok.webp",
-  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778242389806-02gfbedroomcotviewrev-01_am2897_krishnaok.webp",
-  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778242434901-01kitchenhobsinkview_am2897_krishnakiranxx.webp",
-  "https://assets.webdads2u.com/images/1777291524186-daughter-bedroom-wardrobe-rev-05_am2897_krishna-ok.jpg",
-  "https://assets.webdads2u.com/images/1777291573463-01-gf-bedroom-cot-view_am2897_krishna-ok.jpg",
-  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239498399-01-arcmeninteriordesignerchennai.webp",
-  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239696323-02-arcmeninteriordesignerchennai.webp",
-
-  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239777719-03-arcmeninteriordesignerchennai.webp",
-  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778239837527-03-arcmeninteriordesignerchennai.webp",
-  "https://assets.webdads2u.com/images/1777291307466-14--arcmen-interior-designer-chennai.jpg",
-  "https://assets.webdads2u.com/images/1777291622500-01-elevation.jpg",
-  "https://assets.webdads2u.com/images/1777291692848-03-living.jpg",
-  "https://assets.webdads2u.com/images/1777291716636-07-bedroom-cot-view-2.png",
-  "https://assets.webdads2u.com/images/1777291738215-09-son-bedroom-cot-view.png",
-  "https://assets.webdads2u.com/images/1777291788150-10-m--bedroom-toilet.png",
-  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778242751415-02.webp",
-
-  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778242700098-08.webp",
-  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778242681090-05.webp",
-  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778242822973-11.webp",
-  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778242577474-01--1-.webp",
-];
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778652728682-bedroom-1.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778652750486-bedroom-2.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778652784660-kids-room.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778652807546-kitchen.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778652836797-living.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778652179292-image---1.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778652305788-image-2.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778652229984-image---3.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778652263427-image---4.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778652328446-image-5.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778652957711-bedroom-cot-view.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778652999745-elevation.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778653018777-foyer.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778653046304-kitchen.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778653068873-living.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778653223108-image-1.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778653251513-image-2.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778653274354-image-3.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778653294416-image-4.webp",
+  "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778653314263-image-5.webp",
+  "https://assets.webdads2u.com/images/1777291904238-10.jpg",
+]
 
 const PROJECTS_DATA = [
   {
@@ -77,54 +75,104 @@ const scrollToContact = () => {
 
 function ProjectCard({ project }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-2 items-start">
-      <div className="relative rounded overflow-hidden shadow-lg bg-white w-full aspect-[4/3]">
-        <span className="absolute top-3 left-3 bg-yellow-500 text-xs px-3 rounded p-2 z-10">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4 lg:gap-6 items-start">
+      {/* Main Image */}
+      <div className="relative rounded-lg overflow-hidden shadow-lg bg-white w-full">
+        <span className="absolute top-3 left-3 bg-black/70 text-white text-[10px] sm:text-xs md:text-sm px-2 sm:px-3 py-1 sm:py-1.5 md:py-2 rounded-md z-10 font-medium shadow-md">
           {project.area}
         </span>
         <img
           src={project.mainImage}
-          alt="project"
+          alt={project.title}
           onClick={scrollToContact}
-          className="w-full h-full object-cover cursor-pointer"
+          className="w-full h-auto aspect-[4/3] object-cover cursor-pointer hover:scale-105 transition-transform duration-500"
         />
       </div>
-      <div className="grid grid-cols-2 gap-2">
+
+      {/* Thumbnail Grid */}
+      <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4">
         {project.thumbs.map((src, i) => (
           <img
             key={i}
             src={src}
+            alt={`${project.title} view ${i + 1}`}
             onClick={scrollToContact}
-            className={`w-full aspect-[4/3] object-cover rounded cursor-pointer ${
-              i >= 2 ? "hidden md:block" : ""
-            }`}
+            className="w-full aspect-[4/3] object-cover rounded-lg cursor-pointer hover:scale-105 transition-transform duration-300 hover:shadow-xl"
           />
         ))}
       </div>
-      <div className="col-span-1 md:col-span-2 flex flex-col md:flex-row justify-between md:items-center pt-1">
+
+      {/* Project Info */}
+      <div className="col-span-1 lg:col-span-2 flex flex-col sm:flex-row justify-between sm:items-center gap-2 sm:gap-0 pt-2 sm:pt-3 md:pt-4">
         <div>
-          <h4 className="font-bold">{project.title}</h4>
-          <div className="text-sm">📍 {project.location}</div>
+          <h4 className="font-bold text-base sm:text-lg md:text-xl lg:text-2xl text-gray-800">
+            {project.title}
+          </h4>
+          <div className="text-xs sm:text-sm md:text-base text-gray-600 mt-0.5 sm:mt-1">
+            📍 {project.location}
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default function ChennaiProjects() {
+  export default function ChennaiProjects({ setIsMobileFormOpen }) {
   const pathname = usePathname();
   const isTargetPage = pathname === "/home-interior-designers-in-chennai";
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const autoPlayInterval = useRef(null);
 
-  const dragStartX = useRef(null);
+  // Auto-slide functionality
+  useEffect(() => {
+    if (isAutoPlaying) {
+      autoPlayInterval.current = setInterval(() => {
+        setCurrentIndex((prevIndex) => 
+          prevIndex === PROJECTS_DATA.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 3000); // Change slide every 4 seconds
+    } else {
+      if (autoPlayInterval.current) {
+        clearInterval(autoPlayInterval.current);
+      }
+    }
 
-  const handleDragStart = (clientX) => {
-    dragStartX.current = clientX;
+    return () => {
+      if (autoPlayInterval.current) {
+        clearInterval(autoPlayInterval.current);
+      }
+    };
+  }, [isAutoPlaying]);
+
+  // Stop auto-play when user interacts
+  const stopAutoPlay = () => {
+    setIsAutoPlaying(false);
+    // Restart auto-play after 10 seconds of inactivity
+    setTimeout(() => {
+      setIsAutoPlaying(true);
+    }, 10000);
   };
 
-  const handleDragEnd = (clientX) => {
-    if (dragStartX.current === null) return;
-    const diff = dragStartX.current - clientX;
+  const handleDotClick = (index) => {
+    stopAutoPlay();
+    setCurrentIndex(index);
+  };
+
+  const handleTouchStart = (e) => {
+    stopAutoPlay();
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const diff = touchStart - touchEnd;
     if (Math.abs(diff) > 50) {
       if (diff > 0) {
         setCurrentIndex((prev) => Math.min(prev + 1, PROJECTS_DATA.length - 1));
@@ -132,71 +180,108 @@ export default function ChennaiProjects() {
         setCurrentIndex((prev) => Math.max(prev - 1, 0));
       }
     }
-    dragStartX.current = null;
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
+  const handleMouseDown = (e) => {
+    stopAutoPlay();
+    setTouchStart(e.clientX);
+  };
+
+  const handleMouseUp = (e) => {
+    if (!touchStart) return;
+    const diff = touchStart - e.clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        setCurrentIndex((prev) => Math.min(prev + 1, PROJECTS_DATA.length - 1));
+      } else {
+        setCurrentIndex((prev) => Math.max(prev - 1, 0));
+      }
+    }
+    setTouchStart(null);
+  };
+
+  // Pause auto-play on hover
+  const handleMouseEnter = () => {
+    setIsAutoPlaying(false);
+  };
+
+  const handleMouseLeave = () => {
+    setIsAutoPlaying(true);
   };
 
   return (
-    <section className="py-8 overflow-hidden">
-      <div className="max-w-[1300px] mx-auto px-4">
-        <div className="text-center mb-8 md:mb-12">
-          <p className="inline-block text-[11px] md:text-[12px] tracking-[3px] uppercase px-4 py-1.5 mb-3 rounded-full backdrop-blur-md bg-white/60 text-[#4dbc15] border border-[#4dbc15]/40 shadow-[0_0_10px_rgba(77,188,21,0.2)] font-medium">
-            Our Project
+    <section className="py-8 sm:py-6 md:py-6 lg:py-6 overflow-hidden bg-gradient-to-b from-white to-gray-50">
+      <div className="w-full max-w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
+        {/* Header Section */}
+        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+          <p className="inline-block text-[10px] sm:text-[11px] md:text-[12px] tracking-[2px] sm:tracking-[3px] uppercase px-3 sm:px-4 py-1 sm:py-1.5 mb-3 sm:mb-4 rounded-full backdrop-blur-md bg-white/60 text-[#4dbc15] border border-[#4dbc15]/40 shadow-lg font-medium">
+            Our Projects
           </p>
-          <h2 className="font-playfair text-3xl font-extrabold text-[#1a1a1a] leading-snug">
+          <h2 className="font-playfair !text-lg sm:!text-base md:!text-xl lg:!text-2xl font-semibold text-[#1a1a1a] leading-tight sm:leading-snug">
             {!isTargetPage ? (
               <>
-                Every Interior Design Project in Chennai <br className="hidden md:block" />
+                Every Interior Design Project in Chennai <br className="hidden sm:block" />
                 We Created Became a{" "}
-                <span className="text-[#4dbc15]">Space to Love</span>
+                <span className="text-[#4dbc15] relative inline-block">
+                  Space to Love
+                  <svg className="absolute -bottom-1 left-0 w-full h-1 sm:h-1.5 md:h-2" viewBox="0 0 200 8" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 4 L200 4" strokeWidth="2" strokeDasharray="4 4" fill="none"/>
+                  </svg>
+                </span>
               </>
             ) : (
               <>
-                Every Home interiors in Chennai We Designed <br className="hidden md:block" />
+                Every Home interiors in Chennai We Designed <br className="hidden sm:block" />
                 Became a{" "}
-                <span className="text-[#4dbc15]">Space to Love</span>
+                <span className="text-[#4dbc15] relative inline-block">
+                  Space to Love
+                  <svg className="absolute -bottom-1 left-0 w-full h-1 sm:h-1.5 md:h-2" viewBox="0 0 200 8" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 4 L200 4"  strokeWidth="2" strokeDasharray="4 4" fill="none"/>
+                  </svg>
+                </span>
               </>
             )}
           </h2>
         </div>
 
+        {/* Projects Carousel */}
         <div
-          className="overflow-hidden cursor-grab active:cursor-grabbing select-none"
-          onMouseDown={(e) => handleDragStart(e.clientX)}
-          onMouseUp={(e) => handleDragEnd(e.clientX)}
-          onMouseLeave={() => { dragStartX.current = null; }}
-          onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
-          onTouchEnd={(e) => handleDragEnd(e.changedTouches[0].clientX)}
+          className="overflow-hidden cursor-grab active:cursor-grabbing select-none touch-pan-y"
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={() => {
+            setTouchStart(null);
+            setIsAutoPlaying(true);
+          }}
+          onMouseEnter={handleMouseEnter}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           <div
-            className="flex transition-transform duration-500"
+            className="flex transition-transform duration-500 ease-out"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {PROJECTS_DATA.map((project, index) => (
-              <div key={index} className="min-w-full">
+              <div key={index} className="min-w-full px-0">
                 <ProjectCard project={project} />
               </div>
             ))}
           </div>
         </div>
 
-        <div className="flex justify-center gap-2 mt-3">
-          {PROJECTS_DATA.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentIndex(i)}
-              className={`h-2 w-2 rounded-full transition-transform duration-300 ${
-                currentIndex === i ? "bg-black scale-150" : "bg-gray-400 opacity-50"
-              }`}
-            />
-          ))}
-        </div>
-
-        <div className="flex justify-center mt-10 md:mt-6">
-          <motion.div animate={{ scale: [1, 1.05, 1] }} repeat={Infinity}>
-            <Link href="#contact" className="bg-[#4dbc15] text-white px-5 py-2 rounded">
-              Get a Free interior Quote
-            </Link>
-          </motion.div>
+        {/* CTA Button */}
+        <div className="flex justify-center mt-2 sm:mt-4 md:mt-6">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsMobileFormOpen(true)}
+           className="inline-block bg-[#4dbc15] hover:bg-[#3da010] text-white text-sm sm:text-base md:text-lg font-semibold px-6 sm:px-8 md:px-10 py-2 sm:py-3 md:py-3 rounded-full shadow-lg hover:shadow-xl"
+          >
+            Book a free site visit
+          </motion.button>
         </div>
       </div>
     </section>

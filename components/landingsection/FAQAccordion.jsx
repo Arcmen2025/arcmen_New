@@ -53,10 +53,10 @@ export default function FAQAccordion() {
       <div className=" px-6 md:px-20">
         <div className="grid md:grid-cols-2 gap-16 items-start">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-4">
+            <h2 className="font-playfair !text-lg sm:!text-base md:!text-xl lg:!text-2xl font-extrabold">
               Have questions?<br />Find answers.
             </h2>
-            <p className="text-gray-500 md:text-[16px] text-sm ">
+            <p className="text-gray-500 sm:text-xs md:text-[12px] lg:text-lg text-xs ">
               Got more questions? Reach out to our <span className="md:block"> team at{" "}
                 <a
                   href="mailto:production@arcmen.com"

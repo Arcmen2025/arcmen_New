@@ -40,7 +40,7 @@ export default function GallerySection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: false }}
         >
-          <h2 className="!text-2xl md:text-4xl font-bold">
+          <h2 className="font-playfair !text-lg sm:!text-base md:!text-xl lg:!text-2xl font-extrabold">
             Experience How Your Home Interiors Are Created
           </h2></motion.div>
         <motion.div className="text-center "
@@ -49,7 +49,7 @@ export default function GallerySection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: false }}
         >
-          <p className="text-[#666666] text-sm md:text-[16px] max-w-2xl mx-auto">
+          <p className="text-[#666666] text-xs md:text-[12px] max-w-xl mx-auto">
             Visit our experience center and see how we design and build quality home interiors in Chennai
           </p>
         </motion.div>
