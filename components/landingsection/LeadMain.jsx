@@ -38,7 +38,7 @@ export default function LeadMain() {
       <GallerySection />
       <FAQAccordion />
       <FooterCTA />
-      <BottomCenterButton />
+      <BottomCenterButton setIsMobileFormOpen={setIsMobileFormOpen}/>
     </div>
   );
 }

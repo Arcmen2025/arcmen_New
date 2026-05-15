@@ -25,11 +25,6 @@ export default function LeadPopup() {
         return () => clearTimeout(timer);
     }, []);
 
-    useEffect(() => {
-        if (open) document.body.style.overflow = "hidden";
-        else document.body.style.overflow = "auto";
-    }, [open]);
-
     const onChange = (e) =>
         setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
 
@@ -68,7 +63,7 @@ export default function LeadPopup() {
 
     if (!mounted || !open) return null;
 
-    return createPortal(
+    return (
         <div
             onClick={() => setOpen(false)}
             className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 px-4"
@@ -139,7 +134,6 @@ export default function LeadPopup() {
                     )}
                 </form>
             </div>
-        </div>,
-        document.body
+        </div>
     );
 }

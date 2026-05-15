@@ -7,14 +7,14 @@ import { useRouter } from "next/navigation";
 const FIELDS =[
   { name: "name", placeholder: "Full Name", type: "text" },
   { name: "phone", placeholder: "Mobile Number", type: "tel" },
-  { name: "email", placeholder: "Email Id", type: "email" },
+  { name: "location", placeholder: "Location", type: "text" },
 ];
 
 const API_URL = "https://api.arcmeninterior.com/api/v1/forms/landing-page/contact-us";
 
 export default function LeadFormMobile({ isMobile = false }) {
   const router = useRouter();
-  const [form, setForm] = useState({ name: "", phone: "", email: "", project: "" });
+  const [form, setForm] = useState({ name: "", phone: "", location: "", project: "" });
   const [loading, setLoading] = useState(false);
   const [bubbles, setBubbles] = useState([]);
 
@@ -60,7 +60,7 @@ export default function LeadFormMobile({ isMobile = false }) {
       const payload = {
         fullName: form.name,
         mobileNumber: form.phone,
-        email: form.email,
+        location: form.location,
         projectType: form.project || "Residential Interior",
       };
 
@@ -102,7 +102,7 @@ export default function LeadFormMobile({ isMobile = false }) {
           isMobile
             ? "p-0"
             : "p-8 rounded-[2rem] bg-gray-100 shadow-sm"
-        } text-gray-700 relative mt-4 bg-gray-100 p-4 rounded-xl`}
+        } text-gray-700 relative bg-gray-100 p-4 rounded-xl`}
       >
         <p className="flex items-center justify-center text-[#4dbc15] text-lg sm:text-lg md:text-xl lg:text-xl font-semibold">Book 3D Design Session</p>
         <form onSubmit={onSubmit} className="flex flex-col gap-4 relative z-10">

@@ -1,7 +1,9 @@
 "use client";
+
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import LeadFormMobile from "./LeadFormMobile";
 
 const SOLUTIONS = [
@@ -43,8 +45,12 @@ const SOLUTIONS = [
   },
 ];
 
-export default function SolutionsSlider({setIsMobileFormOpen,isMobileFormOpen}) {
+export default function SolutionsSlider({
+  setIsMobileFormOpen,
+  isMobileFormOpen,
+}) {
   const pathname = usePathname();
+
   const isTargetPage =
     pathname === "/home-interior-designers-in-chennai";
 
@@ -53,55 +59,56 @@ export default function SolutionsSlider({setIsMobileFormOpen,isMobileFormOpen}) 
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
-  const containerRef = useRef(null);
   const [containerWidth, setContainerWidth] = useState(0);
+  const [cardWidth, setCardWidth] = useState(320);
+  const [enableTransition, setEnableTransition] = useState(true);
+
+  const containerRef = useRef(null);
   const autoPlayRef = useRef(null);
 
-  const total = SOLUTIONS.length;
+  // Duplicate for seamless infinite loop
   const data = [...SOLUTIONS, ...SOLUTIONS];
 
-  // Responsive card width based on screen size
-  const getCardWidth = () => {
-    if (typeof window !== 'undefined') {
-      const width = window.innerWidth;
-      if (width < 640) return width - 32; // Full width minus padding
-      if (width < 768) return 280;
-      if (width < 1024) return 300;
-      return 320;
-    }
-    return 296;
-  };
+  const total = SOLUTIONS.length;
 
-  const [cardWidth, setCardWidth] = useState(296);
-
+  // Responsive sizing
   useEffect(() => {
     const handleResize = () => {
       const mobile = window.innerWidth < 768;
+
       setIsMobile(mobile);
+
       if (containerRef.current) {
         setContainerWidth(containerRef.current.offsetWidth);
-        setCardWidth(getCardWidth());
+      }
+
+      const width = window.innerWidth;
+
+      if (width < 640) {
+        setCardWidth(width - 32);
+      } else if (width < 768) {
+        setCardWidth(280);
+      } else if (width < 1024) {
+        setCardWidth(300);
+      } else {
+        setCardWidth(320);
       }
     };
+
     handleResize();
+
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    return () =>
+      window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Start autoplay function
-  const startAutoPlay = () => {
-    if (autoPlayRef.current) {
-      clearInterval(autoPlayRef.current);
-    }
-    // Auto-slide works on both mobile and desktop
-    autoPlayRef.current = setInterval(() => {
-      setIndex((prev) => (prev + 1) % total);
-    }, 2000);
-  };
-
-  // Auto-slide effect - runs on mount only
+  // Infinite autoplay
   useEffect(() => {
-    startAutoPlay();
+    autoPlayRef.current = setInterval(() => {
+      setIndex((prev) => prev + 1);
+    }, 2500);
+
     return () => {
       if (autoPlayRef.current) {
         clearInterval(autoPlayRef.current);
@@ -109,63 +116,103 @@ export default function SolutionsSlider({setIsMobileFormOpen,isMobileFormOpen}) 
     };
   }, []);
 
+  // Reset slider without visible jump
+  useEffect(() => {
+    if (index >= total) {
+      const timeout = setTimeout(() => {
+        setEnableTransition(false);
+        setIndex(0);
+      }, 500);
+
+      return () => clearTimeout(timeout);
+    } else {
+      setEnableTransition(true);
+    }
+  }, [index, total]);
+
+  // Restart autoplay
+  const resetAutoPlay = () => {
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+    }
+
+    autoPlayRef.current = setInterval(() => {
+      setIndex((prev) => prev + 1);
+    }, 4000);
+  };
+
+  // Navigation
   const nextSlide = () => {
-    setIndex((prev) => (prev + 1) % total);
+    setIndex((prev) => prev + 1);
     resetAutoPlay();
   };
 
   const prevSlide = () => {
-    setIndex((prev) => (prev === 0 ? total - 1 : prev - 1));
+    if (index === 0) {
+      setEnableTransition(false);
+      setIndex(total - 1);
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setEnableTransition(true);
+        });
+      });
+    } else {
+      setIndex((prev) => prev - 1);
+    }
+
     resetAutoPlay();
   };
 
-  const resetAutoPlay = () => {
-    // Clear existing interval
-    if (autoPlayRef.current) {
-      clearInterval(autoPlayRef.current);
-    }
-    // Start new interval
-    autoPlayRef.current = setInterval(() => {
-      setIndex((prev) => (prev + 1) % total);
-    }, 4000);
-  };
-
-  // Mouse/Touch Drag functionality
+  // Drag Start
   const handleDragStart = (e) => {
     setIsDragging(true);
-    // Pause autoplay while dragging
+
     if (autoPlayRef.current) {
       clearInterval(autoPlayRef.current);
     }
-    const clientX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+
+    const clientX =
+      e.type === "touchstart"
+        ? e.touches[0].clientX
+        : e.clientX;
+
     setStartX(clientX);
     setDragOffset(0);
   };
 
+  // Drag Move
   const handleDragMove = (e) => {
     if (!isDragging) return;
-    const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+
+    const clientX =
+      e.type === "touchmove"
+        ? e.touches[0].clientX
+        : e.clientX;
+
     const diff = startX - clientX;
+
     setDragOffset(diff);
   };
 
+  // Drag End
   const handleDragEnd = (e) => {
-    if (!isDragging) {
-      setIsDragging(false);
-      return;
-    }
+    if (!isDragging) return;
+
     setIsDragging(false);
-    
+
     let clientX;
-    if (e.type === 'touchend') {
-      clientX = e.changedTouches ? e.changedTouches[0].clientX : startX;
+
+    if (e.type === "touchend") {
+      clientX = e.changedTouches[0].clientX;
     } else {
       clientX = e.clientX;
     }
-    
+
     const diff = startX - clientX;
+
     const threshold = isMobile ? 50 : 80;
-    
+
     if (Math.abs(diff) > threshold) {
       if (diff > 0) {
         nextSlide();
@@ -173,33 +220,39 @@ export default function SolutionsSlider({setIsMobileFormOpen,isMobileFormOpen}) 
         prevSlide();
       }
     }
-    
+
     setDragOffset(0);
+
     resetAutoPlay();
   };
 
+  // Translate logic
   const getTranslateX = () => {
-    let baseX = 0;
-    if (isMobile) {
-      baseX = -(index * containerWidth);
-    } else {
-      baseX = -(index * (cardWidth + 16));
+    const slideWidth = isMobile
+      ? containerWidth
+      : cardWidth + 16;
+
+    let baseX = -(index * slideWidth);
+
+    if (isDragging) {
+      const dragLimit = slideWidth;
+
+      const limitedOffset = Math.min(
+        Math.max(dragOffset, -dragLimit),
+        dragLimit
+      );
+
+      baseX -= limitedOffset;
     }
-    
-    // Add drag offset during dragging
-    if (isDragging && dragOffset !== 0) {
-      const dragLimit = isMobile ? containerWidth : cardWidth + 16;
-      const limitedOffset = Math.min(Math.max(dragOffset, -dragLimit), dragLimit);
-      return baseX - limitedOffset;
-    }
-    
+
     return baseX;
   };
 
   return (
-    <section className="py-6 sm:py-6 md:py-6 lg:py-6 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-6 sm:py-6 md:py-6 lg:py-6 overflow-hidden">
       <div className="w-full max-w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
-        {/* Header Section */}
+
+        {/* Header */}
         <div className="text-center mb-8 sm:mb-6 md:mb-8 lg:mb-10">
           <h2 className="font-playfair !text-lg sm:!text-base md:!text-xl lg:!text-2xl font-extrabold text-[#1a1a1a] leading-tight">
             {isTargetPage ? (
@@ -207,8 +260,18 @@ export default function SolutionsSlider({setIsMobileFormOpen,isMobileFormOpen}) 
                 Complete Home Interior <br className="hidden sm:block" />
                 <span className="text-[#4dbc15] relative inline-block">
                   Design Services in Chennai
-                  <svg className="absolute -bottom-2 left-0 w-full h-1 sm:h-1.5" viewBox="0 0 200 8" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 4 L200 4" stroke="#4dbc15" strokeWidth="2" strokeDasharray="4 4" fill="none"/>
+                  <svg
+                    className="absolute -bottom-2 left-0 w-full h-1 sm:h-1.5"
+                    viewBox="0 0 200 8"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 4 L200 4"
+                      stroke="#4dbc15"
+                      strokeWidth="2"
+                      strokeDasharray="4 4"
+                      fill="none"
+                    />
                   </svg>
                 </span>
               </>
@@ -216,9 +279,22 @@ export default function SolutionsSlider({setIsMobileFormOpen,isMobileFormOpen}) 
               <>
                 Complete Interior Design Services in <br className="hidden sm:block" />
                 <span className="text-[#4dbc15] relative inline-block">
-                  <span className="text-black">Chennai</span> Homes, Apartments & Turnkey Projects
-                  <svg className="absolute -bottom-2 left-0 w-full h-1 sm:h-1.5" viewBox="0 0 200 8" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 4 L200 4" strokeWidth="2" strokeDasharray="4 4" fill="none"/>
+                  <span className="text-black">
+                    Chennai
+                  </span>{" "}
+                  Homes, Apartments & Turnkey Projects
+
+                  <svg
+                    className="absolute -bottom-2 left-0 w-full h-1 sm:h-1.5"
+                    viewBox="0 0 200 8"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 4 L200 4"
+                      strokeWidth="2"
+                      strokeDasharray="4 4"
+                      fill="none"
+                    />
                   </svg>
                 </span>
               </>
@@ -226,18 +302,28 @@ export default function SolutionsSlider({setIsMobileFormOpen,isMobileFormOpen}) 
           </h2>
         </div>
 
-        {/* Slider Container */}
+        {/* Slider */}
         <div className="relative">
-          <div 
-            className="overflow-hidden w-full cursor-grab active:cursor-grabbing"
+
+          <div
             ref={containerRef}
+            className="overflow-hidden w-full cursor-grab active:cursor-grabbing select-none"
           >
             <motion.div
               className="flex"
               animate={{
                 x: getTranslateX(),
               }}
-              transition={{ duration: isDragging ? 0 : 0.5, ease: "easeInOut" }}
+              transition={
+                enableTransition
+                  ? {
+                      duration: isDragging ? 0 : 0.5,
+                      ease: "easeInOut",
+                    }
+                  : {
+                      duration: 0,
+                    }
+              }
               onMouseDown={handleDragStart}
               onMouseMove={handleDragMove}
               onMouseUp={handleDragEnd}
@@ -251,64 +337,80 @@ export default function SolutionsSlider({setIsMobileFormOpen,isMobileFormOpen}) 
               onTouchStart={handleDragStart}
               onTouchMove={handleDragMove}
               onTouchEnd={handleDragEnd}
-              style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+              style={{
+                cursor: isDragging ? "grabbing" : "grab",
+              }}
             >
               {data.map((s, i) => (
                 <div
                   key={i}
-                  style={isMobile ? { 
-                    minWidth: containerWidth, 
-                    width: containerWidth 
-                  } : { 
-                    width: cardWidth, 
-                    minWidth: cardWidth 
-                  }}
+                  style={
+                    isMobile
+                      ? {
+                          minWidth: containerWidth,
+                          width: containerWidth,
+                        }
+                      : {
+                          width: cardWidth,
+                          minWidth: cardWidth,
+                        }
+                  }
                   className="flex-shrink-0 px-0"
                 >
                   <div className="relative bg-white rounded-xl lg:rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 group mx-2 sm:mx-0">
-                    {/* Full Image Container with smaller height */}
+
+                    {/* Image */}
                     <div className="relative overflow-hidden bg-gray-100 aspect-[4/4]">
-                      <img
+
+                      <Image
                         src={s.img}
                         alt={s.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        loading="lazy"
+                        fill
+                        sizes="(max-width:768px) 100vw, 320px"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
                         draggable={false}
+                        priority={i < 2}
                       />
-                      
-                      {/* Dark Overlay for better text visibility */}
+
+                      {/* Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                      
-                      {/* Heading on Top - Left Aligned */}
+
+                      {/* Title */}
                       <div className="absolute top-0 left-0 right-0 p-4 sm:p-5 md:p-6">
                         <h3 className="inline-block text-white bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-sm sm:text-sm md:text-sm font-semibold">
                           {s.title}
                         </h3>
                       </div>
+
                     </div>
                   </div>
                 </div>
               ))}
             </motion.div>
           </div>
-           {/* CTA Button */}
-        <div className="flex justify-center mt-4 sm:mt-6 md:mt-10">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsMobileFormOpen(true)}
-           className="inline-block bg-[#4dbc15] hover:bg-[#3da010] text-white text-sm sm:text-base md:text-lg font-semibold px-10 sm:px-10 md:px-10 py-2 sm:py-3 md:py-3 rounded-full shadow-lg hover:shadow-xl"
-          >
-            Get free Quote
-          </motion.button>
+
+          {/* CTA */}
+          <div className="flex justify-center mt-4 sm:mt-6 md:mt-8">
+            <button
+              onClick={() => setIsMobileFormOpen(true)}
+              className="relative overflow-hidden inline-block bg-[#4dbc15] text-white text-sm sm:text-base md:text-lg font-semibold px-6 sm:px-8 md:px-10 py-2 sm:py-3 md:py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-[#3da010] hover:shadow-2xl hover:-translate-y-1 active:scale-95 animate-pulseGlow"
+            >
+              <span className="relative z-10">
+                Get free Quote
+              </span>
+
+              <span className="absolute inset-0 -translate-x-full animate-shine bg-gradient-to-r from-transparent via-white/30 to-transparent"></span>
+            </button>
+          </div>
+
+          {/* Mobile Form */}
+          {isMobile && (
+            <div className="flex items-center justify-center mt-4">
+              <LeadFormMobile isMobile={true} />
+            </div>
+          )}
+
         </div>
-        {isMobile && (
-  <div className="flex items-center justify-center mt-4">
-    <LeadFormMobile isMobile={true} />
-  </div>
-)}
-        </div>
-        
       </div>
     </section>
   );

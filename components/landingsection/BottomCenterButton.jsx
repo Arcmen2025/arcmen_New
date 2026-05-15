@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { IoMdCall } from "react-icons/io";
 
-export default function BottomCenterButton() {
+export default function BottomCenterButton({setIsMobileFormOpen}) {
     const [scrolled, setScrolled] = useState(false);
     const [bubbles, setBubbles] = useState([]);
 
@@ -73,21 +73,8 @@ export default function BottomCenterButton() {
     py-3 px-2 rounded-full shadow-xl flex items-center gap-2 overflow-hidden">
 
                             <a
-                                href="#contact"
-                                className="text-md font-medium whitespace-nowrap text-white  bg-[#4dbc15] rounded-full  py-2 px-3"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    const el = document.getElementById("contact");
-                                    if (el) {
-                                        const yOffset = -200; // adjust this (header height)
-                                        const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-                                        window.scrollTo({
-                                            top: y,
-                                            behavior: "smooth",
-                                        });
-                                    }
-                                }}
+                                onClick={() => setIsMobileFormOpen(true)}
+                                className="text-md font-medium whitespace-nowrap text-white  bg-[#4dbc15] rounded-full  py-2 px-3" 
                             >
                                 Book Free Consultation
                             </a>

@@ -31,26 +31,34 @@ function useCountUp(end, duration = 1500, delay = 0, startTrigger = false) {
     useEffect(() => {
         if (!startTrigger) return;
 
-        const timeout = setTimeout(() => {
-            let start = 0;
-            const stepTime = 16;
-            const totalSteps = duration / stepTime;
-            const increment = end / totalSteps;
+        let startTimestamp;
+        let animationFrame;
 
-            const counter = setInterval(() => {
-                start += increment;
-                if (start >= end) {
-                    setCount(end);
-                    clearInterval(counter);
-                } else {
-                    setCount(Math.floor(start));
+        const startAnimation = () => {
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+
+                const progress = Math.min(
+                    (timestamp - startTimestamp) / duration,
+                    1
+                );
+
+                setCount(Math.floor(progress * end));
+
+                if (progress < 1) {
+                    animationFrame = requestAnimationFrame(step);
                 }
-            }, stepTime);
+            };
 
-            return () => clearInterval(counter);
-        }, delay);
+            animationFrame = requestAnimationFrame(step);
+        };
 
-        return () => clearTimeout(timeout);
+        const timeout = setTimeout(startAnimation, delay);
+
+        return () => {
+            clearTimeout(timeout);
+            cancelAnimationFrame(animationFrame);
+        };
     }, [end, duration, delay, startTrigger]);
 
     return count;

@@ -34,26 +34,20 @@ export default function GallerySection() {
   return (
     <section className="md:py-12 overflow-hidden">
       <div className="text-center mb-20">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: false }}
-        >
-          <h2 className="font-playfair !text-lg sm:!text-base md:!text-xl lg:!text-2xl font-extrabold">
-            Experience How Your Home Interiors Are Created
-          </h2></motion.div>
-        <motion.div className="text-center "
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: false }}
-        >
-          <p className="text-[#666666] text-xs md:text-[12px] max-w-xl mx-auto">
-            Visit our experience center and see how we design and build quality home interiors in Chennai
-          </p>
-        </motion.div>
-      </div>
+  
+  <div className="animate-fadeUp">
+    <h2 className="font-playfair !text-lg sm:!text-base md:!text-xl lg:!text-2xl font-extrabold">
+      Experience How Your Home Interiors Are Created
+    </h2>
+  </div>
+
+  <div className="text-center animate-fadeUp delay-200">
+    <p className="text-[#666666] text-xs md:text-[12px] max-w-xl mx-auto">
+      Visit our experience center and see how we design and build quality home interiors in Chennai
+    </p>
+  </div>
+
+</div>
       <div className="overflow-hidden">
         <div className="marquee flex gap-10">
 

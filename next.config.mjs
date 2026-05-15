@@ -13,6 +13,26 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'api-arcmeninterior.webdadsprojects.com',
                 pathname: '/storage/posterimage/**'
+            },
+            {
+                protocol: 'https',
+                hostname: 'arcmen-uploads.s3.us-east-1.amazonaws.com',
+                pathname: '/images/**'
+            },
+            {
+                protocol: 'https',
+                hostname: 'img.youtube.com',
+                pathname: '/vi/**'
+            },
+            {
+                protocol: 'https',
+                hostname: 'www.shutterstock.com',
+                pathname: '/**'
+            },
+            {
+                protocol: 'https',
+                hostname: 'assets.webdads2u.com',
+                pathname: '/images/**'
             }
         ]
     }

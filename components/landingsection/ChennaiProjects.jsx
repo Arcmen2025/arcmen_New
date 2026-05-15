@@ -1,9 +1,7 @@
 "use client";
-import { motion } from "framer-motion";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
-
+import Image from "next/image";
 
 const IMAGES = [
   "https://assets.webdads2u.com/images/1777290869100-05-dinning.jpg",
@@ -31,7 +29,7 @@ const IMAGES = [
   "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778653294416-image-4.webp",
   "https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778653314263-image-5.webp",
   "https://assets.webdads2u.com/images/1777291904238-10.jpg",
-]
+];
 
 const PROJECTS_DATA = [
   {
@@ -73,32 +71,47 @@ const scrollToContact = () => {
   }
 };
 
-function ProjectCard({ project }) {
+// Added `isPriority` prop to determine if it's the first slide
+function ProjectCard({ project, isPriority }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4 lg:gap-6 items-start">
+      
       {/* Main Image */}
       <div className="relative rounded-lg overflow-hidden shadow-lg bg-white w-full">
         <span className="absolute top-3 left-3 bg-black/70 text-white text-[10px] sm:text-xs md:text-sm px-2 sm:px-3 py-1 sm:py-1.5 md:py-2 rounded-md z-10 font-medium shadow-md">
           {project.area}
         </span>
-        <img
+        <Image
           src={project.mainImage}
           alt={project.title}
-          onClick={scrollToContact}
-          className="w-full h-auto aspect-[4/3] object-cover cursor-pointer hover:scale-105 transition-transform duration-500"
+          width={800}
+          height={600}
+          quality={75}
+          // Only eager-load the first image for LCP, lazy-load the rest
+          priority={isPriority}
+          loading={isPriority ? undefined : "lazy"}
+          // Tells Next.js to serve smaller images to mobile devices
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className="w-full h-auto aspect-[4/3] object-cover cursor-pointer hover:scale-105 transition-transform duration-500 bg-gray-100"
         />
       </div>
 
       {/* Thumbnail Grid */}
       <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4">
         {project.thumbs.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt={`${project.title} view ${i + 1}`}
-            onClick={scrollToContact}
-            className="w-full aspect-[4/3] object-cover rounded-lg cursor-pointer hover:scale-105 transition-transform duration-300 hover:shadow-xl"
-          />
+          <div key={i} className="relative w-full aspect-[4/3] rounded-lg overflow-hidden bg-gray-100">
+            <Image
+              src={src}
+              alt={`${project.title} view ${i + 1}`}
+              width={300}
+              height={225}
+              quality={60}
+              loading="lazy"
+              sizes="(max-width: 768px) 50vw, 25vw"
+              onClick={scrollToContact}
+              className="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300 hover:shadow-xl"
+            />
+          </div>
         ))}
       </div>
 
@@ -117,7 +130,7 @@ function ProjectCard({ project }) {
   );
 }
 
-  export default function ChennaiProjects({ setIsMobileFormOpen }) {
+export default function ChennaiProjects({ setIsMobileFormOpen }) {
   const pathname = usePathname();
   const isTargetPage = pathname === "/home-interior-designers-in-chennai";
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -126,14 +139,13 @@ function ProjectCard({ project }) {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const autoPlayInterval = useRef(null);
 
-  // Auto-slide functionality
   useEffect(() => {
     if (isAutoPlaying) {
       autoPlayInterval.current = setInterval(() => {
-        setCurrentIndex((prevIndex) => 
+        setCurrentIndex((prevIndex) =>
           prevIndex === PROJECTS_DATA.length - 1 ? 0 : prevIndex + 1
         );
-      }, 3000); // Change slide every 4 seconds
+      }, 3000);
     } else {
       if (autoPlayInterval.current) {
         clearInterval(autoPlayInterval.current);
@@ -147,18 +159,11 @@ function ProjectCard({ project }) {
     };
   }, [isAutoPlaying]);
 
-  // Stop auto-play when user interacts
   const stopAutoPlay = () => {
     setIsAutoPlaying(false);
-    // Restart auto-play after 10 seconds of inactivity
     setTimeout(() => {
       setIsAutoPlaying(true);
-    }, 10000);
-  };
-
-  const handleDotClick = (index) => {
-    stopAutoPlay();
-    setCurrentIndex(index);
+    }, 5000);
   };
 
   const handleTouchStart = (e) => {
@@ -202,18 +207,13 @@ function ProjectCard({ project }) {
     setTouchStart(null);
   };
 
-  // Pause auto-play on hover
-  const handleMouseEnter = () => {
-    setIsAutoPlaying(false);
-  };
-
-  const handleMouseLeave = () => {
-    setIsAutoPlaying(true);
-  };
+  const handleMouseEnter = () => setIsAutoPlaying(false);
+  const handleMouseLeave = () => setIsAutoPlaying(true);
 
   return (
-    <section className="py-8 sm:py-6 md:py-6 lg:py-6 overflow-hidden bg-gradient-to-b from-white to-gray-50">
+    <section className="py-4 sm:py-4 md:py-4 lg:py-4 overflow-hidden">
       <div className="w-full max-w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
+        
         {/* Header Section */}
         <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
           <p className="inline-block text-[10px] sm:text-[11px] md:text-[12px] tracking-[2px] sm:tracking-[3px] uppercase px-3 sm:px-4 py-1 sm:py-1.5 mb-3 sm:mb-4 rounded-full backdrop-blur-md bg-white/60 text-[#4dbc15] border border-[#4dbc15]/40 shadow-lg font-medium">
@@ -227,7 +227,7 @@ function ProjectCard({ project }) {
                 <span className="text-[#4dbc15] relative inline-block">
                   Space to Love
                   <svg className="absolute -bottom-1 left-0 w-full h-1 sm:h-1.5 md:h-2" viewBox="0 0 200 8" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 4 L200 4" strokeWidth="2" strokeDasharray="4 4" fill="none"/>
+                    <path d="M0 4 L200 4" strokeWidth="2" strokeDasharray="4 4" fill="none" />
                   </svg>
                 </span>
               </>
@@ -238,7 +238,7 @@ function ProjectCard({ project }) {
                 <span className="text-[#4dbc15] relative inline-block">
                   Space to Love
                   <svg className="absolute -bottom-1 left-0 w-full h-1 sm:h-1.5 md:h-2" viewBox="0 0 200 8" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 4 L200 4"  strokeWidth="2" strokeDasharray="4 4" fill="none"/>
+                    <path d="M0 4 L200 4" strokeWidth="2" strokeDasharray="4 4" fill="none" />
                   </svg>
                 </span>
               </>
@@ -266,7 +266,8 @@ function ProjectCard({ project }) {
           >
             {PROJECTS_DATA.map((project, index) => (
               <div key={index} className="min-w-full px-0">
-                <ProjectCard project={project} />
+                {/* Notice we pass isPriority=true ONLY to the very first slide */}
+                <ProjectCard project={project} isPriority={index === 0} />
               </div>
             ))}
           </div>
@@ -274,14 +275,13 @@ function ProjectCard({ project }) {
 
         {/* CTA Button */}
         <div className="flex justify-center mt-2 sm:mt-4 md:mt-6">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <button
             onClick={() => setIsMobileFormOpen(true)}
-           className="inline-block bg-[#4dbc15] hover:bg-[#3da010] text-white text-sm sm:text-base md:text-lg font-semibold px-6 sm:px-8 md:px-10 py-2 sm:py-3 md:py-3 rounded-full shadow-lg hover:shadow-xl"
+            className="relative overflow-hidden inline-block bg-[#4dbc15] text-white text-sm sm:text-base md:text-lg font-semibold px-6 sm:px-8 md:px-10 py-2 sm:py-3 md:py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-[#3da010] hover:shadow-2xl hover:-translate-y-1 active:scale-95 animate-pulseGlow"
           >
-            Book a free site visit
-          </motion.button>
+            <span className="relative z-10">Book a free site visit</span>
+            <span className="absolute inset-0 -translate-x-full animate-shine bg-gradient-to-r from-transparent via-white/30 to-transparent"></span>
+          </button>
         </div>
       </div>
     </section>
