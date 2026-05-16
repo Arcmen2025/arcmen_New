@@ -1,5 +1,6 @@
 "use client";
 
+import Thankyou_Page from "@/app/(path)/interior-designers-chennai/thank-you/Thankyou_Page";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -15,7 +16,7 @@ export default function LeadPopup() {
     const [form, setForm] = useState({
         name: "",
         phone: "",
-        email: "",
+        location: "",
         project: "",
     });
 
@@ -39,7 +40,7 @@ export default function LeadPopup() {
             const payload = {
                 fullName: form.name,
                 mobileNumber: form.phone,
-                email: form.email,
+                location: form.location,
                 projectType: form.project || "Residential Interior",
             };
 
@@ -101,8 +102,8 @@ export default function LeadPopup() {
                     />
 
                     <input
-                        name="email"
-                        placeholder="Email"
+                        name="location"
+                        placeholder="location"
                         onChange={onChange}
                         className="border rounded-lg px-4 py-2 text-sm"
                     />
@@ -128,9 +129,7 @@ export default function LeadPopup() {
                     </button>
 
                     {success && (
-                        <p className="text-green-600 text-sm text-center mt-2">
-                            Submitted successfully!
-                        </p>
+                        <Thankyou_Page/>
                     )}
                 </form>
             </div>

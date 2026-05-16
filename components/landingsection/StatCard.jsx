@@ -128,7 +128,7 @@ export default function StatsSection() {
     return (
         <section 
             ref={ref}
-            className="py-6 sm:py-6 md:py-6 lg:py-10 bg-gradient-to-br from-gray-50 via-white to-gray-50"
+            className="py-6 sm:py-6 md:py-6 lg:py-6 bg-gradient-to-br from-gray-50 via-white to-gray-50"
         >
             <div className="w-full max-w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
                 {/* Header Section */}

@@ -211,11 +211,11 @@ export default function ChennaiProjects({ setIsMobileFormOpen }) {
   const handleMouseLeave = () => setIsAutoPlaying(true);
 
   return (
-    <section className="py-4 sm:py-4 md:py-4 lg:py-4 overflow-hidden">
+    <section className="py-6 sm:py-6 md:py-6 lg:py-6 overflow-hidden">
       <div className="w-full max-w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
         
         {/* Header Section */}
-        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+        <div className="text-center mb-8 sm:mb-6 md:mb-10 lg:mb-10">
           <p className="inline-block text-[10px] sm:text-[11px] md:text-[12px] tracking-[2px] sm:tracking-[3px] uppercase px-3 sm:px-4 py-1 sm:py-1.5 mb-3 sm:mb-4 rounded-full backdrop-blur-md bg-white/60 text-[#4dbc15] border border-[#4dbc15]/40 shadow-lg font-medium">
             Our Projects
           </p>
@@ -277,7 +277,7 @@ export default function ChennaiProjects({ setIsMobileFormOpen }) {
         <div className="flex justify-center mt-2 sm:mt-4 md:mt-6">
           <button
             onClick={() => setIsMobileFormOpen(true)}
-            className="relative overflow-hidden inline-block bg-[#4dbc15] text-white text-sm sm:text-base md:text-lg font-semibold px-6 sm:px-8 md:px-10 py-2 sm:py-3 md:py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-[#3da010] hover:shadow-2xl hover:-translate-y-1 active:scale-95 animate-pulseGlow"
+            className="relative overflow-hidden z-10 w-[250px] bg-[#4dbc15] text-white font-semibold py-2 sm:py-3 md:py-3 rounded-xl transition duration-300 text-sm tracking-wide shadow-sm hover:shadow-md hover:bg-[#3da30e] disabled:opacity-50"
           >
             <span className="relative z-10">Book a free site visit</span>
             <span className="absolute inset-0 -translate-x-full animate-shine bg-gradient-to-r from-transparent via-white/30 to-transparent"></span>

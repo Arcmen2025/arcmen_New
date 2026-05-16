@@ -173,42 +173,13 @@ export default function LeadFormMobile({ isMobile = false }) {
 
           <div className="flex justify-center mt-2">
             <div className="relative w-full">
-              <motion.button
+              <button
                 type="submit"
                 disabled={loading}
-                initial={{ scale: 1 }}
-                animate={{ scale: [1, 1.02, 1] }}
-                transition={{
-                  duration: 2,
-                  ease: "easeInOut",
-                  repeat: Infinity,
-                }}
-                whileTap={{ scale: 0.95 }}
                 className="relative overflow-hidden z-10 w-full bg-[#4dbc15] text-white font-semibold py-2 sm:py-3 md:py-3 rounded-xl transition duration-300 text-sm tracking-wide shadow-sm hover:shadow-md hover:bg-[#3da30e] disabled:opacity-50"
               >
                 Book a Free Consultation
-              </motion.button>
-
-              {/* Bubble Animations inside button */}
-              {bubbles?.map((b) => (
-                <motion.span
-                  key={b.id}
-                  initial={{ y: 20, opacity: 0.6, scale: 0.5 }}
-                  animate={{ y: -60, opacity: 0, scale: 1.5 }}
-                  transition={{ duration: 2, ease: "easeOut" }}
-                  style={{
-                    position: "absolute",
-                    bottom: -10,
-                    left: `${b.left}%`,
-                    width: b.size,
-                    height: b.size,
-                    borderRadius: "50%",
-                    background: "rgba(255,255,255,0.6)",
-                    pointerEvents: "none",
-                    zIndex: 20,
-                  }}
-                />
-              ))}
+              </button>
             </div>
           </div>
         </form>

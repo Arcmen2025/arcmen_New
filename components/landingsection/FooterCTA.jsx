@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function FooterCTA() {
+export default function FooterCTA({setIsMobileFormOpen}) {
   const pathname = usePathname();
 
   const isTargetPage =
@@ -66,20 +66,31 @@ export default function FooterCTA() {
           <div className="relative inline-block">
 
             <motion.a
-              href="#contact"
-              whileTap={{ scale: 0.95 }}
-              className="
-    inline-block  
-    transform-gpu 
-    relative z-10 
-    bg-[#4dbc15] text-white 
-    px-10 py-3 rounded-[8px] 
-    font-medium text-sm md:text-base 
-     hover:text-white transition
+  href="#contact"
+  onClick={(e) => {
+    if (window.innerWidth < 768) {
+      e.preventDefault();
+      setIsMobileFormOpen(true);
+    }
+  }}
+  whileTap={{ scale: 0.95 }}
+  className="
+    inline-block
+    transform-gpu
+    relative z-10
+    bg-[#4dbc15]
+    text-white
+    px-10 py-3
+    rounded-[8px]
+    font-medium
+    text-sm
+    md:text-base
+    hover:text-white
+    transition
   "
-            >
-              Book Free Site Visit
-            </motion.a>
+>
+  Book Free Site Visit
+</motion.a>
 
             {bubbles.map((b) => (
               <motion.span

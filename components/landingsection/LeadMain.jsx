@@ -23,8 +23,8 @@ export default function LeadMain() {
       <Hero
   isMobileFormOpen={isMobileFormOpen}
   setIsMobileFormOpen={setIsMobileFormOpen}
-/>
-      <StatsSection />
+/> 
+<StatsSection />
       <ChennaiProjects
   setIsMobileFormOpen={setIsMobileFormOpen}
 />
@@ -33,11 +33,12 @@ export default function LeadMain() {
       setIsMobileFormOpen={setIsMobileFormOpen}
       isMobileFormOpen={isMobileFormOpen}
        />
+       
       <OurBrand />
       <ProcessSection />
       <GallerySection />
       <FAQAccordion />
-      <FooterCTA />
+      <FooterCTA setIsMobileFormOpen={setIsMobileFormOpen}/>
       <BottomCenterButton setIsMobileFormOpen={setIsMobileFormOpen}/>
     </div>
   );

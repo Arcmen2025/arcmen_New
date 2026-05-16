@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import LeadForm from "./LeadForm";
+import LeadFormMobile from "./LeadFormMobile";
 
 export default function Hero({ isMobileFormOpen, setIsMobileFormOpen }) {
   const pathname = usePathname();
@@ -87,6 +88,7 @@ export default function Hero({ isMobileFormOpen, setIsMobileFormOpen }) {
                     </>
                   )}
                 </h1>
+                
 
                 <div className="hidden md:block text-sm md:mb-6">
                   <ul className="list-disc pl-4 space-y-2 marker:text-yellow-400">

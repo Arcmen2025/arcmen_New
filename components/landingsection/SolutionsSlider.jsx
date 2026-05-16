@@ -393,7 +393,7 @@ export default function SolutionsSlider({
           <div className="flex justify-center mt-4 sm:mt-6 md:mt-8">
             <button
               onClick={() => setIsMobileFormOpen(true)}
-              className="relative overflow-hidden inline-block bg-[#4dbc15] text-white text-sm sm:text-base md:text-lg font-semibold px-6 sm:px-8 md:px-10 py-2 sm:py-3 md:py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-[#3da010] hover:shadow-2xl hover:-translate-y-1 active:scale-95 animate-pulseGlow"
+              className="relative overflow-hidden z-10 w-[250px] bg-[#4dbc15] text-white font-semibold py-2 sm:py-3 md:py-3 rounded-xl transition duration-300 text-sm tracking-wide shadow-sm hover:shadow-md hover:bg-[#3da30e] disabled:opacity-50"
             >
               <span className="relative z-10">
                 Get free Quote
