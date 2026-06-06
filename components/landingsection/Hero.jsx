@@ -119,7 +119,7 @@
             
              {/* Optimized Logo */}
              <Image
-               src="https:assets.webdads2u.com/images/1777294926124-djfvkpfrfmvfizw7x6ox-1.png"
+               src="https://assets.webdads2u.com/images/1777294926124-djfvkpfrfmvfizw7x6ox-1.png"
                alt="Arcmen Logo"
                width={130}
                height={45}
@@ -184,7 +184,7 @@
          {/* Optimized Mobile Background Image */}
          <div className="absolute inset-0 z-0">
            <Image
-             src="https:arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778648329631-hero-banner.webp"
+             src="https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778648329631-hero-banner.webp"
              alt="Interior Design Mobile Banner"
              fill
              priority
@@ -200,7 +200,7 @@
             
              {/* Logo */}
              <Image
-               src="https:assets.webdads2u.com/images/1777294926124-djfvkpfrfmvfizw7x6ox-1.png"
+               src="https://assets.webdads2u.com/images/1777294926124-djfvkpfrfmvfizw7x6ox-1.png"
                alt="Arcmen Logo"
                width={80}
                height={28}
