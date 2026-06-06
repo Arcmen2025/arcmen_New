@@ -107,6 +107,7 @@
   priority
   className="object-cover object-center"
   sizes="100vw"
+  unoptimized
   quality={85}
 />
            {/* Overlays */}
@@ -190,6 +191,7 @@
              priority
              className="object-cover object-center"
              sizes="100vw"
+             unoptimized
              quality={85}
            />
            <div className="absolute inset-0 bg-black/60"></div>
