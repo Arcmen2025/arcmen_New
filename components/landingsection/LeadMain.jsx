@@ -24,7 +24,7 @@ export default function LeadMain() {
   isMobileFormOpen={isMobileFormOpen}
   setIsMobileFormOpen={setIsMobileFormOpen}
 /> 
-<StatsSection />
+
       <ChennaiProjects
   setIsMobileFormOpen={setIsMobileFormOpen}
 />
@@ -33,7 +33,7 @@ export default function LeadMain() {
       setIsMobileFormOpen={setIsMobileFormOpen}
       isMobileFormOpen={isMobileFormOpen}
        />
-       
+       <StatsSection />
       <OurBrand />
       <ProcessSection />
       <GallerySection />

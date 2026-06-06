@@ -249,7 +249,7 @@ export default function SolutionsSlider({
   };
 
   return (
-    <section className="py-6 sm:py-6 md:py-6 lg:py-6 overflow-hidden">
+    <section className="py-6 sm:py-6 md:py-6 lg:py-10 overflow-hidden">
       <div className="w-full max-w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
 
         {/* Header */}

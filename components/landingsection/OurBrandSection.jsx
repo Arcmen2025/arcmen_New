@@ -47,7 +47,7 @@ const OurBrand = () => {
     const animationDuration = getAnimationDuration();
 
     return (
-        <section className="py-4 sm:py-4 md:py-4 lg:py-4 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+        <section className="py-6 sm:py-6 md:py-10 lg:py-10 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
             <div className="w-full max-w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
                 {/* Header Section */}
                 <div className="text-center mb-4 sm:mb-6 md:mb-8 lg:mb-10">
