@@ -101,14 +101,14 @@
          {/* Optimized Desktop Background Image */}
          <div className="absolute inset-0 z-0">
            <Image
-             src="https:arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778647969383-hero-banner--1.webp"
-             alt="Interior Design Desktop Banner"
-             fill
-             priority
-             className="object-cover object-center"
-             sizes="100vw"
-             quality={85}
-           />
+  src="https://arcmen-uploads.s3.us-east-1.amazonaws.com/images/1778647969383-hero-banner--1.webp"
+  alt="Interior Design Desktop Banner"
+  fill
+  priority
+  className="object-cover object-center"
+  sizes="100vw"
+  quality={85}
+/>
            {/* Overlays */}
            <div className="absolute inset-0 bg-black/20"></div>
            <div className="absolute inset-0 bg-black/60"></div>
